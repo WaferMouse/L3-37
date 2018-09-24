@@ -8,6 +8,8 @@ import json
 import urllib
 import tkMessageBox
 
+from companion import ship_map
+
 import os
 
 import math
@@ -37,7 +39,7 @@ class VerticalScrolledFrame(tk.Frame):
         canvas.yview_moveto(0)
 
         # create a frame inside the canvas which will be scrolled with it
-        self.interior = interior = tk.Frame(canvas, background='grey4')
+        self.interior = interior = tk.Frame(canvas, background=plugin_app.bg)
         interior_id = canvas.create_window(0, 0, window=interior,
                                            anchor=tk.NW)
 
@@ -121,6 +123,7 @@ class FakeNotebook(tk.Frame):
     def select_tab(self, tab):
         self.current = tab
         self.refresh()
+        set_theme()
             
     def refresh(self):
         self.fake_combo.config(text = self.tabs[self.current][1])
@@ -298,33 +301,284 @@ class SystemFrame(tk.Frame):
         self.jumps = jumps
         self.is_neutron = is_neutron
         
-        self.name_lbl = tk.Label(self, text = system_name)
-        self.name_lbl.pack(anchor = tk.W)
+        self.dyn_widgets = []
+        
+        self.name_lbl = tk.Label(self, text = system_name, anchor = tk.W, justify=tk.LEFT)
+        self.name_lbl.pack(fill="x")
+        self.dyn_widgets.append(self.name_lbl)
         
         if distance != 0:
-            self.distance_lbl = tk.Label(self, text = distance_name)
-            self.distance_lbl.pack(anchor = tk.W)
+            self.distance_lbl = tk.Label(self, text = distance_name, anchor = tk.W, justify=tk.LEFT)
+            self.distance_lbl.pack(fill="x")
+            self.dyn_widgets.append(self.distance_lbl)
             
         if jumps != 1:
-            self.jumps_lbl = tk.Label(self, text = jumps)
-            self.jumps_lbl.pack(anchor = tk.W)
+            self.jumps_lbl = tk.Label(self, text = jumps, anchor = tk.W, justify=tk.LEFT)
+            self.jumps_lbl.pack(fill="x")
+            self.dyn_widgets.append(self.jumps_lbl)
+            
+        self.update_theme()
+            
+    def update_theme(self):
+        for widget in self.dyn_widgets:
+            widget.config(background = plugin_app.bg, foreground = plugin_app.fg)
 
 class WaferModule(tk.Frame):
     
-    def __init__(self, parent, text = '', *args, **options):
+    def __init__(self, parent, *args, **options):
         tk.Frame.__init__(self, parent, *args, **options)
         
-    def on_ED_event(self, event):
+    def journal_entry(self, cmdr, system, station, entry, state):
         """
         Handle events that are delegated to this module.
         """
         pass
+        
+    def dashboard_entry(self, cmdr, is_beta, entry):
+        """
+        Handle events that are delegated to this module.
+        """
+        pass
+        
+    def cmdr_data(self, data, is_beta):
+        """
+        Handle events that are delegated to this module.
+        """
+        pass
+        
+    def update_theme(self):
+        pass
 
+class ShipFrame(tk.Frame):
+    def __init__(self, parent, ship_data, *args, **options):
+        tk.Frame.__init__(self, parent, *args, **options)
+        self.build_ui()
+        self.update_ship(ship_data)
+        self.update_theme()
+        
+    def update_theme(self):
+        for element in self.elements:
+            element.config(background = plugin_app.bg, foreground = plugin_app.fg)
+        
+    def update_ship(self, ship_data):
+        self.ship_data = ship_data
+        if 'shipName' in ship_data:
+            self.ship_lbl_txt = "{} ({})".format(ship_data['shipName'],ship_map[ship_data['name'].lower()])
+        else:
+            self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
+        self.sysname = ship_data['starsystem']['name']
+        self.stationname = ship_data['station']['name']
+        self.elements[0].config(text = self.ship_lbl_txt)
+        self.elements[1].config(text = 'System: {}'.format(self.sysname))
+        self.elements[2].config(text = 'Station: {}'.format(self.stationname))
+        
+    def build_ui(self):
+        self.elements = [
+                        tk.Label(self, text = '', justify=tk.LEFT, anchor=tk.W, pady=0),
+                        tk.Label(self, text = 'System:', justify=tk.LEFT, anchor=tk.W, pady=0),
+                        tk.Label(self, text = 'Station:', justify=tk.LEFT, anchor=tk.W, pady=0),
+                        ]
+        self.bind("<Button-1>", self.click)
+        self.menu = tk.Menu(self, tearoff=0)
+
+        self.menu.add_command(label="Copy system name", command = self.copySystem)
+        self.menu.add_command(label="Copy EDSM link", command = self.copySystemLink)
+        self.bind("<Button-3>", self.rightclick)
+        for i in self.elements:
+            i.pack(fill="x")
+            i.bind("<Button-1>", self.click)
+            i.bind("<Button-3>", self.rightclick)
+    def copySystem(self):
+        setclipboard(self.sysname)
+    def copySystemLink(self):
+        setclipboard("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.sysname))
+    def click(self, event):
+        webbrowser.open("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.sysname))
+    def rightclick(self, event):
+        self.menu.post(event.x_root, event.y_root)
+        
 class FleetMonitor(WaferModule):
     
-    def __init__(self, parent, text = '', *args, **options):
-        tk.Frame.__init__(self, parent, *args, **options)
-        pass
+    def __init__(self, parent, *args, **options):
+        WaferModule.__init__(self, parent, *args, **options)
+        self.ships = {}
+        self.bigjsonships = {}
+        self.DeadShip = None
+        self.ship_widgets = {}
+        try:
+            with open(path.join(plugin_path, 'ships.json')) as json_data:
+                self.bigjsonships = json.load(json_data)
+        except:
+            pass
+        self.ships_scroll = VerticalScrolledFrame(self)
+        self.ships_scroll.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
+        
+    def self_set(self, cmdr):
+        self.cmdr = cmdr
+        self.ships.clear()
+        for widget in self.ship_widgets:
+            widget.destroy()
+        self.ship_widgets.clear()
+        if self.cmdr in self.bigjsonships:
+            self.ships.update(self.bigjsonships[self.cmdr])
+        else:
+            self.bigjsonships.update({self.cmdr:{}})
+            self.ships.update({})
+            
+    def build_ui(self):
+        for key, widget in self.ship_widgets.iteritems():
+            if key not in self.ships:
+                widget.forget()
+            else:
+                widget.update_ship(self.ships[key])
+        for ship in self.ships:
+            if ship not in self.ship_widgets:
+                self.ship_widgets.update({ship: ShipFrame(self.ships_scroll.interior, self.ships[ship], highlightthickness = 1, background = plugin_app.bg)})
+            self.ship_widgets[ship].pack(fill = tk.BOTH, expand = 1)
+        self.update_theme()
+        
+    def update_theme(self):
+        for key, widget in self.ship_widgets.iteritems():
+            widget.update_theme()
+            widget.config(highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg)
+            
+        self.ships_scroll.interior.config(background = plugin_app.bg)
+            
+    def cmdr_data(self, data, is_beta):
+        write_file = False
+        do_build_ui = False
+#        if event['event'] == 'cmdr_data':
+        cmdr = data['commander']['name']
+        if hasattr(self, 'cmdr') == False:
+            self.self_set(cmdr)
+            do_build_ui = True
+        elif self.cmdr != cmdr:
+            self.self_set(cmdr)
+            do_build_ui = True
+        scrub_list = []
+        for ship in self.ships:
+            if ship not in data["ships"]:
+                scrub_list.append(ship)
+            else:
+                for i in ["shipID", "shipName"]:
+                    try:
+                        if self.ships[ship][i] != data["ships"][ship][i]:
+                            self.ships[ship][i] = data["ships"][ship][i]
+                            write_file = True
+                            do_build_ui = True
+                    except:
+                        pass
+        for ship in scrub_list:
+            del self.ships[ship]
+            write_file = True
+            do_build_ui = True
+        for ship in data["ships"]:
+            if ship not in self.ships:
+                self.ships[ship] = data["ships"][ship]
+                del self.ships[ship]["starsystem"]["id"]
+                del self.ships[ship]["starsystem"]["systemaddress"]
+                del self.ships[ship]["station"]["id"]
+                del self.ships[ship]["value"]
+                del self.ships[ship]["free"]
+                self.ships[ship].update({'localised_name': ship_map[self.ships[ship]['name'].lower()]})
+#                if 'shipName' not in self.ships[ship]:
+#                    self.ships[ship].update({'shipName': self.ships[ship]['localised_name']})
+                write_file = True
+                do_build_ui = True
+          
+        if write_file:
+            self.bigjsonships.update({self.cmdr: self.ships})
+            with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
+                json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
+                
+        if do_build_ui:
+            self.build_ui()
+        
+    def journal_entry(self, cmdr, system, station, entry, state):
+        write_file = False
+        do_build_ui = False
+        if hasattr(self, 'cmdr') == False:
+            self.self_set(cmdr)
+            do_build_ui = True
+        elif self.cmdr != cmdr:
+            self.self_set(cmdr)
+            do_build_ui = True
+            
+        if (state['Captain'] == None) and (system != None):
+            
+            current_ship_id = state['ShipID']
+            
+            state_ship = {
+                "id": current_ship_id,
+                "name": state['ShipType'],
+                "shipID": state['ShipIdent'],
+                "shipName": state['ShipName'],
+                "starsystem": {"name": system},
+                "station": {"name": [station, 'In flight'][station == None]},
+#                "starpos": state['StarPos'],
+                'localised_name': ship_map[state['ShipType'].lower()]
+                }
+            
+#            if state_ship['shipName'] == None:
+#                state_ship.update({'shipName': state_ship['localised_name']})
+            
+            if str(current_ship_id) not in self.ships:
+                self.ships[str(current_ship_id)] = state_ship
+                write_file = True
+                do_build_ui = True
+            elif self.ships[str(current_ship_id)] != state_ship:
+                self.ships[str(current_ship_id)] = state_ship
+                write_file = True
+                do_build_ui = True
+          
+            if entry['event'] == "ShipyardTransfer":
+                this_ship_id = str(entry["ShipID"])
+                if this_ship_id not in self.ships:
+                    self.ships[this_ship_id] = {
+                        "id": entry["ShipID"],
+                        "shipName": entry['ShipType'],
+                        "name": entry['ShipType'],
+                        'localised_name': ship_map[entry['ShipType'].lower()]
+                        }
+                self.ships[this_ship_id].update({
+                    "starsystem": {"name": system},
+                    "station": {"name": station},
+#                    "starpos": state['StarPos'],
+                    })
+#                    update_gui()
+                write_file = True
+                do_build_ui = True
+            
+            elif entry['event'] == 'Died':
+                self.DeadShip = current_ship_id
+            
+            elif entry['event'] == "Resurrect":
+                if entry["Option"] != "rebuy":
+                    if self.DeadShip != None:
+                        try:
+                            del self.ships[str(self.DeadShip)]
+                            write_file = True
+                            do_build_ui = True
+                        except:
+                            pass
+                        self.DeadShip = None
+          
+            if "SellShipID" in entry:
+                try:
+                    del self.ships[str(entry["SellShipID"])]
+                    write_file = True
+                    do_build_ui = True
+                except:
+                    pass
+#                    update_gui()
+          
+        if write_file:
+            self.bigjsonships.update({self.cmdr: self.ships})
+            with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
+                json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
+                
+        if do_build_ui:
+            self.build_ui()
 
 class SurfaceNavigation(WaferModule):
     
@@ -351,42 +605,37 @@ class SurfaceNavigation(WaferModule):
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure(3, weight=1)
         self.lbl.grid(sticky=tk.W)
-    #    self.lat_label.grid(row=1, column=0)
-    #    self.target_lat.grid(row=1, column=1, sticky = "nsew")
-    #    self.lon_label.grid(row=1, column=2)
-    #    self.target_lon.grid(row=1, column=3, sticky = "nsew")
         self.bearing_frame.grid(row=0, column=1, sticky = "nsew")
         self.lbl_left.grid(row=0, column=0)
         self.bearing.grid(row=0, column=1)
         self.lbl_right.grid(row=0, column=2)
         self.set_btn.grid(row=0, column=2, sticky="e")
         
-    def on_ED_event(self, event):
-        if event['event'] == 'dashboard_entry':
-            if "Latitude" in event['payload']:
-                try:
-                    current_lat_lon = (event['payload']["Latitude"], event['payload']["Longitude"])
-                    target_lat_lon = (float(self.target_lat.get()), float(self.target_lon.get()))
-                    bearing = calculate_initial_compass_bearing(current_lat_lon, target_lat_lon)
-                    txt_bearing = "%.2f" % bearing
-                    correction = (360 + (bearing - event['payload']['Heading'])) % 360
-                    self.bearing.config(text=txt_bearing)
-                    if 1 < correction < 180:
-                        self.lbl_right.config(text=">")
-                    else:
-                        self.lbl_right.config(text="")
-                    if 180 < correction < 359:
-                        self.lbl_left.config(text="<")
-                    else:
-                        self.lbl_left.config(text="")
-                except:
-                    self.bearing.config(text="!")
-                    self.lbl_left.config(text="<")
+    def dashboard_entry(self, cmdr, is_beta, entry):
+        if "Latitude" in entry:
+            try:
+                target_lat_lon = (float(self.target_lat.get()), float(self.target_lon.get()))
+                current_lat_lon = (entry["Latitude"], entry["Longitude"])
+                bearing = calculate_initial_compass_bearing(current_lat_lon, target_lat_lon)
+                txt_bearing = "%.2f" % bearing
+                correction = (360 + (bearing - entry['Heading'])) % 360
+                self.bearing.config(text=txt_bearing)
+                if 1 < correction < 180:
                     self.lbl_right.config(text=">")
-            else:
-                self.bearing.config(text="")
+                else:
+                    self.lbl_right.config(text="")
+                if 180 < correction < 359:
+                    self.lbl_left.config(text="<")
+                else:
+                    self.lbl_left.config(text="")
+            except:
+                self.bearing.config(text="!")
                 self.lbl_left.config(text="<")
                 self.lbl_right.config(text=">")
+        else:
+            self.bearing.config(text="")
+            self.lbl_left.config(text="<")
+            self.lbl_right.config(text=">")
                 
     def toggle_settings(self):
         if self.settings_open == False:
@@ -404,10 +653,10 @@ class SurfaceNavigation(WaferModule):
             self.set_btn.config(text='Set')
             self.settings_open = False
 
-class NeutronNavigation(tk.Frame):
+class NeutronNavigation(WaferModule):
     
-    def __init__(self, parent, text = '', *args, **options):
-        tk.Frame.__init__(self, parent, *args, **options)
+    def __init__(self, parent, *args, **options):
+        WaferModule.__init__(self, parent, *args, **options)
         
         self.control_frame = tk.Frame(self)
         self.control_frame.pack(fill = tk.BOTH, expand = 1)
@@ -418,7 +667,6 @@ class NeutronNavigation(tk.Frame):
         self.clear_route_button = tk.Button(self.control_frame, text = 'Clear route', command = self.user_clear_route)
         
         self.details_frame = ToggledFrame(self, text = 'Details')
-        self.details_frame.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
         
         self.dyn_widgets = []
         
@@ -435,14 +683,23 @@ class NeutronNavigation(tk.Frame):
             with open(path.join(plugin_path, 'queue.json')) as json_data:
                 self.queued_systems = json.load(json_data)
             system_count = system_count - len(self.queued_systems)
+            self.next_waypoint_str = self.queued_systems[0]
             for i in range(system_count):
                 self.dyn_widgets[0].destroy()
                 del self.dyn_widgets[0]
             self.paste_button.forget()
             self.copy_button.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
             self.clear_route_button.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
+            self.details_frame.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
         except:
             print("Failed to load route data")
+        
+    def update_theme(self):
+        for widget in self.dyn_widgets:
+            widget.update_theme()
+            widget.config(highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg)
+            
+        self.details_scroll.interior.config(background = plugin_app.bg)
         
     def user_clear_route(self, event = ''):
         if tkMessageBox.askyesno("Confirm", "Really clear the route?", default = tkMessageBox.NO):
@@ -460,10 +717,10 @@ class NeutronNavigation(tk.Frame):
         self.dyn_widgets = []
         self.clear_route_button.forget()
         self.copy_button.forget()
+        self.details_frame.forget()
         self.paste_button.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
 
     def paste_spansh_url(self, event=''):
-    #    global bigjson
         o = getclipboard()
         disassembled = urlparse(o)
         url, scrap = path.splitext(path.basename(disassembled.path))
@@ -479,6 +736,7 @@ class NeutronNavigation(tk.Frame):
             self.paste_button.forget()
             self.copy_button.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
             self.clear_route_button.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
+            self.details_frame.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
             
             with open(path.join(plugin_path, 'route.json'), 'w') as fp:
                 json.dump(self.route, fp, indent = 2, sort_keys=True)
@@ -491,18 +749,15 @@ class NeutronNavigation(tk.Frame):
         
         for i in self.route['result']['system_jumps']:
             name = i['system']
-            print(name)
             is_neutron = i['neutron_star']
-            print(is_neutron)
-            self.dyn_widgets.append(SystemFrame(self.details_scroll.interior, name, is_neutron = is_neutron))
+            self.dyn_widgets.append(SystemFrame(self.details_scroll.interior, name, is_neutron = is_neutron, highlightthickness = 1))
             self.dyn_widgets[-1].pack(fill = tk.BOTH, expand = 1)
             self.queued_systems.append(name.lower())
             
         self.next_waypoint_str = self.queued_systems[0]
             
-    def journal_entry(self, cmdr, system, station, entry):
-        event = entry["event"]
-        if event == 'FSDJump':
+    def journal_entry(self, cmdr, system, station, entry, state):
+        if entry['event'] == 'FSDJump':
             starsystem = entry["StarSystem"]
             self.check_starsystem(starsystem)
             
@@ -533,26 +788,6 @@ def setclipboard(text):
       r.clipboard_clear()
       r.clipboard_append(text)
       r.destroy()
-        
-#        for i in self.dyn_widgets:
-#            i.grid()
-    #    process_route(data)
-    #    bigjson.append(data)
-    #    with open(path.join(plugin_path, 'route.json'), 'w') as fp:
-    #        json.dump(bigjson, fp, indent = 2, sort_keys=True)
-    #    listicle = []
-    #    for i in bigjson:
-    #        viapoints = i["result"]["source_system"] + "->"
-    #        try:
-    #            for x in i["result"]["via"]:
-    #                viapoints = viapoints + x + "->"
-    #        except:
-    #            pass
-    #        viapoints = viapoints + i["result"]["destination_system"]
-    #        listicle.append(viapoints)
-    #  plugin_app.selectroute.configure(values = listicle)
-    #  plugin_app.selectroute.current(len(listicle)-1)
-        
 
 def plugin_start():
     """
@@ -565,62 +800,44 @@ def plugin_app(parent):
     """
     Create a TK widget for the EDMC main window
     """
+    plugin_app.wafer_module_classes =  [
+                                    ['Surface navigation', SurfaceNavigation],
+                                    ['Neutron navigation', NeutronNavigation],
+                                    ['Fleet', FleetMonitor],
+                                ]
+    plugin_app.wafer_modules = {}
     plugin_app.frame = FakeNotebook(parent, text = 'L3-37')
-#    plugin_app.surface_frame = tk.Frame(plugin_app.frame, relief = tk.SUNKEN, borderwidth = 1)
-    plugin_app.surface_frame = SurfaceNavigation(plugin_app.frame, relief = tk.SUNKEN, borderwidth = 1)
-    plugin_app.neutron_frame = NeutronNavigation(plugin_app.frame, relief = tk.SUNKEN, borderwidth = 1)
-    plugin_app.frame.add(plugin_app.surface_frame, 'Surface navigation')
-    plugin_app.frame.add(plugin_app.neutron_frame, 'Neutron navigation')
-    '''
-    plugin_app.lbl_frm = tk.Frame(plugin_app.surface_frame)
-    plugin_app.lbl = tk.Label(plugin_app.lbl_frm, text="Bearing:", anchor=tk.W)
-    plugin_app.target_lat = tk.Entry(plugin_app.surface_frame, width=1)
-    plugin_app.lat_label = tk.Label(plugin_app.surface_frame, text='Lat:')
-    plugin_app.target_lon = tk.Entry(plugin_app.surface_frame, width=1)
-    plugin_app.lon_label = tk.Label(plugin_app.surface_frame, text='Lon:')
-    plugin_app.bearing_frame = tk.Frame(plugin_app.lbl_frm)
-    plugin_app.set_btn = tk.Button(plugin_app.lbl_frm, text='Set', command = toggle_settings)
-    plugin_app.lbl_left = tk.Label(plugin_app.bearing_frame, text='<', width=1)
-    plugin_app.lbl_right = tk.Label(plugin_app.bearing_frame, text='>', width=1)
-    plugin_app.bearing = tk.Label(plugin_app.bearing_frame, text='', width=6)
-    plugin_app.lbl_frm.grid(row=0,column=0, columnspan=4, sticky='nsew')
-    plugin_app.lbl_frm.grid_columnconfigure(0, weight=1, uniform="fred")
-    plugin_app.lbl_frm.grid_columnconfigure(1, weight=1, uniform="fred")
-    plugin_app.lbl_frm.grid_columnconfigure(2, weight=1, uniform="fred")
-    plugin_app.surface_frame.grid_columnconfigure(1, weight=1)
-    plugin_app.surface_frame.grid_columnconfigure(3, weight=1)
-    plugin_app.lbl.grid(sticky=tk.W)
-#    plugin_app.lat_label.grid(row=1, column=0)
-#    plugin_app.target_lat.grid(row=1, column=1, sticky = "nsew")
-#    plugin_app.lon_label.grid(row=1, column=2)
-#    plugin_app.target_lon.grid(row=1, column=3, sticky = "nsew")
-    plugin_app.bearing_frame.grid(row=0, column=1, sticky = "nsew")
-    plugin_app.lbl_left.grid(row=0, column=0)
-    plugin_app.bearing.grid(row=0, column=1)
-    plugin_app.lbl_right.grid(row=0, column=2)
-    plugin_app.set_btn.grid(row=0, column=2, sticky="e")
-    '''
+    plugin_app.theme_set = False
+    plugin_app.bg = plugin_app.frame.lbl.cget('background')
+    plugin_app.fg = plugin_app.frame.lbl.cget('foreground')
+    for module in plugin_app.wafer_module_classes:
+        plugin_app.wafer_modules[module[0]] = module[1](plugin_app.frame, relief = tk.SUNKEN, borderwidth = 1)
+        plugin_app.frame.add(plugin_app.wafer_modules[module[0]], module[0])
     print "L3-37 loaded"
     return (plugin_app.frame)
-'''
-def toggle_settings():
-    global settings_open
-    if settings_open == False:
-        plugin_app.lat_label.grid(row=1, column=0)
-        plugin_app.target_lat.grid(row=1, column=1, sticky = "nsew")
-        plugin_app.lon_label.grid(row=1, column=2)
-        plugin_app.target_lon.grid(row=1, column=3, sticky = "nsew")
-        plugin_app.set_btn.config(text='OK')
-        settings_open = True
-    else:
-        plugin_app.lat_label.grid_forget()
-        plugin_app.target_lat.grid_forget()
-        plugin_app.lon_label.grid_forget()
-        plugin_app.target_lon.grid_forget()
-        plugin_app.set_btn.config(text='Set')
-        settings_open = False
-'''
 
+def set_theme():
+    if plugin_app.theme_set == False:
+        plugin_app.bg = plugin_app.frame.lbl.cget('background')
+        plugin_app.fg = plugin_app.frame.lbl.cget('foreground')
+        plugin_app.theme_set = True
+    for key, module in plugin_app.wafer_modules.iteritems():
+        module.update_theme()
+        
+
+def journal_entry(cmdr, system, station, entry, state):
+    for key, module in plugin_app.wafer_modules.iteritems():
+        module.journal_entry(cmdr, system, station, entry, state)
+
+def dashboard_entry(cmdr, is_beta, entry):
+    for key, module in plugin_app.wafer_modules.iteritems():
+        module.dashboard_entry(cmdr, is_beta, entry)
+
+
+def cmdr_data(data, is_beta):
+    for key, module in plugin_app.wafer_modules.iteritems():
+        module.cmdr_data(data, is_beta)
+    
 def scrub_journal_entry(cmdr, system, station, entry, state):
     global settings_open
     if entry['event'] == 'Location':
