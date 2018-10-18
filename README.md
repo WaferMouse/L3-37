@@ -2,8 +2,8 @@
 Multi tool plugin for Elite: Dangerous Market Connector (EDMC)
 
 # Features
-- Surface Navigation view to get a bearing for a given latitude and longitude in real time.
-- Neutron Navigation view for following routes generated from [spansh.co.uk/plotter](https://www.spansh.co.uk/plotter).  When you reach a waypoint, it copies the name of the next waypoint to the clipboard.  You can also right-click system names to copy them to the clipboard.  It also estimates fuel use.
+- Surface navigation view to get a bearing for a given latitude and longitude in real time.
+- Neutron navigation view for following routes generated from [spansh.co.uk/plotter](https://www.spansh.co.uk/plotter).  When you reach a waypoint, it copies the name of the next waypoint to the clipboard.  You can also right-click system names to copy them to the clipboard.  It also estimates fuel use.
 - Fleet view which lets you find your ships easily.  You can right-click to copy the location to clipboard, click on the ship name to view the ship in EDSM, and click anywhere else to view the location system on EDSM.
 - More SoonTM
 
