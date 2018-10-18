@@ -1,0 +1,2746 @@
+{
+  "hpt_advancedtorppylon_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_advancedtorppylon_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_advancedtorppylon_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_antiunknownshutdown_tiny": {
+    "mass": 1.3
+  }, 
+  "hpt_atdumbfiremissile_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_atdumbfiremissile_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_atdumbfiremissile_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_atdumbfiremissile_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_atmulticannon_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_atmulticannon_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_atmulticannon_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_atmulticannon_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_basicmissilerack_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_basicmissilerack_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_basicmissilerack_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_beamlaser_fixed_huge": {
+    "mass": 16
+  }, 
+  "hpt_beamlaser_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_beamlaser_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_beamlaser_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_beamlaser_fixed_small_heat": {
+    "mass": 2
+  }, 
+  "hpt_beamlaser_gimbal_huge": {
+    "mass": 16
+  }, 
+  "hpt_beamlaser_gimbal_large": {
+    "mass": 8
+  }, 
+  "hpt_beamlaser_gimbal_medium": {
+    "mass": 4
+  }, 
+  "hpt_beamlaser_gimbal_small": {
+    "mass": 2
+  }, 
+  "hpt_beamlaser_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_beamlaser_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_beamlaser_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_cannon_fixed_huge": {
+    "mass": 16
+  }, 
+  "hpt_cannon_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_cannon_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_cannon_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_cannon_gimbal_huge": {
+    "mass": 16
+  }, 
+  "hpt_cannon_gimbal_large": {
+    "mass": 8
+  }, 
+  "hpt_cannon_gimbal_medium": {
+    "mass": 4
+  }, 
+  "hpt_cannon_gimbal_small": {
+    "mass": 2
+  }, 
+  "hpt_cannon_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_cannon_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_cannon_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_cargoscanner_size0_class1": {
+    "mass": 1.3
+  }, 
+  "hpt_cargoscanner_size0_class2": {
+    "mass": 1.3
+  }, 
+  "hpt_cargoscanner_size0_class3": {
+    "mass": 1.3
+  }, 
+  "hpt_cargoscanner_size0_class4": {
+    "mass": 1.3
+  }, 
+  "hpt_cargoscanner_size0_class5": {
+    "mass": 1.3
+  }, 
+  "hpt_causticmissile_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_chafflauncher_tiny": {
+    "mass": 1.3
+  }, 
+  "hpt_cloudscanner_size0_class1": {
+    "mass": 1.3
+  }, 
+  "hpt_cloudscanner_size0_class2": {
+    "mass": 1.3
+  }, 
+  "hpt_cloudscanner_size0_class3": {
+    "mass": 1.3
+  }, 
+  "hpt_cloudscanner_size0_class4": {
+    "mass": 1.3
+  }, 
+  "hpt_cloudscanner_size0_class5": {
+    "mass": 1.3
+  }, 
+  "hpt_crimescanner_size0_class1": {
+    "mass": 1.3
+  }, 
+  "hpt_crimescanner_size0_class2": {
+    "mass": 1.3
+  }, 
+  "hpt_crimescanner_size0_class3": {
+    "mass": 1.3
+  }, 
+  "hpt_crimescanner_size0_class4": {
+    "mass": 1.3
+  }, 
+  "hpt_crimescanner_size0_class5": {
+    "mass": 1.3
+  }, 
+  "hpt_drunkmissilerack_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_dumbfiremissilerack_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_dumbfiremissilerack_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_dumbfiremissilerack_fixed_medium_lasso": {
+    "mass": 4
+  }, 
+  "hpt_dumbfiremissilerack_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_electroniccountermeasure_tiny": {
+    "mass": 1.3
+  }, 
+  "hpt_flakmortar_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_flakmortar_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_flechettelauncher_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_flechettelauncher_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_guardian_gausscannon_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_guardian_gausscannon_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_guardian_plasmalauncher_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_guardian_plasmalauncher_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_guardian_plasmalauncher_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_guardian_plasmalauncher_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_guardian_plasmalauncher_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_guardian_plasmalauncher_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_guardian_shardcannon_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_guardian_shardcannon_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_guardian_shardcannon_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_guardian_shardcannon_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_guardian_shardcannon_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_guardian_shardcannon_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_heatsinklauncher_turret_tiny": {
+    "mass": 1.3
+  }, 
+  "hpt_minelauncher_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_minelauncher_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_minelauncher_fixed_small_impulse": {
+    "mass": 2
+  }, 
+  "hpt_mininglaser_fixed_medium": {
+    "mass": 2
+  }, 
+  "hpt_mininglaser_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_mininglaser_fixed_small_advanced": {
+    "mass": 2
+  }, 
+  "hpt_mininglaser_turret_medium": {
+    "mass": 2
+  }, 
+  "hpt_mininglaser_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_multicannon_fixed_huge": {
+    "mass": 16
+  }, 
+  "hpt_multicannon_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_multicannon_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_multicannon_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_multicannon_fixed_small_strong": {
+    "mass": 2
+  }, 
+  "hpt_multicannon_gimbal_huge": {
+    "mass": 16
+  }, 
+  "hpt_multicannon_gimbal_large": {
+    "mass": 8
+  }, 
+  "hpt_multicannon_gimbal_medium": {
+    "mass": 4
+  }, 
+  "hpt_multicannon_gimbal_small": {
+    "mass": 2
+  }, 
+  "hpt_multicannon_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_multicannon_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_multicannon_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_plasmaaccelerator_fixed_huge": {
+    "mass": 16
+  }, 
+  "hpt_plasmaaccelerator_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_plasmaaccelerator_fixed_large_advanced": {
+    "mass": 8
+  }, 
+  "hpt_plasmaaccelerator_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_plasmapointdefence_turret_tiny": {
+    "mass": 0.5
+  }, 
+  "hpt_plasmashockcannon_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_plasmashockcannon_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_plasmashockcannon_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_plasmashockcannon_gimbal_large": {
+    "mass": 8
+  }, 
+  "hpt_plasmashockcannon_gimbal_medium": {
+    "mass": 4
+  }, 
+  "hpt_plasmashockcannon_gimbal_small": {
+    "mass": 2
+  }, 
+  "hpt_plasmashockcannon_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_plasmashockcannon_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_plasmashockcannon_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_pulselaser_fixed_huge": {
+    "mass": 16
+  }, 
+  "hpt_pulselaser_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_pulselaser_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_pulselaser_fixed_medium_disruptor": {
+    "mass": 4
+  }, 
+  "hpt_pulselaser_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_pulselaser_gimbal_huge": {
+    "mass": 16
+  }, 
+  "hpt_pulselaser_gimbal_large": {
+    "mass": 8
+  }, 
+  "hpt_pulselaser_gimbal_medium": {
+    "mass": 4
+  }, 
+  "hpt_pulselaser_gimbal_small": {
+    "mass": 2
+  }, 
+  "hpt_pulselaser_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_pulselaser_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_pulselaser_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_pulselaserburst_fixed_huge": {
+    "mass": 16
+  }, 
+  "hpt_pulselaserburst_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_pulselaserburst_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_pulselaserburst_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_pulselaserburst_fixed_small_scatter": {
+    "mass": 2
+  }, 
+  "hpt_pulselaserburst_gimbal_huge": {
+    "mass": 16
+  }, 
+  "hpt_pulselaserburst_gimbal_large": {
+    "mass": 8
+  }, 
+  "hpt_pulselaserburst_gimbal_medium": {
+    "mass": 4
+  }, 
+  "hpt_pulselaserburst_gimbal_small": {
+    "mass": 2
+  }, 
+  "hpt_pulselaserburst_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_pulselaserburst_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_pulselaserburst_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_railgun_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_railgun_fixed_medium_burst": {
+    "mass": 4
+  }, 
+  "hpt_railgun_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_shieldbooster_size0_class1": {
+    "mass": 0.5
+  }, 
+  "hpt_shieldbooster_size0_class2": {
+    "mass": 1
+  }, 
+  "hpt_shieldbooster_size0_class3": {
+    "mass": 2
+  }, 
+  "hpt_shieldbooster_size0_class4": {
+    "mass": 3
+  }, 
+  "hpt_shieldbooster_size0_class5": {
+    "mass": 3.5
+  }, 
+  "hpt_slugshot_fixed_large": {
+    "mass": 8
+  }, 
+  "hpt_slugshot_fixed_large_range": {
+    "mass": 8
+  }, 
+  "hpt_slugshot_fixed_medium": {
+    "mass": 4
+  }, 
+  "hpt_slugshot_fixed_small": {
+    "mass": 2
+  }, 
+  "hpt_slugshot_gimbal_large": {
+    "mass": 8
+  }, 
+  "hpt_slugshot_gimbal_medium": {
+    "mass": 4
+  }, 
+  "hpt_slugshot_gimbal_small": {
+    "mass": 2
+  }, 
+  "hpt_slugshot_turret_large": {
+    "mass": 8
+  }, 
+  "hpt_slugshot_turret_medium": {
+    "mass": 4
+  }, 
+  "hpt_slugshot_turret_small": {
+    "mass": 2
+  }, 
+  "hpt_xenoscanner_basic_tiny": {
+    "mass": 1.3
+  }, 
+  "int_buggybay_size2_class1": {
+    "mass": 12
+  }, 
+  "int_buggybay_size2_class2": {
+    "mass": 6
+  }, 
+  "int_buggybay_size4_class1": {
+    "mass": 20
+  }, 
+  "int_buggybay_size4_class2": {
+    "mass": 10
+  }, 
+  "int_buggybay_size6_class1": {
+    "mass": 34
+  }, 
+  "int_buggybay_size6_class2": {
+    "mass": 17
+  }, 
+  "int_cargorack_size1_class1": {
+    "cargo": 2
+  }, 
+  "int_cargorack_size2_class1": {
+    "cargo": 4
+  }, 
+  "int_cargorack_size3_class1": {
+    "cargo": 8
+  }, 
+  "int_cargorack_size4_class1": {
+    "cargo": 16
+  }, 
+  "int_cargorack_size5_class1": {
+    "cargo": 32
+  }, 
+  "int_cargorack_size6_class1": {
+    "cargo": 64
+  }, 
+  "int_cargorack_size7_class1": {
+    "cargo": 128
+  }, 
+  "int_cargorack_size8_class1": {
+    "cargo": 256
+  }, 
+  "int_corrosionproofcargorack_size1_class1": {
+    "cargo": 1
+  }, 
+  "int_corrosionproofcargorack_size1_class2": {
+    "cargo": 2
+  }, 
+  "int_corrosionproofcargorack_size2_class1": {
+    "cargo": 4
+  }, 
+  "int_corrosionproofcargorack_size4_class1": {
+    "cargo": 16
+  }, 
+  "int_detailedsurfacescanner_tiny": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_collection_size1_class1": {
+    "mass": 0.5
+  }, 
+  "int_dronecontrol_collection_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_dronecontrol_collection_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_collection_size1_class4": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_collection_size1_class5": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_collection_size3_class1": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_collection_size3_class2": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_collection_size3_class3": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_collection_size3_class4": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_collection_size3_class5": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_collection_size5_class1": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_collection_size5_class2": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_collection_size5_class3": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_collection_size5_class4": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_collection_size5_class5": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_collection_size7_class1": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_collection_size7_class2": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_collection_size7_class3": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_collection_size7_class4": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_collection_size7_class5": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_decontamination_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_decontamination_size3_class1": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_decontamination_size5_class1": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_decontamination_size7_class1": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_fueltransfer_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_fueltransfer_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_dronecontrol_fueltransfer_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_fueltransfer_size1_class4": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_fueltransfer_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_fueltransfer_size3_class1": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_fueltransfer_size3_class2": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_fueltransfer_size3_class3": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_fueltransfer_size3_class4": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_fueltransfer_size3_class5": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_fueltransfer_size5_class1": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_fueltransfer_size5_class2": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_fueltransfer_size5_class3": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_fueltransfer_size5_class4": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_fueltransfer_size5_class5": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_fueltransfer_size7_class1": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_fueltransfer_size7_class2": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_fueltransfer_size7_class3": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_fueltransfer_size7_class4": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_fueltransfer_size7_class5": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_prospector_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_prospector_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_dronecontrol_prospector_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_prospector_size1_class4": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_prospector_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_prospector_size3_class1": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_prospector_size3_class2": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_prospector_size3_class3": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_prospector_size3_class4": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_prospector_size3_class5": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_prospector_size5_class1": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_prospector_size5_class2": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_prospector_size5_class3": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_prospector_size5_class4": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_prospector_size5_class5": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_prospector_size7_class1": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_prospector_size7_class2": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_prospector_size7_class3": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_prospector_size7_class4": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_prospector_size7_class5": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_recon_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_recon_size3_class1": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_recon_size5_class1": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_recon_size7_class1": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_repair_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_repair_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_dronecontrol_repair_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_repair_size1_class4": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_repair_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_repair_size3_class1": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_repair_size3_class2": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_repair_size3_class3": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_repair_size3_class4": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_repair_size3_class5": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_repair_size5_class1": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_repair_size5_class2": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_repair_size5_class3": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_repair_size5_class4": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_repair_size5_class5": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_repair_size7_class1": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_repair_size7_class2": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_repair_size7_class3": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_repair_size7_class4": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_repair_size7_class5": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_resourcesiphon_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_resourcesiphon_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_dronecontrol_resourcesiphon_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_resourcesiphon_size1_class4": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_resourcesiphon_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_dronecontrol_resourcesiphon_size3_class1": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_resourcesiphon_size3_class2": {
+    "mass": 2
+  }, 
+  "int_dronecontrol_resourcesiphon_size3_class3": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_resourcesiphon_size3_class4": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_resourcesiphon_size3_class5": {
+    "mass": 5
+  }, 
+  "int_dronecontrol_resourcesiphon_size5_class1": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_resourcesiphon_size5_class2": {
+    "mass": 8
+  }, 
+  "int_dronecontrol_resourcesiphon_size5_class3": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_resourcesiphon_size5_class4": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_resourcesiphon_size5_class5": {
+    "mass": 20
+  }, 
+  "int_dronecontrol_resourcesiphon_size7_class1": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_resourcesiphon_size7_class2": {
+    "mass": 32
+  }, 
+  "int_dronecontrol_resourcesiphon_size7_class3": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_resourcesiphon_size7_class4": {
+    "mass": 128
+  }, 
+  "int_dronecontrol_resourcesiphon_size7_class5": {
+    "mass": 80
+  }, 
+  "int_dronecontrol_unkvesselresearch": {
+    "mass": 1.3
+  }, 
+  "int_engine_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_engine_size2_class2": {
+    "mass": 1
+  }, 
+  "int_engine_size2_class3": {
+    "mass": 2.5
+  }, 
+  "int_engine_size2_class4": {
+    "mass": 4
+  }, 
+  "int_engine_size2_class5": {
+    "mass": 2.5
+  }, 
+  "int_engine_size2_class5_fast": {
+    "mass": 2.5
+  }, 
+  "int_engine_size3_class1": {
+    "mass": 5
+  }, 
+  "int_engine_size3_class2": {
+    "mass": 2
+  }, 
+  "int_engine_size3_class3": {
+    "mass": 5
+  }, 
+  "int_engine_size3_class4": {
+    "mass": 8
+  }, 
+  "int_engine_size3_class5": {
+    "mass": 5
+  }, 
+  "int_engine_size3_class5_fast": {
+    "mass": 5
+  }, 
+  "int_engine_size4_class1": {
+    "mass": 10
+  }, 
+  "int_engine_size4_class2": {
+    "mass": 4
+  }, 
+  "int_engine_size4_class3": {
+    "mass": 10
+  }, 
+  "int_engine_size4_class4": {
+    "mass": 16
+  }, 
+  "int_engine_size4_class5": {
+    "mass": 10
+  }, 
+  "int_engine_size5_class1": {
+    "mass": 20
+  }, 
+  "int_engine_size5_class2": {
+    "mass": 8
+  }, 
+  "int_engine_size5_class3": {
+    "mass": 20
+  }, 
+  "int_engine_size5_class4": {
+    "mass": 32
+  }, 
+  "int_engine_size5_class5": {
+    "mass": 20
+  }, 
+  "int_engine_size6_class1": {
+    "mass": 40
+  }, 
+  "int_engine_size6_class2": {
+    "mass": 16
+  }, 
+  "int_engine_size6_class3": {
+    "mass": 40
+  }, 
+  "int_engine_size6_class4": {
+    "mass": 64
+  }, 
+  "int_engine_size6_class5": {
+    "mass": 40
+  }, 
+  "int_engine_size7_class1": {
+    "mass": 80
+  }, 
+  "int_engine_size7_class2": {
+    "mass": 32
+  }, 
+  "int_engine_size7_class3": {
+    "mass": 80
+  }, 
+  "int_engine_size7_class4": {
+    "mass": 128
+  }, 
+  "int_engine_size7_class5": {
+    "mass": 80
+  }, 
+  "int_engine_size8_class1": {
+    "mass": 160
+  }, 
+  "int_engine_size8_class2": {
+    "mass": 64
+  }, 
+  "int_engine_size8_class3": {
+    "mass": 160
+  }, 
+  "int_engine_size8_class4": {
+    "mass": 256
+  }, 
+  "int_engine_size8_class5": {
+    "mass": 160
+  }, 
+  "int_fighterbay_size5_class1": {
+    "mass": 20
+  }, 
+  "int_fighterbay_size6_class1": {
+    "mass": 40
+  }, 
+  "int_fighterbay_size7_class1": {
+    "mass": 60
+  }, 
+  "int_fsdinterdictor_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_fsdinterdictor_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_fsdinterdictor_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_fsdinterdictor_size1_class4": {
+    "mass": 2
+  }, 
+  "int_fsdinterdictor_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_fsdinterdictor_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_fsdinterdictor_size2_class2": {
+    "mass": 1
+  }, 
+  "int_fsdinterdictor_size2_class3": {
+    "mass": 2.5
+  }, 
+  "int_fsdinterdictor_size2_class4": {
+    "mass": 4
+  }, 
+  "int_fsdinterdictor_size2_class5": {
+    "mass": 2.5
+  }, 
+  "int_fsdinterdictor_size3_class1": {
+    "mass": 5
+  }, 
+  "int_fsdinterdictor_size3_class2": {
+    "mass": 2
+  }, 
+  "int_fsdinterdictor_size3_class3": {
+    "mass": 5
+  }, 
+  "int_fsdinterdictor_size3_class4": {
+    "mass": 8
+  }, 
+  "int_fsdinterdictor_size3_class5": {
+    "mass": 5
+  }, 
+  "int_fsdinterdictor_size4_class1": {
+    "mass": 10
+  }, 
+  "int_fsdinterdictor_size4_class2": {
+    "mass": 4
+  }, 
+  "int_fsdinterdictor_size4_class3": {
+    "mass": 10
+  }, 
+  "int_fsdinterdictor_size4_class4": {
+    "mass": 16
+  }, 
+  "int_fsdinterdictor_size4_class5": {
+    "mass": 10
+  }, 
+  "int_fueltank_size1_class3": {
+    "fuel": 2
+  }, 
+  "int_fueltank_size2_class3": {
+    "fuel": 4
+  }, 
+  "int_fueltank_size3_class3": {
+    "fuel": 8
+  }, 
+  "int_fueltank_size4_class3": {
+    "fuel": 16
+  }, 
+  "int_fueltank_size5_class3": {
+    "fuel": 32
+  }, 
+  "int_fueltank_size6_class3": {
+    "fuel": 64
+  }, 
+  "int_fueltank_size7_class3": {
+    "fuel": 128
+  }, 
+  "int_fueltank_size8_class3": {
+    "fuel": 256
+  }, 
+  "int_guardianfsdbooster_size1": {
+    "class": 1, 
+    "cost": 405022, 
+    "edID": 128833975, 
+    "eddbID": 1373, 
+    "grp": "gfsb", 
+    "id": "1H", 
+    "integrity": 32, 
+    "jumpboost": 4, 
+    "mass": 1.3, 
+    "power": 0.75, 
+    "rating": "H", 
+    "symbol": "Int_GuardianFSDBooster_Size1"
+  }, 
+  "int_guardianfsdbooster_size2": {
+    "class": 2, 
+    "cost": 810521, 
+    "edID": 128833976, 
+    "eddbID": 1373, 
+    "grp": "gfsb", 
+    "id": "1M", 
+    "integrity": 32, 
+    "jumpboost": 6, 
+    "mass": 1.3, 
+    "power": 0.98, 
+    "rating": "H", 
+    "symbol": "Int_GuardianFSDBooster_Size2"
+  }, 
+  "int_guardianfsdbooster_size3": {
+    "class": 3, 
+    "cost": 1620431, 
+    "edID": 128833977, 
+    "eddbID": 1373, 
+    "grp": "gfsb", 
+    "id": "1N", 
+    "integrity": 32, 
+    "jumpboost": 7.75, 
+    "mass": 1.3, 
+    "power": 1.27, 
+    "rating": "H", 
+    "symbol": "Int_GuardianFSDBooster_Size3"
+  }, 
+  "int_guardianfsdbooster_size4": {
+    "class": 4, 
+    "cost": 3245013, 
+    "edID": 128833978, 
+    "eddbID": 1373, 
+    "grp": "gfsb", 
+    "id": "1P", 
+    "integrity": 32, 
+    "jumpboost": 9.25, 
+    "mass": 1.3, 
+    "power": 1.65, 
+    "rating": "H", 
+    "symbol": "Int_GuardianFSDBooster_Size4"
+  }, 
+  "int_guardianfsdbooster_size5": {
+    "class": 5, 
+    "cost": 6483101, 
+    "edID": 128833979, 
+    "eddbID": 1373, 
+    "grp": "gfsb", 
+    "id": "1O", 
+    "integrity": 32, 
+    "jumpboost": 10.5, 
+    "mass": 1.3, 
+    "power": 2.14, 
+    "rating": "H", 
+    "symbol": "Int_GuardianFSDBooster_Size5"
+  }, 
+  "int_guardianhullreinforcement_size1_class1": {
+    "mass": 2
+  }, 
+  "int_guardianhullreinforcement_size1_class2": {
+    "mass": 1
+  }, 
+  "int_guardianhullreinforcement_size2_class1": {
+    "mass": 4
+  }, 
+  "int_guardianhullreinforcement_size2_class2": {
+    "mass": 2
+  }, 
+  "int_guardianhullreinforcement_size3_class1": {
+    "mass": 8
+  }, 
+  "int_guardianhullreinforcement_size3_class2": {
+    "mass": 4
+  }, 
+  "int_guardianhullreinforcement_size4_class1": {
+    "mass": 16
+  }, 
+  "int_guardianhullreinforcement_size4_class2": {
+    "mass": 8
+  }, 
+  "int_guardianhullreinforcement_size5_class1": {
+    "mass": 32
+  }, 
+  "int_guardianhullreinforcement_size5_class2": {
+    "mass": 16
+  }, 
+  "int_guardianmodulereinforcement_size1_class1": {
+    "mass": 2
+  }, 
+  "int_guardianmodulereinforcement_size1_class2": {
+    "mass": 1
+  }, 
+  "int_guardianmodulereinforcement_size2_class1": {
+    "mass": 4
+  }, 
+  "int_guardianmodulereinforcement_size2_class2": {
+    "mass": 2
+  }, 
+  "int_guardianmodulereinforcement_size3_class1": {
+    "mass": 8
+  }, 
+  "int_guardianmodulereinforcement_size3_class2": {
+    "mass": 4
+  }, 
+  "int_guardianmodulereinforcement_size4_class1": {
+    "mass": 16
+  }, 
+  "int_guardianmodulereinforcement_size4_class2": {
+    "mass": 8
+  }, 
+  "int_guardianmodulereinforcement_size5_class1": {
+    "mass": 32
+  }, 
+  "int_guardianmodulereinforcement_size5_class2": {
+    "mass": 16
+  }, 
+  "int_guardianpowerdistributor_size1": {
+    "mass": 1.4
+  }, 
+  "int_guardianpowerdistributor_size2": {
+    "mass": 2.6
+  }, 
+  "int_guardianpowerdistributor_size3": {
+    "mass": 5.25
+  }, 
+  "int_guardianpowerdistributor_size4": {
+    "mass": 10.5
+  }, 
+  "int_guardianpowerdistributor_size5": {
+    "mass": 21
+  }, 
+  "int_guardianpowerdistributor_size6": {
+    "mass": 42
+  }, 
+  "int_guardianpowerdistributor_size7": {
+    "mass": 84
+  }, 
+  "int_guardianpowerdistributor_size8": {
+    "mass": 168
+  }, 
+  "int_guardianpowerplant_size2": {
+    "mass": 1.5
+  }, 
+  "int_guardianpowerplant_size3": {
+    "mass": 2.9
+  }, 
+  "int_guardianpowerplant_size4": {
+    "mass": 5.9
+  }, 
+  "int_guardianpowerplant_size5": {
+    "mass": 11.7
+  }, 
+  "int_guardianpowerplant_size6": {
+    "mass": 23.4
+  }, 
+  "int_guardianpowerplant_size7": {
+    "mass": 46.8
+  }, 
+  "int_guardianpowerplant_size8": {
+    "mass": 93.6
+  }, 
+  "int_guardianshieldreinforcement_size1_class1": {
+    "mass": 2
+  }, 
+  "int_guardianshieldreinforcement_size1_class2": {
+    "mass": 1
+  }, 
+  "int_guardianshieldreinforcement_size2_class1": {
+    "mass": 4
+  }, 
+  "int_guardianshieldreinforcement_size2_class2": {
+    "mass": 2
+  }, 
+  "int_guardianshieldreinforcement_size3_class1": {
+    "mass": 8
+  }, 
+  "int_guardianshieldreinforcement_size3_class2": {
+    "mass": 4
+  }, 
+  "int_guardianshieldreinforcement_size4_class1": {
+    "mass": 16
+  }, 
+  "int_guardianshieldreinforcement_size4_class2": {
+    "mass": 8
+  }, 
+  "int_guardianshieldreinforcement_size5_class1": {
+    "mass": 32
+  }, 
+  "int_guardianshieldreinforcement_size5_class2": {
+    "mass": 16
+  }, 
+  "int_hullreinforcement_size1_class1": {
+    "mass": 2
+  }, 
+  "int_hullreinforcement_size1_class2": {
+    "mass": 1
+  }, 
+  "int_hullreinforcement_size2_class1": {
+    "mass": 4
+  }, 
+  "int_hullreinforcement_size2_class2": {
+    "mass": 2
+  }, 
+  "int_hullreinforcement_size3_class1": {
+    "mass": 8
+  }, 
+  "int_hullreinforcement_size3_class2": {
+    "mass": 4
+  }, 
+  "int_hullreinforcement_size4_class1": {
+    "mass": 16
+  }, 
+  "int_hullreinforcement_size4_class2": {
+    "mass": 8
+  }, 
+  "int_hullreinforcement_size5_class1": {
+    "mass": 32
+  }, 
+  "int_hullreinforcement_size5_class2": {
+    "mass": 16
+  }, 
+  "int_hyperdrive_size2_class1": {
+    "class": 2, 
+    "cost": 1980, 
+    "edID": 128064103, 
+    "eddbID": 961, 
+    "fuelmul": 0.011, 
+    "fuelpower": 2, 
+    "grp": "fsd", 
+    "id": "F4", 
+    "integrity": 46, 
+    "mass": 2.5, 
+    "maxfuel": 0.6, 
+    "optmass": 48, 
+    "power": 0.16, 
+    "rating": "E", 
+    "symbol": "Int_Hyperdrive_Size2_Class1"
+  }, 
+  "int_hyperdrive_size2_class2": {
+    "class": 2, 
+    "cost": 5930, 
+    "edID": 128064104, 
+    "eddbID": 962, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2, 
+    "grp": "fsd", 
+    "id": "F3", 
+    "integrity": 41, 
+    "mass": 1, 
+    "maxfuel": 0.6, 
+    "optmass": 54, 
+    "power": 0.18, 
+    "rating": "D", 
+    "symbol": "Int_Hyperdrive_Size2_Class2"
+  }, 
+  "int_hyperdrive_size2_class3": {
+    "class": 2, 
+    "cost": 17800, 
+    "edID": 128064105, 
+    "eddbID": 963, 
+    "fuelmul": 0.008, 
+    "fuelpower": 2, 
+    "grp": "fsd", 
+    "id": "F2", 
+    "integrity": 51, 
+    "mass": 2.5, 
+    "maxfuel": 0.6, 
+    "optmass": 60, 
+    "power": 0.2, 
+    "rating": "C", 
+    "symbol": "Int_Hyperdrive_Size2_Class3"
+  }, 
+  "int_hyperdrive_size2_class4": {
+    "class": 2, 
+    "cost": 53410, 
+    "edID": 128064106, 
+    "eddbID": 964, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2, 
+    "grp": "fsd", 
+    "id": "F1", 
+    "integrity": 61, 
+    "mass": 4, 
+    "maxfuel": 0.8, 
+    "optmass": 75, 
+    "power": 0.25, 
+    "rating": "B", 
+    "symbol": "Int_Hyperdrive_Size2_Class4"
+  }, 
+  "int_hyperdrive_size2_class5": {
+    "class": 2, 
+    "cost": 160220, 
+    "edID": 128064107, 
+    "eddbID": 965, 
+    "fuelmul": 0.012, 
+    "fuelpower": 2, 
+    "grp": "fsd", 
+    "id": "F0", 
+    "integrity": 56, 
+    "mass": 2.5, 
+    "maxfuel": 0.9, 
+    "optmass": 90, 
+    "power": 0.3, 
+    "rating": "A", 
+    "symbol": "Int_Hyperdrive_Size2_Class5"
+  }, 
+  "int_hyperdrive_size3_class1": {
+    "class": 3, 
+    "cost": 6270, 
+    "edID": 128064108, 
+    "eddbID": 966, 
+    "fuelmul": 0.011, 
+    "fuelpower": 2.15, 
+    "grp": "fsd", 
+    "id": "F9", 
+    "integrity": 58, 
+    "mass": 5, 
+    "maxfuel": 1.2, 
+    "optmass": 80, 
+    "power": 0.24, 
+    "rating": "E", 
+    "symbol": "Int_Hyperdrive_Size3_Class1"
+  }, 
+  "int_hyperdrive_size3_class2": {
+    "class": 3, 
+    "cost": 18810, 
+    "edID": 128064109, 
+    "eddbID": 967, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.15, 
+    "grp": "fsd", 
+    "id": "F8", 
+    "integrity": 51, 
+    "mass": 2, 
+    "maxfuel": 1.2, 
+    "optmass": 90, 
+    "power": 0.27, 
+    "rating": "D", 
+    "symbol": "Int_Hyperdrive_Size3_Class2"
+  }, 
+  "int_hyperdrive_size3_class3": {
+    "class": 3, 
+    "cost": 56440, 
+    "edID": 128064110, 
+    "eddbID": 968, 
+    "fuelmul": 0.008, 
+    "fuelpower": 2.15, 
+    "grp": "fsd", 
+    "id": "F7", 
+    "integrity": 64, 
+    "mass": 5, 
+    "maxfuel": 1.2, 
+    "optmass": 100, 
+    "power": 0.3, 
+    "rating": "C", 
+    "symbol": "Int_Hyperdrive_Size3_Class3"
+  }, 
+  "int_hyperdrive_size3_class4": {
+    "class": 3, 
+    "cost": 169300, 
+    "edID": 128064111, 
+    "eddbID": 969, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.15, 
+    "grp": "fsd", 
+    "id": "F6", 
+    "integrity": 77, 
+    "mass": 8, 
+    "maxfuel": 1.5, 
+    "optmass": 125, 
+    "power": 0.38, 
+    "rating": "B", 
+    "symbol": "Int_Hyperdrive_Size3_Class4"
+  }, 
+  "int_hyperdrive_size3_class5": {
+    "class": 3, 
+    "cost": 507910, 
+    "edID": 128064112, 
+    "eddbID": 970, 
+    "fuelmul": 0.012, 
+    "fuelpower": 2.15, 
+    "grp": "fsd", 
+    "id": "F5", 
+    "integrity": 70, 
+    "mass": 5, 
+    "maxfuel": 1.8, 
+    "optmass": 150, 
+    "power": 0.45, 
+    "rating": "A", 
+    "symbol": "Int_Hyperdrive_Size3_Class5"
+  }, 
+  "int_hyperdrive_size4_class1": {
+    "class": 4, 
+    "cost": 19880, 
+    "edID": 128064113, 
+    "eddbID": 971, 
+    "fuelmul": 0.011, 
+    "fuelpower": 2.3, 
+    "grp": "fsd", 
+    "id": "Fe", 
+    "integrity": 72, 
+    "mass": 10, 
+    "maxfuel": 2, 
+    "optmass": 280, 
+    "power": 0.24, 
+    "rating": "E", 
+    "symbol": "Int_Hyperdrive_Size4_Class1"
+  }, 
+  "int_hyperdrive_size4_class2": {
+    "class": 4, 
+    "cost": 59630, 
+    "edID": 128064114, 
+    "eddbID": 972, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.3, 
+    "grp": "fsd", 
+    "id": "Fd", 
+    "integrity": 64, 
+    "mass": 4, 
+    "maxfuel": 2, 
+    "optmass": 315, 
+    "power": 0.27, 
+    "rating": "D", 
+    "symbol": "Int_Hyperdrive_Size4_Class2"
+  }, 
+  "int_hyperdrive_size4_class3": {
+    "class": 4, 
+    "cost": 178900, 
+    "edID": 128064115, 
+    "eddbID": 973, 
+    "fuelmul": 0.008, 
+    "fuelpower": 2.3, 
+    "grp": "fsd", 
+    "id": "Fc", 
+    "integrity": 80, 
+    "mass": 10, 
+    "maxfuel": 2, 
+    "optmass": 350, 
+    "power": 0.3, 
+    "rating": "C", 
+    "symbol": "Int_Hyperdrive_Size4_Class3"
+  }, 
+  "int_hyperdrive_size4_class4": {
+    "class": 4, 
+    "cost": 536690, 
+    "edID": 128064116, 
+    "eddbID": 974, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.3, 
+    "grp": "fsd", 
+    "id": "Fb", 
+    "integrity": 96, 
+    "mass": 16, 
+    "maxfuel": 2.5, 
+    "optmass": 437.5, 
+    "power": 0.38, 
+    "rating": "B", 
+    "symbol": "Int_Hyperdrive_Size4_Class4"
+  }, 
+  "int_hyperdrive_size4_class5": {
+    "class": 4, 
+    "cost": 1610080, 
+    "edID": 128064117, 
+    "eddbID": 975, 
+    "fuelmul": 0.012, 
+    "fuelpower": 2.3, 
+    "grp": "fsd", 
+    "id": "Fa", 
+    "integrity": 88, 
+    "mass": 10, 
+    "maxfuel": 3, 
+    "optmass": 525, 
+    "power": 0.45, 
+    "rating": "A", 
+    "symbol": "Int_Hyperdrive_Size4_Class5"
+  }, 
+  "int_hyperdrive_size5_class1": {
+    "class": 5, 
+    "cost": 63010, 
+    "edID": 128064118, 
+    "eddbID": 976, 
+    "fuelmul": 0.011, 
+    "fuelpower": 2.45, 
+    "grp": "fsd", 
+    "id": "Fj", 
+    "integrity": 86, 
+    "mass": 20, 
+    "maxfuel": 3.3, 
+    "optmass": 560, 
+    "power": 0.32, 
+    "rating": "E", 
+    "symbol": "Int_Hyperdrive_Size5_Class1"
+  }, 
+  "int_hyperdrive_size5_class2": {
+    "class": 5, 
+    "cost": 189040, 
+    "edID": 128064119, 
+    "eddbID": 977, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.45, 
+    "grp": "fsd", 
+    "id": "Fi", 
+    "integrity": 77, 
+    "mass": 8, 
+    "maxfuel": 3.3, 
+    "optmass": 630, 
+    "power": 0.36, 
+    "rating": "D", 
+    "symbol": "Int_Hyperdrive_Size5_Class2"
+  }, 
+  "int_hyperdrive_size5_class3": {
+    "class": 5, 
+    "cost": 567110, 
+    "edID": 128064120, 
+    "eddbID": 978, 
+    "fuelmul": 0.008, 
+    "fuelpower": 2.45, 
+    "grp": "fsd", 
+    "id": "Fh", 
+    "integrity": 96, 
+    "mass": 20, 
+    "maxfuel": 3.3, 
+    "optmass": 700, 
+    "power": 0.4, 
+    "rating": "C", 
+    "symbol": "Int_Hyperdrive_Size5_Class3"
+  }, 
+  "int_hyperdrive_size5_class4": {
+    "class": 5, 
+    "cost": 1701320, 
+    "edID": 128064121, 
+    "eddbID": 979, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.45, 
+    "grp": "fsd", 
+    "id": "Fg", 
+    "integrity": 115, 
+    "mass": 32, 
+    "maxfuel": 4.1, 
+    "optmass": 875, 
+    "power": 0.5, 
+    "rating": "B", 
+    "symbol": "Int_Hyperdrive_Size5_Class4"
+  }, 
+  "int_hyperdrive_size5_class5": {
+    "class": 5, 
+    "cost": 5103950, 
+    "edID": 128064122, 
+    "eddbID": 980, 
+    "fuelmul": 0.012, 
+    "fuelpower": 2.45, 
+    "grp": "fsd", 
+    "id": "Ff", 
+    "integrity": 120, 
+    "mass": 20, 
+    "maxfuel": 5, 
+    "optmass": 1050, 
+    "power": 0.6, 
+    "rating": "A", 
+    "symbol": "Int_Hyperdrive_Size5_Class5"
+  }, 
+  "int_hyperdrive_size6_class1": {
+    "class": 6, 
+    "cost": 199750, 
+    "edID": 128064123, 
+    "eddbID": 981, 
+    "fuelmul": 0.011, 
+    "fuelpower": 2.6, 
+    "grp": "fsd", 
+    "id": "Fo", 
+    "integrity": 102, 
+    "mass": 40, 
+    "maxfuel": 5.3, 
+    "optmass": 960, 
+    "power": 0.4, 
+    "rating": "E", 
+    "symbol": "Int_Hyperdrive_Size6_Class1"
+  }, 
+  "int_hyperdrive_size6_class2": {
+    "class": 6, 
+    "cost": 599240, 
+    "edID": 128064124, 
+    "eddbID": 982, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.6, 
+    "grp": "fsd", 
+    "id": "Fn", 
+    "integrity": 90, 
+    "mass": 16, 
+    "maxfuel": 5.3, 
+    "optmass": 1080, 
+    "power": 0.45, 
+    "rating": "D", 
+    "symbol": "Int_Hyperdrive_Size6_Class2"
+  }, 
+  "int_hyperdrive_size6_class3": {
+    "class": 6, 
+    "cost": 1797730, 
+    "edID": 128064125, 
+    "eddbID": 983, 
+    "fuelmul": 0.008, 
+    "fuelpower": 2.6, 
+    "grp": "fsd", 
+    "id": "Fm", 
+    "integrity": 113, 
+    "mass": 40, 
+    "maxfuel": 5.3, 
+    "optmass": 1200, 
+    "power": 0.5, 
+    "rating": "C", 
+    "symbol": "Int_Hyperdrive_Size6_Class3"
+  }, 
+  "int_hyperdrive_size6_class4": {
+    "class": 6, 
+    "cost": 5393180, 
+    "edID": 128064126, 
+    "eddbID": 984, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.6, 
+    "grp": "fsd", 
+    "id": "Fl", 
+    "integrity": 136, 
+    "mass": 64, 
+    "maxfuel": 6.6, 
+    "optmass": 1500, 
+    "power": 0.63, 
+    "rating": "B", 
+    "symbol": "Int_Hyperdrive_Size6_Class4"
+  }, 
+  "int_hyperdrive_size6_class5": {
+    "class": 6, 
+    "cost": 16179530, 
+    "edID": 128064127, 
+    "eddbID": 985, 
+    "fuelmul": 0.012, 
+    "fuelpower": 2.6, 
+    "grp": "fsd", 
+    "id": "Fk", 
+    "integrity": 124, 
+    "mass": 40, 
+    "maxfuel": 8, 
+    "optmass": 1800, 
+    "power": 0.75, 
+    "rating": "A", 
+    "symbol": "Int_Hyperdrive_Size6_Class5"
+  }, 
+  "int_hyperdrive_size7_class1": {
+    "class": 7, 
+    "cost": 633200, 
+    "edID": 128064128, 
+    "eddbID": 986, 
+    "fuelmul": 0.011, 
+    "fuelpower": 2.75, 
+    "grp": "fsd", 
+    "id": "Ft", 
+    "integrity": 118, 
+    "mass": 80, 
+    "maxfuel": 8.5, 
+    "optmass": 1440, 
+    "power": 0.48, 
+    "rating": "E", 
+    "symbol": "Int_Hyperdrive_Size7_Class1"
+  }, 
+  "int_hyperdrive_size7_class2": {
+    "class": 7, 
+    "cost": 1899600, 
+    "edID": 128064129, 
+    "eddbID": 987, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.75, 
+    "grp": "fsd", 
+    "id": "Fs", 
+    "integrity": 105, 
+    "mass": 32, 
+    "maxfuel": 8.5, 
+    "optmass": 1620, 
+    "power": 0.54, 
+    "rating": "D", 
+    "symbol": "Int_Hyperdrive_Size7_Class2"
+  }, 
+  "int_hyperdrive_size7_class3": {
+    "class": 7, 
+    "cost": 5698790, 
+    "edID": 128064130, 
+    "eddbID": 988, 
+    "fuelmul": 0.008, 
+    "fuelpower": 2.75, 
+    "grp": "fsd", 
+    "id": "Fr", 
+    "integrity": 131, 
+    "mass": 80, 
+    "maxfuel": 8.5, 
+    "optmass": 1800, 
+    "power": 0.6, 
+    "rating": "C", 
+    "symbol": "Int_Hyperdrive_Size7_Class3"
+  }, 
+  "int_hyperdrive_size7_class4": {
+    "class": 7, 
+    "cost": 17096370, 
+    "edID": 128064131, 
+    "eddbID": 989, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.75, 
+    "grp": "fsd", 
+    "id": "Fq", 
+    "integrity": 157, 
+    "mass": 128, 
+    "maxfuel": 10.6, 
+    "optmass": 2250, 
+    "power": 0.75, 
+    "rating": "B", 
+    "symbol": "Int_Hyperdrive_Size7_Class4"
+  }, 
+  "int_hyperdrive_size7_class5": {
+    "class": 7, 
+    "cost": 51289110, 
+    "edID": 128064132, 
+    "eddbID": 990, 
+    "fuelmul": 0.012, 
+    "fuelpower": 2.75, 
+    "grp": "fsd", 
+    "id": "Fp", 
+    "integrity": 144, 
+    "mass": 80, 
+    "maxfuel": 12.8, 
+    "optmass": 2700, 
+    "power": 0.9, 
+    "rating": "A", 
+    "symbol": "Int_Hyperdrive_Size7_Class5"
+  }, 
+  "int_hyperdrive_size8_class1": {
+    "class": 8, 
+    "cost": 2007242, 
+    "edID": 128064133, 
+    "eddbID": 991, 
+    "fuelmul": 0.011, 
+    "fuelpower": 2.9, 
+    "grp": "fsd", 
+    "id": "Fy", 
+    "integrity": 93, 
+    "mass": 160, 
+    "maxfuel": 0, 
+    "optmass": 0, 
+    "power": 0.56, 
+    "rating": "E", 
+    "symbol": "Int_Hyperdrive_Size8_Class1"
+  }, 
+  "int_hyperdrive_size8_class2": {
+    "class": 8, 
+    "cost": 6021723, 
+    "edID": 128064134, 
+    "eddbID": 992, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.9, 
+    "grp": "fsd", 
+    "id": "Fx", 
+    "integrity": 37, 
+    "mass": 64, 
+    "maxfuel": 0, 
+    "optmass": 0, 
+    "power": 0.63, 
+    "rating": "D", 
+    "symbol": "Int_Hyperdrive_Size8_Class2"
+  }, 
+  "int_hyperdrive_size8_class3": {
+    "class": 8, 
+    "cost": 18065166, 
+    "edID": 128064135, 
+    "eddbID": 993, 
+    "fuelmul": 0.008, 
+    "fuelpower": 2.9, 
+    "grp": "fsd", 
+    "id": "Fw", 
+    "integrity": 46, 
+    "mass": 160, 
+    "maxfuel": 0, 
+    "optmass": 0, 
+    "power": 0.7, 
+    "rating": "C", 
+    "symbol": "Int_Hyperdrive_Size8_Class3"
+  }, 
+  "int_hyperdrive_size8_class4": {
+    "class": 8, 
+    "cost": 54195496, 
+    "edID": 128064136, 
+    "eddbID": 994, 
+    "fuelmul": 0.01, 
+    "fuelpower": 2.9, 
+    "grp": "fsd", 
+    "id": "Fv", 
+    "integrity": 74, 
+    "mass": 256, 
+    "maxfuel": 0, 
+    "optmass": 0, 
+    "power": 0.88, 
+    "rating": "B", 
+    "symbol": "Int_Hyperdrive_Size8_Class4"
+  }, 
+  "int_hyperdrive_size8_class5": {
+    "class": 8, 
+    "cost": 162586488, 
+    "edID": 128064137, 
+    "eddbID": 995, 
+    "fuelmul": 0.012, 
+    "fuelpower": 2.9, 
+    "grp": "fsd", 
+    "id": "Fu", 
+    "integrity": 46, 
+    "mass": 160, 
+    "maxfuel": 0, 
+    "optmass": 0, 
+    "power": 1.05, 
+    "rating": "A", 
+    "symbol": "Int_Hyperdrive_Size8_Class5"
+  }, 
+  "int_lifesupport_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_lifesupport_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_lifesupport_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_lifesupport_size1_class4": {
+    "mass": 2
+  }, 
+  "int_lifesupport_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_lifesupport_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_lifesupport_size2_class2": {
+    "mass": 1
+  }, 
+  "int_lifesupport_size2_class3": {
+    "mass": 2.5
+  }, 
+  "int_lifesupport_size2_class4": {
+    "mass": 4
+  }, 
+  "int_lifesupport_size2_class5": {
+    "mass": 2.5
+  }, 
+  "int_lifesupport_size3_class1": {
+    "mass": 5
+  }, 
+  "int_lifesupport_size3_class2": {
+    "mass": 2
+  }, 
+  "int_lifesupport_size3_class3": {
+    "mass": 5
+  }, 
+  "int_lifesupport_size3_class4": {
+    "mass": 8
+  }, 
+  "int_lifesupport_size3_class5": {
+    "mass": 5
+  }, 
+  "int_lifesupport_size4_class1": {
+    "mass": 10
+  }, 
+  "int_lifesupport_size4_class2": {
+    "mass": 4
+  }, 
+  "int_lifesupport_size4_class3": {
+    "mass": 10
+  }, 
+  "int_lifesupport_size4_class4": {
+    "mass": 16
+  }, 
+  "int_lifesupport_size4_class5": {
+    "mass": 10
+  }, 
+  "int_lifesupport_size5_class1": {
+    "mass": 20
+  }, 
+  "int_lifesupport_size5_class2": {
+    "mass": 8
+  }, 
+  "int_lifesupport_size5_class3": {
+    "mass": 20
+  }, 
+  "int_lifesupport_size5_class4": {
+    "mass": 32
+  }, 
+  "int_lifesupport_size5_class5": {
+    "mass": 20
+  }, 
+  "int_lifesupport_size6_class1": {
+    "mass": 40
+  }, 
+  "int_lifesupport_size6_class2": {
+    "mass": 16
+  }, 
+  "int_lifesupport_size6_class3": {
+    "mass": 40
+  }, 
+  "int_lifesupport_size6_class4": {
+    "mass": 64
+  }, 
+  "int_lifesupport_size6_class5": {
+    "mass": 40
+  }, 
+  "int_lifesupport_size7_class1": {
+    "mass": 80
+  }, 
+  "int_lifesupport_size7_class2": {
+    "mass": 32
+  }, 
+  "int_lifesupport_size7_class3": {
+    "mass": 80
+  }, 
+  "int_lifesupport_size7_class4": {
+    "mass": 128
+  }, 
+  "int_lifesupport_size7_class5": {
+    "mass": 80
+  }, 
+  "int_lifesupport_size8_class1": {
+    "mass": 160
+  }, 
+  "int_lifesupport_size8_class2": {
+    "mass": 64
+  }, 
+  "int_lifesupport_size8_class3": {
+    "mass": 160
+  }, 
+  "int_lifesupport_size8_class4": {
+    "mass": 256
+  }, 
+  "int_lifesupport_size8_class5": {
+    "mass": 160
+  }, 
+  "int_metaalloyhullreinforcement_size1_class1": {
+    "mass": 2
+  }, 
+  "int_metaalloyhullreinforcement_size1_class2": {
+    "mass": 2
+  }, 
+  "int_metaalloyhullreinforcement_size2_class1": {
+    "mass": 4
+  }, 
+  "int_metaalloyhullreinforcement_size2_class2": {
+    "mass": 2
+  }, 
+  "int_metaalloyhullreinforcement_size3_class1": {
+    "mass": 8
+  }, 
+  "int_metaalloyhullreinforcement_size3_class2": {
+    "mass": 4
+  }, 
+  "int_metaalloyhullreinforcement_size4_class1": {
+    "mass": 16
+  }, 
+  "int_metaalloyhullreinforcement_size4_class2": {
+    "mass": 8
+  }, 
+  "int_metaalloyhullreinforcement_size5_class1": {
+    "mass": 32
+  }, 
+  "int_metaalloyhullreinforcement_size5_class2": {
+    "mass": 16
+  }, 
+  "int_modulereinforcement_size1_class1": {
+    "mass": 2
+  }, 
+  "int_modulereinforcement_size1_class2": {
+    "mass": 1
+  }, 
+  "int_modulereinforcement_size2_class1": {
+    "mass": 4
+  }, 
+  "int_modulereinforcement_size2_class2": {
+    "mass": 2
+  }, 
+  "int_modulereinforcement_size3_class1": {
+    "mass": 8
+  }, 
+  "int_modulereinforcement_size3_class2": {
+    "mass": 4
+  }, 
+  "int_modulereinforcement_size4_class1": {
+    "mass": 16
+  }, 
+  "int_modulereinforcement_size4_class2": {
+    "mass": 8
+  }, 
+  "int_modulereinforcement_size5_class1": {
+    "mass": 32
+  }, 
+  "int_modulereinforcement_size5_class2": {
+    "mass": 16
+  }, 
+  "int_passengercabin_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_passengercabin_size3_class1": {
+    "mass": 5
+  }, 
+  "int_passengercabin_size3_class2": {
+    "mass": 5
+  }, 
+  "int_passengercabin_size4_class1": {
+    "mass": 10
+  }, 
+  "int_passengercabin_size4_class2": {
+    "mass": 10
+  }, 
+  "int_passengercabin_size4_class3": {
+    "mass": 10
+  }, 
+  "int_passengercabin_size5_class1": {
+    "mass": 20
+  }, 
+  "int_passengercabin_size5_class2": {
+    "mass": 20
+  }, 
+  "int_passengercabin_size5_class3": {
+    "mass": 20
+  }, 
+  "int_passengercabin_size5_class4": {
+    "mass": 20
+  }, 
+  "int_passengercabin_size6_class1": {
+    "mass": 40
+  }, 
+  "int_passengercabin_size6_class2": {
+    "mass": 40
+  }, 
+  "int_passengercabin_size6_class3": {
+    "mass": 40
+  }, 
+  "int_passengercabin_size6_class4": {
+    "mass": 40
+  }, 
+  "int_planetapproachsuite": {
+    "mass": 0
+  }, 
+  "int_powerdistributor_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_powerdistributor_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_powerdistributor_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_powerdistributor_size1_class4": {
+    "mass": 2
+  }, 
+  "int_powerdistributor_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_powerdistributor_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_powerdistributor_size2_class2": {
+    "mass": 1
+  }, 
+  "int_powerdistributor_size2_class3": {
+    "mass": 2.5
+  }, 
+  "int_powerdistributor_size2_class4": {
+    "mass": 4
+  }, 
+  "int_powerdistributor_size2_class5": {
+    "mass": 2.5
+  }, 
+  "int_powerdistributor_size3_class1": {
+    "mass": 5
+  }, 
+  "int_powerdistributor_size3_class2": {
+    "mass": 2
+  }, 
+  "int_powerdistributor_size3_class3": {
+    "mass": 5
+  }, 
+  "int_powerdistributor_size3_class4": {
+    "mass": 8
+  }, 
+  "int_powerdistributor_size3_class5": {
+    "mass": 5
+  }, 
+  "int_powerdistributor_size4_class1": {
+    "mass": 10
+  }, 
+  "int_powerdistributor_size4_class2": {
+    "mass": 4
+  }, 
+  "int_powerdistributor_size4_class3": {
+    "mass": 10
+  }, 
+  "int_powerdistributor_size4_class4": {
+    "mass": 16
+  }, 
+  "int_powerdistributor_size4_class5": {
+    "mass": 10
+  }, 
+  "int_powerdistributor_size5_class1": {
+    "mass": 20
+  }, 
+  "int_powerdistributor_size5_class2": {
+    "mass": 8
+  }, 
+  "int_powerdistributor_size5_class3": {
+    "mass": 20
+  }, 
+  "int_powerdistributor_size5_class4": {
+    "mass": 32
+  }, 
+  "int_powerdistributor_size5_class5": {
+    "mass": 20
+  }, 
+  "int_powerdistributor_size6_class1": {
+    "mass": 40
+  }, 
+  "int_powerdistributor_size6_class2": {
+    "mass": 16
+  }, 
+  "int_powerdistributor_size6_class3": {
+    "mass": 40
+  }, 
+  "int_powerdistributor_size6_class4": {
+    "mass": 64
+  }, 
+  "int_powerdistributor_size6_class5": {
+    "mass": 40
+  }, 
+  "int_powerdistributor_size7_class1": {
+    "mass": 80
+  }, 
+  "int_powerdistributor_size7_class2": {
+    "mass": 32
+  }, 
+  "int_powerdistributor_size7_class3": {
+    "mass": 80
+  }, 
+  "int_powerdistributor_size7_class4": {
+    "mass": 128
+  }, 
+  "int_powerdistributor_size7_class5": {
+    "mass": 80
+  }, 
+  "int_powerdistributor_size8_class1": {
+    "mass": 160
+  }, 
+  "int_powerdistributor_size8_class2": {
+    "mass": 64
+  }, 
+  "int_powerdistributor_size8_class3": {
+    "mass": 160
+  }, 
+  "int_powerdistributor_size8_class4": {
+    "mass": 256
+  }, 
+  "int_powerdistributor_size8_class5": {
+    "mass": 160
+  }, 
+  "int_powerplant_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_powerplant_size2_class2": {
+    "mass": 1
+  }, 
+  "int_powerplant_size2_class3": {
+    "mass": 1.3
+  }, 
+  "int_powerplant_size2_class4": {
+    "mass": 2
+  }, 
+  "int_powerplant_size2_class5": {
+    "mass": 1.3
+  }, 
+  "int_powerplant_size3_class1": {
+    "mass": 5
+  }, 
+  "int_powerplant_size3_class2": {
+    "mass": 2
+  }, 
+  "int_powerplant_size3_class3": {
+    "mass": 2.5
+  }, 
+  "int_powerplant_size3_class4": {
+    "mass": 4
+  }, 
+  "int_powerplant_size3_class5": {
+    "mass": 2.5
+  }, 
+  "int_powerplant_size4_class1": {
+    "mass": 10
+  }, 
+  "int_powerplant_size4_class2": {
+    "mass": 4
+  }, 
+  "int_powerplant_size4_class3": {
+    "mass": 5
+  }, 
+  "int_powerplant_size4_class4": {
+    "mass": 8
+  }, 
+  "int_powerplant_size4_class5": {
+    "mass": 5
+  }, 
+  "int_powerplant_size5_class1": {
+    "mass": 20
+  }, 
+  "int_powerplant_size5_class2": {
+    "mass": 8
+  }, 
+  "int_powerplant_size5_class3": {
+    "mass": 10
+  }, 
+  "int_powerplant_size5_class4": {
+    "mass": 16
+  }, 
+  "int_powerplant_size5_class5": {
+    "mass": 10
+  }, 
+  "int_powerplant_size6_class1": {
+    "mass": 40
+  }, 
+  "int_powerplant_size6_class2": {
+    "mass": 16
+  }, 
+  "int_powerplant_size6_class3": {
+    "mass": 20
+  }, 
+  "int_powerplant_size6_class4": {
+    "mass": 32
+  }, 
+  "int_powerplant_size6_class5": {
+    "mass": 20
+  }, 
+  "int_powerplant_size7_class1": {
+    "mass": 80
+  }, 
+  "int_powerplant_size7_class2": {
+    "mass": 32
+  }, 
+  "int_powerplant_size7_class3": {
+    "mass": 40
+  }, 
+  "int_powerplant_size7_class4": {
+    "mass": 64
+  }, 
+  "int_powerplant_size7_class5": {
+    "mass": 40
+  }, 
+  "int_powerplant_size8_class1": {
+    "mass": 160
+  }, 
+  "int_powerplant_size8_class2": {
+    "mass": 64
+  }, 
+  "int_powerplant_size8_class3": {
+    "mass": 80
+  }, 
+  "int_powerplant_size8_class4": {
+    "mass": 128
+  }, 
+  "int_powerplant_size8_class5": {
+    "mass": 80
+  }, 
+  "int_sensors_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_sensors_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_sensors_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_sensors_size1_class4": {
+    "mass": 2
+  }, 
+  "int_sensors_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_sensors_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_sensors_size2_class2": {
+    "mass": 1
+  }, 
+  "int_sensors_size2_class3": {
+    "mass": 2.5
+  }, 
+  "int_sensors_size2_class4": {
+    "mass": 4
+  }, 
+  "int_sensors_size2_class5": {
+    "mass": 2.5
+  }, 
+  "int_sensors_size3_class1": {
+    "mass": 5
+  }, 
+  "int_sensors_size3_class2": {
+    "mass": 2
+  }, 
+  "int_sensors_size3_class3": {
+    "mass": 5
+  }, 
+  "int_sensors_size3_class4": {
+    "mass": 8
+  }, 
+  "int_sensors_size3_class5": {
+    "mass": 5
+  }, 
+  "int_sensors_size4_class1": {
+    "mass": 10
+  }, 
+  "int_sensors_size4_class2": {
+    "mass": 4
+  }, 
+  "int_sensors_size4_class3": {
+    "mass": 10
+  }, 
+  "int_sensors_size4_class4": {
+    "mass": 16
+  }, 
+  "int_sensors_size4_class5": {
+    "mass": 10
+  }, 
+  "int_sensors_size5_class1": {
+    "mass": 20
+  }, 
+  "int_sensors_size5_class2": {
+    "mass": 8
+  }, 
+  "int_sensors_size5_class3": {
+    "mass": 20
+  }, 
+  "int_sensors_size5_class4": {
+    "mass": 32
+  }, 
+  "int_sensors_size5_class5": {
+    "mass": 20
+  }, 
+  "int_sensors_size6_class1": {
+    "mass": 40
+  }, 
+  "int_sensors_size6_class2": {
+    "mass": 16
+  }, 
+  "int_sensors_size6_class3": {
+    "mass": 40
+  }, 
+  "int_sensors_size6_class4": {
+    "mass": 64
+  }, 
+  "int_sensors_size6_class5": {
+    "mass": 40
+  }, 
+  "int_sensors_size7_class1": {
+    "mass": 80
+  }, 
+  "int_sensors_size7_class2": {
+    "mass": 32
+  }, 
+  "int_sensors_size7_class3": {
+    "mass": 80
+  }, 
+  "int_sensors_size7_class4": {
+    "mass": 128
+  }, 
+  "int_sensors_size7_class5": {
+    "mass": 80
+  }, 
+  "int_sensors_size8_class1": {
+    "mass": 160
+  }, 
+  "int_sensors_size8_class2": {
+    "mass": 64
+  }, 
+  "int_sensors_size8_class3": {
+    "mass": 160
+  }, 
+  "int_sensors_size8_class4": {
+    "mass": 256
+  }, 
+  "int_sensors_size8_class5": {
+    "mass": 160
+  }, 
+  "int_shieldcellbank_size1_class1": {
+    "mass": 1.3
+  }, 
+  "int_shieldcellbank_size1_class2": {
+    "mass": 0.5
+  }, 
+  "int_shieldcellbank_size1_class3": {
+    "mass": 1.3
+  }, 
+  "int_shieldcellbank_size1_class4": {
+    "mass": 2
+  }, 
+  "int_shieldcellbank_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_shieldcellbank_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_shieldcellbank_size2_class2": {
+    "mass": 1
+  }, 
+  "int_shieldcellbank_size2_class3": {
+    "mass": 2.5
+  }, 
+  "int_shieldcellbank_size2_class4": {
+    "mass": 4
+  }, 
+  "int_shieldcellbank_size2_class5": {
+    "mass": 2.5
+  }, 
+  "int_shieldcellbank_size3_class1": {
+    "mass": 5
+  }, 
+  "int_shieldcellbank_size3_class2": {
+    "mass": 2
+  }, 
+  "int_shieldcellbank_size3_class3": {
+    "mass": 5
+  }, 
+  "int_shieldcellbank_size3_class4": {
+    "mass": 8
+  }, 
+  "int_shieldcellbank_size3_class5": {
+    "mass": 5
+  }, 
+  "int_shieldcellbank_size4_class1": {
+    "mass": 10
+  }, 
+  "int_shieldcellbank_size4_class2": {
+    "mass": 4
+  }, 
+  "int_shieldcellbank_size4_class3": {
+    "mass": 10
+  }, 
+  "int_shieldcellbank_size4_class4": {
+    "mass": 16
+  }, 
+  "int_shieldcellbank_size4_class5": {
+    "mass": 10
+  }, 
+  "int_shieldcellbank_size5_class1": {
+    "mass": 20
+  }, 
+  "int_shieldcellbank_size5_class2": {
+    "mass": 8
+  }, 
+  "int_shieldcellbank_size5_class3": {
+    "mass": 20
+  }, 
+  "int_shieldcellbank_size5_class4": {
+    "mass": 32
+  }, 
+  "int_shieldcellbank_size5_class5": {
+    "mass": 20
+  }, 
+  "int_shieldcellbank_size6_class1": {
+    "mass": 40
+  }, 
+  "int_shieldcellbank_size6_class2": {
+    "mass": 16
+  }, 
+  "int_shieldcellbank_size6_class3": {
+    "mass": 40
+  }, 
+  "int_shieldcellbank_size6_class4": {
+    "mass": 64
+  }, 
+  "int_shieldcellbank_size6_class5": {
+    "mass": 40
+  }, 
+  "int_shieldcellbank_size7_class1": {
+    "mass": 80
+  }, 
+  "int_shieldcellbank_size7_class2": {
+    "mass": 32
+  }, 
+  "int_shieldcellbank_size7_class3": {
+    "mass": 80
+  }, 
+  "int_shieldcellbank_size7_class4": {
+    "mass": 128
+  }, 
+  "int_shieldcellbank_size7_class5": {
+    "mass": 80
+  }, 
+  "int_shieldcellbank_size8_class1": {
+    "mass": 160
+  }, 
+  "int_shieldcellbank_size8_class2": {
+    "mass": 64
+  }, 
+  "int_shieldcellbank_size8_class3": {
+    "mass": 160
+  }, 
+  "int_shieldcellbank_size8_class4": {
+    "mass": 256
+  }, 
+  "int_shieldcellbank_size8_class5": {
+    "mass": 160
+  }, 
+  "int_shieldgenerator_size1_class3_fast": {
+    "mass": 1.3
+  }, 
+  "int_shieldgenerator_size1_class5": {
+    "mass": 1.3
+  }, 
+  "int_shieldgenerator_size1_class5_strong": {
+    "mass": 2.5
+  }, 
+  "int_shieldgenerator_size2_class1": {
+    "mass": 2.5
+  }, 
+  "int_shieldgenerator_size2_class2": {
+    "mass": 1
+  }, 
+  "int_shieldgenerator_size2_class3": {
+    "mass": 2.5
+  }, 
+  "int_shieldgenerator_size2_class3_fast": {
+    "mass": 2.5
+  }, 
+  "int_shieldgenerator_size2_class4": {
+    "mass": 4
+  }, 
+  "int_shieldgenerator_size2_class5": {
+    "mass": 2.5
+  }, 
+  "int_shieldgenerator_size2_class5_strong": {
+    "mass": 5
+  }, 
+  "int_shieldgenerator_size3_class1": {
+    "mass": 5
+  }, 
+  "int_shieldgenerator_size3_class2": {
+    "mass": 2
+  }, 
+  "int_shieldgenerator_size3_class3": {
+    "mass": 5
+  }, 
+  "int_shieldgenerator_size3_class3_fast": {
+    "mass": 5
+  }, 
+  "int_shieldgenerator_size3_class4": {
+    "mass": 8
+  }, 
+  "int_shieldgenerator_size3_class5": {
+    "mass": 5
+  }, 
+  "int_shieldgenerator_size3_class5_strong": {
+    "mass": 10
+  }, 
+  "int_shieldgenerator_size4_class1": {
+    "mass": 10
+  }, 
+  "int_shieldgenerator_size4_class2": {
+    "mass": 4
+  }, 
+  "int_shieldgenerator_size4_class3": {
+    "mass": 10
+  }, 
+  "int_shieldgenerator_size4_class3_fast": {
+    "mass": 10
+  }, 
+  "int_shieldgenerator_size4_class4": {
+    "mass": 16
+  }, 
+  "int_shieldgenerator_size4_class5": {
+    "mass": 10
+  }, 
+  "int_shieldgenerator_size4_class5_strong": {
+    "mass": 20
+  }, 
+  "int_shieldgenerator_size5_class1": {
+    "mass": 20
+  }, 
+  "int_shieldgenerator_size5_class2": {
+    "mass": 8
+  }, 
+  "int_shieldgenerator_size5_class3": {
+    "mass": 20
+  }, 
+  "int_shieldgenerator_size5_class3_fast": {
+    "mass": 20
+  }, 
+  "int_shieldgenerator_size5_class4": {
+    "mass": 32
+  }, 
+  "int_shieldgenerator_size5_class5": {
+    "mass": 20
+  }, 
+  "int_shieldgenerator_size5_class5_strong": {
+    "mass": 40
+  }, 
+  "int_shieldgenerator_size6_class1": {
+    "mass": 40
+  }, 
+  "int_shieldgenerator_size6_class2": {
+    "mass": 16
+  }, 
+  "int_shieldgenerator_size6_class3": {
+    "mass": 40
+  }, 
+  "int_shieldgenerator_size6_class3_fast": {
+    "mass": 40
+  }, 
+  "int_shieldgenerator_size6_class4": {
+    "mass": 64
+  }, 
+  "int_shieldgenerator_size6_class5": {
+    "mass": 40
+  }, 
+  "int_shieldgenerator_size6_class5_strong": {
+    "mass": 80
+  }, 
+  "int_shieldgenerator_size7_class1": {
+    "mass": 80
+  }, 
+  "int_shieldgenerator_size7_class2": {
+    "mass": 32
+  }, 
+  "int_shieldgenerator_size7_class3": {
+    "mass": 80
+  }, 
+  "int_shieldgenerator_size7_class3_fast": {
+    "mass": 80
+  }, 
+  "int_shieldgenerator_size7_class4": {
+    "mass": 128
+  }, 
+  "int_shieldgenerator_size7_class5": {
+    "mass": 80
+  }, 
+  "int_shieldgenerator_size7_class5_strong": {
+    "mass": 160
+  }, 
+  "int_shieldgenerator_size8_class1": {
+    "mass": 160
+  }, 
+  "int_shieldgenerator_size8_class2": {
+    "mass": 64
+  }, 
+  "int_shieldgenerator_size8_class3": {
+    "mass": 160
+  }, 
+  "int_shieldgenerator_size8_class3_fast": {
+    "mass": 160
+  }, 
+  "int_shieldgenerator_size8_class4": {
+    "mass": 256
+  }, 
+  "int_shieldgenerator_size8_class5": {
+    "mass": 160
+  }, 
+  "int_shieldgenerator_size8_class5_strong": {
+    "mass": 320
+  }, 
+  "int_stellarbodydiscoveryscanner_advanced": {
+    "mass": 2
+  }, 
+  "int_stellarbodydiscoveryscanner_intermediate": {
+    "mass": 2
+  }, 
+  "int_stellarbodydiscoveryscanner_standard": {
+    "mass": 2
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "adder": {
+    "edID": 128049267, 
+    "hullMass": 35
+  }, 
+  "anaconda": {
+    "edID": 128049363, 
+    "hullMass": 400
+  }, 
+  "asp": {
+    "edID": 128049303, 
+    "hullMass": 280
+  }, 
+  "asp_scout": {
+    "edID": 128672276, 
+    "hullMass": 150
+  }, 
+  "belugaliner": {
+    "edID": 128049345, 
+    "hullMass": 950
+  }, 
+  "cobramkiii": {
+    "edID": 128049279, 
+    "hullMass": 180
+  }, 
+  "cobramkiv": {
+    "edID": 128672262, 
+    "hullMass": 210
+  }, 
+  "cutter": {
+    "edID": 128049375, 
+    "hullMass": 1100
+  }, 
+  "diamondback": {
+    "edID": 128671217, 
+    "hullMass": 170
+  }, 
+  "diamondbackxl": {
+    "edID": 128671831, 
+    "hullMass": 260
+  }, 
+  "dolphin": {
+    "edID": 128049291, 
+    "hullMass": 140
+  }, 
+  "eagle": {
+    "edID": 128049255, 
+    "hullMass": 50
+  }, 
+  "empire_courier": {
+    "edID": 128671223, 
+    "hullMass": 35
+  }, 
+  "empire_eagle": {
+    "edID": 128672138, 
+    "hullMass": 50
+  }, 
+  "empire_trader": {
+    "edID": 128049315, 
+    "hullMass": 400
+  }, 
+  "federation_corvette": {
+    "edID": 128049369, 
+    "hullMass": 900
+  }, 
+  "federation_dropship": {
+    "edID": 128049321, 
+    "hullMass": 580
+  }, 
+  "federation_dropship_mkii": {
+    "edID": 128672145, 
+    "hullMass": 480
+  }, 
+  "federation_gunship": {
+    "edID": 128672152, 
+    "hullMass": 580
+  }, 
+  "ferdelance": {
+    "edID": 128049351, 
+    "hullMass": 250
+  }, 
+  "hauler": {
+    "edID": 128049261, 
+    "hullMass": 14
+  }, 
+  "independant_trader": {
+    "edID": 128672269, 
+    "hullMass": 180
+  }, 
+  "krait_mkii": {
+    "edID": 128816567, 
+    "hullMass": 320
+  }, 
+  "orca": {
+    "edID": 128049327, 
+    "hullMass": 290
+  }, 
+  "python": {
+    "edID": 128049339, 
+    "hullMass": 350
+  }, 
+  "sidewinder": {
+    "edID": 128049249, 
+    "hullMass": 25
+  }, 
+  "type6": {
+    "edID": 128049285, 
+    "hullMass": 155
+  }, 
+  "type7": {
+    "edID": 128049297, 
+    "hullMass": 350
+  }, 
+  "type9": {
+    "edID": 128049333, 
+    "hullMass": 850
+  }, 
+  "type9_military": {
+    "edID": 128785619, 
+    "hullMass": 1200
+  }, 
+  "typex": {
+    "edID": 128816574, 
+    "hullMass": 400
+  }, 
+  "typex_2": {
+    "edID": 128816581, 
+    "hullMass": 500
+  }, 
+  "typex_3": {
+    "edID": 128816588, 
+    "hullMass": 450
+  }, 
+  "viper": {
+    "edID": 128049273, 
+    "hullMass": 50
+  }, 
+  "viper_mkiv": {
+    "edID": 128672255, 
+    "hullMass": 190
+  }, 
+  "vulture": {
+    "edID": 128049309, 
+    "hullMass": 230
+  }
+}
