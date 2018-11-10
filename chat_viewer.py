@@ -4,6 +4,10 @@ import webbrowser
 from urllib import quote_plus
 from wafer_module import WaferModule
 
+from config import config
+
+from web_handlers import *
+
 debugoutput = False
 links = []
 linkcount = 0
@@ -42,7 +46,11 @@ def copyLink(event=''):
 
 def showSystem(event):
     idx = int(event.widget.tag_names(tk.CURRENT)[1])
-    webbrowser.open("https://www.edsm.net/show-system?systemName=" + quote_plus(systemlinks[idx]))
+    if config.get('system_provider') == 'eddb':
+        webbrowser.open(EDDB_system_url(systemlinks[idx]))
+    else:
+        webbrowser.open('https://www.edsm.net/show-system?systemName=' + quote_plus(systemlinks[idx]))
+#    webbrowser.open("https://www.edsm.net/show-system?systemName=" + quote_plus(systemlinks[idx]))
 
 def copySystem(event=''):
     setclipboard(systemlinks[idx])
@@ -60,9 +68,11 @@ class ChatViewer(WaferModule):
         self.status = tk.Text(self)
         self.chatcopy = tk.Button(self, text = "Copy", command = self.copy_button3)
         self.chatcopy.grid(row = 1, column = 0, columnspan = 4)
-        self.status['width'] = 27
+        self.status['width'] = 1
         self.status.grid(row=0, column = 0, columnspan = 3, sticky='nswe')
-        self.status.insert(tk.END,"Chat Viewer loaded")
+        for i in range(3):
+            self.grid_columnconfigure(i, weight = 1)
+        self.status.insert(tk.END,"Chat viewer loaded")
         self.status.config(state=tk.DISABLED)
         self.status.config(height=10, wrap='word')
         self.status.see(tk.END)
