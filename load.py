@@ -29,7 +29,7 @@ from web_handlers import *
 
 from wafer_module import WaferModule
 
-from chatviewer import ChatViewer
+from chat_viewer import ChatViewer
 
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!

@@ -27,12 +27,6 @@ def datetime_from_utc_to_local(utc_datetime):
     offset = datetime.fromtimestamp(now_timestamp) - datetime.utcfromtimestamp(now_timestamp)
     return utc_datetime + offset
 
-def copy_button3(event=''):
-    try:
-        setclipboard(self.status.selection_get())
-    except:
-        pass
-
 def setclipboard(text):
     r = tk.Tk()
     r.clipboard_clear()
@@ -64,7 +58,7 @@ class ChatViewer(WaferModule):
         Create a TK widget for the EDMC main window
         """
         self.status = tk.Text(self)
-        self.chatcopy = tk.Button(self, text = "Copy", command = copy_button3)
+        self.chatcopy = tk.Button(self, text = "Copy", command = self.copy_button3)
         self.chatcopy.grid(row = 1, column = 0, columnspan = 4)
         self.status['width'] = 27
         self.status.grid(row=0, column = 0, columnspan = 3, sticky='nswe')
@@ -73,7 +67,7 @@ class ChatViewer(WaferModule):
         self.status.config(height=10, wrap='word')
         self.status.see(tk.END)
         self.status.bind('<Button-3>', lambda e, w='textwidget': self.on_click(e, w))
-        self.status.bind('Control-x', copy_button3)
+        self.status.bind('Control-x', self.copy_button3)
         self.status.tag_config('link', underline=1)
         self.status.tag_bind('link', '<Button-1>', showLink)
         self.status.tag_bind('link', '<Button-3>', lambda e, w='link': on_tag_click(e, w))
@@ -90,7 +84,7 @@ class ChatViewer(WaferModule):
         self.systemMenu.add_command(label="Copy system name", command = copySystem)
 #        self.systemMenu.add_command(label="Copy EDSM link", command = copySystemLink)
         self.menu = tk.Menu(self, tearoff=0)
-        self.menu.add_command(label="Copy text (Ctrl x)", command = copy_button3)
+        self.menu.add_command(label="Copy text (Ctrl x)", command = self.copy_button3)
         self.linkMenu = tk.Menu(self, tearoff=0)
         self.linkMenu.add_command(label="Copy link", command = copyLink)
         print "Chat Viewer loaded"
@@ -180,7 +174,7 @@ class ChatViewer(WaferModule):
     def popup(self, event):
         self.menu.post(event.x_root, event.y_root)
         
-    def on_click(event, widget_origin='?'):
+    def on_click(self, event, widget_origin='?'):
         global tag_to_handle
         if tag_to_handle:
             if tag_to_handle == "systemlink":
@@ -190,3 +184,9 @@ class ChatViewer(WaferModule):
             tag_to_handle = ''
         else:
             self.popup(event)
+
+    def copy_button3(self, event=''):
+        try:
+            setclipboard(self.status.selection_get())
+        except:
+            pass
