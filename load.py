@@ -27,6 +27,10 @@ plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
 
 from web_handlers import *
 
+from wafer_module import WaferModule
+
+from chatviewer import ChatViewer
+
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
     * Use the 'interior' attribute to place widgets inside the scrollable frame
@@ -470,7 +474,7 @@ class SystemFrame(tk.Frame):
         webbrowser.open("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.system_name))
     def rightclick(self, event):
         self.menu.post(event.x_root, event.y_root)
-
+'''
 class WaferModule(tk.Frame):
     
     def __init__(self, parent, *args, **options):
@@ -496,7 +500,7 @@ class WaferModule(tk.Frame):
         
     def update_theme(self):
         pass
-
+'''
 class ShipFrame(tk.Frame):
     def __init__(self, parent, ship_data, edsm_username, *args, **options):
         tk.Frame.__init__(self, parent, *args, **options)
@@ -1092,6 +1096,7 @@ def plugin_app(parent):
         ['Surface navigation', SurfaceNavigation],
         ['Neutron navigation', NeutronNavigation],
         ['Fleet', FleetMonitor],
+        ['Chat', ChatViewer]
         ]
     plugin_app.wafer_modules = {}
     plugin_app.frame = FakeNotebook(parent, text = 'L3-37')
