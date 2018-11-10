@@ -10,7 +10,6 @@ import tkMessageBox
 import myNotebook as nb
 
 from ttkHyperlinkLabel import HyperlinkLabel
-import cPickle
 
 import sys
 
@@ -26,30 +25,7 @@ this = sys.modules[__name__]	# For holding module globals
 
 plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
 
-
-with open(path.join(config.respath, 'systems.p'),  'rb') as h:
-    this.system_ids  = cPickle.load(h)
-    
-with open(path.join(config.respath, 'stations.p'), 'rb') as h:
-    this.station_ids = cPickle.load(h)
-
-def EDDB_system_url(system_name):
-    if EDDB_system_id(system_name):
-        return 'https://eddb.io/system/%d' % EDDB_system_id(system_name)
-    else:
-        return None
-
-def EDDB_station_url(system_name, station_name):
-    if EDDB_station_id(system_name, station_name):
-        return 'https://eddb.io/station/%d' % EDDB_station_id(system_name, station_name)
-    else:
-        return EDDB_system_url(system_name)
-
-def EDDB_system_id(system_name):
-    return this.system_ids.get(system_name, [0, False])[0]
-    
-def EDDB_station_id(system_name, station_name):
-    return this.station_ids.get((EDDB_system_id(system_name), station_name), 0)
+from web_handlers import *
 
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
@@ -1162,48 +1138,6 @@ def dashboard_entry(cmdr, is_beta, entry):
 def cmdr_data(data, is_beta):
     for key, module in plugin_app.wafer_modules.iteritems():
         module.cmdr_data(data, is_beta)
-    
-def scrub_journal_entry(cmdr, system, station, entry, state):
-    global settings_open
-    if entry['event'] == 'Location':
-        if 'Latitude' in entry:
-            plugin_app.lbl_frm.grid(row=0,column=0, columnspan=4, sticky='nsew')
-        else:
-            settings_open = True
-            toggle_settings()
-            plugin_app.lbl_frm.grid_forget()
-    elif entry['event'] == 'ApproachBody':
-        plugin_app.lbl_frm.grid(row=0,column=0, columnspan=4, sticky='nsew')
-    elif entry['event'] in ['LeaveBody','FSDJump']:
-        settings_open = True
-        toggle_settings()
-        plugin_app.lbl_frm.grid_forget()
-
-def scrub_dashboard_entry(cmdr, is_beta, entry):
-    if "Latitude" in entry:
-        try:
-            current_lat_lon = (entry["Latitude"], entry["Longitude"])
-            target_lat_lon = (float(plugin_app.target_lat.get()), float(plugin_app.target_lon.get()))
-            bearing = calculate_initial_compass_bearing(current_lat_lon, target_lat_lon)
-            txt_bearing = "%.2f" % bearing
-            correction = (360 + (bearing - entry['Heading'])) % 360
-            plugin_app.bearing.config(text=txt_bearing)
-            if 1 < correction < 180:
-                plugin_app.lbl_right.config(text=">")
-            else:
-                plugin_app.lbl_right.config(text="")
-            if 180 < correction < 359:
-                plugin_app.lbl_left.config(text="<")
-            else:
-                plugin_app.lbl_left.config(text="")
-        except:
-            plugin_app.bearing.config(text="!")
-            plugin_app.lbl_left.config(text="<")
-            plugin_app.lbl_right.config(text=">")
-    else:
-        plugin_app.bearing.config(text="")
-        plugin_app.lbl_left.config(text="<")
-        plugin_app.lbl_right.config(text=">")
 
 def getclipboard():
     r = tk.Tk()
