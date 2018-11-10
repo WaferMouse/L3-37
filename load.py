@@ -9,6 +9,9 @@ import urllib
 import tkMessageBox
 import myNotebook as nb
 
+from ttkHyperlinkLabel import HyperlinkLabel
+import cPickle
+
 import sys
 
 from companion import ship_map
@@ -22,6 +25,31 @@ import math
 this = sys.modules[__name__]	# For holding module globals
 
 plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
+
+
+with open(path.join(config.respath, 'systems.p'),  'rb') as h:
+    this.system_ids  = cPickle.load(h)
+    
+with open(path.join(config.respath, 'stations.p'), 'rb') as h:
+    this.station_ids = cPickle.load(h)
+
+def EDDB_system_url(system_name):
+    if EDDB_system_id(system_name):
+        return 'https://eddb.io/system/%d' % EDDB_system_id(system_name)
+    else:
+        return None
+
+def EDDB_station_url(system_name, station_name):
+    if EDDB_station_id(system_name, station_name):
+        return 'https://eddb.io/station/%d' % EDDB_station_id(system_name, station_name)
+    else:
+        return EDDB_system_url(system_name)
+
+def EDDB_system_id(system_name):
+    return this.system_ids.get(system_name, [0, False])[0]
+    
+def EDDB_station_id(system_name, station_name):
+    return this.station_ids.get((EDDB_system_id(system_name), station_name), 0)
 
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
@@ -500,8 +528,11 @@ class ShipFrame(tk.Frame):
         self.build_ui()
         self.update_ship(ship_data)
         if plugin_app.theme:
-            for element in self.elements:
+            for element in [self.ship_link, self.station_link, self.system_link]:
                 element.config(background = plugin_app.bg, foreground = plugin_app.hl)
+            for element in [self.sys_label, self.station_label]:
+                element.config(background = plugin_app.bg, foreground = plugin_app.fg)
+            self.sub_frame.config(background = plugin_app.bg)
         
     def update_ship(self, ship_data):
         self.ship_data = ship_data
@@ -511,39 +542,44 @@ class ShipFrame(tk.Frame):
             self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
         self.sysname = ship_data['starsystem']['name']
         self.stationname = ship_data['station']['name']
-        self.elements[0].config(text = self.ship_lbl_txt)
-        self.elements[1].config(text = 'System: {}'.format(self.sysname))
-        self.elements[2].config(text = 'Station: {}'.format(self.stationname))
+        if config.get('system_provider') == 'eddb':
+            self.sys_url = EDDB_system_url(self.sysname)
+        else:
+            self.sys_url = 'https://www.edsm.net/show-system?systemName=' + urllib.quote_plus(self.sysname)
+            
+        if config.get('station_provider') == 'eddb':
+            self.station_url = EDDB_station_url(self.sysname, self.stationname)
+        else:
+            self.station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.quote_plus(self.sysname), urllib.quote_plus(self.stationname))
+        self.system_link.configure(url = self.sys_url, text = self.sysname)
+        edID = plugin_app.FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
+        self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), self.edsm_username, self.ship_data['id'], edID)
+        self.ship_link.configure(url = self.ship_url, text = self.ship_lbl_txt)
+        self.station_link.configure(url = self.station_url, text = self.stationname)
         
     def build_ui(self):
-        self.elements = [
-                        tk.Label(self, text = '', justify=tk.LEFT, anchor=tk.W, pady=0),
-                        tk.Label(self, text = 'System:', justify=tk.LEFT, anchor=tk.W, pady=0),
-                        tk.Label(self, text = 'Station:', justify=tk.LEFT, anchor=tk.W, pady=0),
-                        ]
-        self.bind("<Button-1>", self.click)
+        self.sub_frame = tk.Frame(self)
+        self.ship_link = HyperlinkLabel(self, text = '', justify=tk.LEFT, anchor='w', url = None)
+        self.system_link = HyperlinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
+        self.station_link = HyperlinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
+        self.ship_link.grid(column = 0, row = 0, sticky = 'w')
+        self.sub_frame.grid(sticky = 'w')
+        self.sys_label = tk.Label(self.sub_frame, text = 'System: ', justify=tk.LEFT, anchor=tk.W, pady=0)
+        self.sys_label.grid(column = 0, row = 1, sticky = 'w')
+        self.system_link.grid(column = 1, row = 1, sticky = 'w')
+        self.station_label = tk.Label(self.sub_frame, text = 'Station: ', justify=tk.LEFT, anchor=tk.W, pady=0)
+        self.station_label.grid(column = 0, row = 2, sticky = 'w')
+        self.station_link.grid(column = 1, row = 2, sticky = 'w')
         self.menu = tk.Menu(self, tearoff=0)
 
         self.menu.add_command(label="Copy system name", command = self.copySystem)
-        self.menu.add_command(label="Copy EDSM link", command = self.copySystemLink)
-        self.bind("<Button-3>", self.rightclick)
-        for i in self.elements:
-            i.pack(fill="x")
+#        self.menu.add_command(label="Copy EDSM link", command = self.copySystemLink)
+        for i in [self.station_link, self.system_link]:
             i.bind("<Button-3>", self.rightclick)
-        for i in range(2):
-            self.elements[i+1].bind("<Button-1>", self.click)
-        self.elements[0].bind("<Button-1>", self.click_name)
     def copySystem(self):
         setclipboard(self.sysname)
-    def copySystemLink(self):
-        setclipboard("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.sysname))
-    def click(self, event):
-        webbrowser.open("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.sysname))
     def rightclick(self, event):
         self.menu.post(event.x_root, event.y_root)
-    def click_name(self, event):
-        edID = plugin_app.FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
-        webbrowser.open("https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), self.edsm_username, self.ship_data['id'], edID))
         
 class FleetMonitor(WaferModule):
     
