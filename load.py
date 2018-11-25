@@ -31,6 +31,8 @@ from wafer_module import WaferModule
 
 from chat_viewer import ChatViewer
 
+from fsd_target import FSDTarget
+
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
     * Use the 'interior' attribute to place widgets inside the scrollable frame
@@ -524,11 +526,15 @@ class ShipFrame(tk.Frame):
         self.stationname = ship_data['station']['name']
         if config.get('system_provider') == 'eddb':
             self.sys_url = EDDB_system_url(self.sysname)
+        elif config.get('system_provider') == 'Inara':
+            self.sys_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.sysname)
         else:
             self.sys_url = 'https://www.edsm.net/show-system?systemName=' + urllib.quote_plus(self.sysname)
             
         if config.get('station_provider') == 'eddb':
             self.station_url = EDDB_station_url(self.sysname, self.stationname)
+        elif config.get('station_provider') == 'Inara':
+            self.station_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.stationname)
         else:
             self.station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.quote_plus(self.sysname), urllib.quote_plus(self.stationname))
         self.system_link.configure(url = self.sys_url, text = self.sysname)
@@ -1096,7 +1102,8 @@ def plugin_app(parent):
         ['Surface navigation', SurfaceNavigation],
         ['Neutron navigation', NeutronNavigation],
         ['Fleet', FleetMonitor],
-        ['Chat', ChatViewer]
+        ['Chat', ChatViewer],
+#        ['Long range scanner', FSDTarget],
         ]
     plugin_app.wafer_modules = {}
     plugin_app.frame = FakeNotebook(parent, text = 'L3-37')
