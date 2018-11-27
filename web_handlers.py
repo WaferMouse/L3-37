@@ -2,6 +2,7 @@ from os import path
 import sys
 from config import config
 import cPickle
+import urllib
 
 this = sys.modules[__name__]	# For holding module globals
 
@@ -28,3 +29,21 @@ def EDDB_system_id(system_name):
     
 def EDDB_station_id(system_name, station_name):
     return this.station_ids.get((EDDB_system_id(system_name), station_name), 0)
+    
+def get_system_url(system_name):
+    if config.get('system_provider') == 'eddb':
+        system_url = EDDB_system_url(system_name)
+    elif config.get('system_provider') == 'Inara':
+        system_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(system_name)
+    else:
+        system_url = 'https://www.edsm.net/show-system?systemName=' + urllib.quote_plus(system_name)
+    return(system_url)
+    
+def get_station_url(system_name, station_name):
+    if config.get('station_provider') == 'eddb':
+        station_url = EDDB_station_url(system_name, station_name)
+    elif config.get('station_provider') == 'Inara':
+        station_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(station_name)
+    else:
+        station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.quote_plus(system_name), urllib.quote_plus(station_name))
+    return(station_url)

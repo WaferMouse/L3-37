@@ -453,7 +453,7 @@ class SystemFrame(tk.Frame):
         self.menu = tk.Menu(self, tearoff=0)
 
         self.menu.add_command(label="Copy system name", command = self.copySystem)
-        self.menu.add_command(label="Copy EDSM link", command = self.copySystemLink)
+#        self.menu.add_command(label="Copy EDSM link", command = self.copySystemLink)
         self.bind("<Button-3>", self.rightclick)
         self.bind("<Button-1>", self.click)
         
@@ -473,7 +473,7 @@ class SystemFrame(tk.Frame):
     def copySystemLink(self):
         setclipboard("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.system_name))
     def click(self, event):
-        webbrowser.open("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.system_name))
+        webbrowser.open(get_system_url(self.system_name))
     def rightclick(self, event):
         self.menu.post(event.x_root, event.y_root)
 '''
@@ -524,6 +524,7 @@ class ShipFrame(tk.Frame):
             self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
         self.sysname = ship_data['starsystem']['name']
         self.stationname = ship_data['station']['name']
+        '''
         if config.get('system_provider') == 'eddb':
             self.sys_url = EDDB_system_url(self.sysname)
         elif config.get('system_provider') == 'Inara':
@@ -537,9 +538,13 @@ class ShipFrame(tk.Frame):
             self.station_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.stationname)
         else:
             self.station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.quote_plus(self.sysname), urllib.quote_plus(self.stationname))
+            '''
+        self.sys_url = get_system_url(self.sysname)
+        self.station_url = get_station_url(self.sysname, self.stationname)
         self.system_link.configure(url = self.sys_url, text = self.sysname)
         edID = plugin_app.FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
         self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), self.edsm_username, self.ship_data['id'], edID)
+        # https://inara.cz/cmdr-fleet/
         self.ship_link.configure(url = self.ship_url, text = self.ship_lbl_txt)
         self.station_link.configure(url = self.station_url, text = self.stationname)
         

@@ -10,6 +10,9 @@ from os.path import join
 import cPickle
 import sys
 
+# https://www.edsm.net/api-v1/system?systemName=Shinrarta%20Dezhra&showCoordinates=1&showInformation=1&showPermit=1&showPrimaryStar=1
+# https://www.edsm.net/api-system-v1/stations?systemName=Robigo
+
 this = sys.modules[__name__]	# For holding module globals
 
 with open(join(config.respath, 'systems.p'),  'rb') as h:

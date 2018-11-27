@@ -16,7 +16,8 @@ systemlinks = []
 systemcount = 0
 
 idx = ''
-
+# https://inara.cz/cmdr-friends/
+# https://www.edsm.net/en/dashboard/friends
 tag_to_handle = ''
 
 from datetime import datetime
@@ -65,6 +66,10 @@ class ChatViewer(WaferModule):
         """
         Create a TK widget for the EDMC main window
         """
+        self.theme = config.getint('theme')
+        self.fg = config.get('dark_text') if self.theme else 'black'
+        self.hl = config.get('dark_highlight') if self.theme else 'blue'
+        self.bg = 'grey4' if self.theme else 'grey'
         self.status = tk.Text(self)
         self.chatcopy = tk.Button(self, text = "Copy", command = self.copy_button3)
         self.chatcopy.grid(row = 1, column = 0, columnspan = 4)
@@ -72,16 +77,15 @@ class ChatViewer(WaferModule):
         self.status.grid(row=0, column = 0, columnspan = 3, sticky='nswe')
         for i in range(3):
             self.grid_columnconfigure(i, weight = 1)
-        self.status.insert(tk.END,"Chat viewer loaded")
-        self.status.config(state=tk.DISABLED)
         self.status.config(height=10, wrap='word')
         self.status.see(tk.END)
         self.status.bind('<Button-3>', lambda e, w='textwidget': self.on_click(e, w))
         self.status.bind('Control-x', self.copy_button3)
-        self.status.tag_config('link', underline=1)
+        self.status.tag_config('link', underline=1, foreground = self.hl)
+        self.status.tag_config('regular_text', foreground = self.fg)
         self.status.tag_bind('link', '<Button-1>', showLink)
         self.status.tag_bind('link', '<Button-3>', lambda e, w='link': on_tag_click(e, w))
-        self.status.tag_config('systemlink', underline=1)
+        self.status.tag_config('systemlink', underline=1, foreground = self.hl)
         self.status.tag_bind('systemlink', '<Button-1>', showSystem)
         self.status.tag_bind('systemlink', '<Button-3>', lambda e, w='systemlink': on_tag_click(e, w))
         self.freeze = tk.IntVar(self)
@@ -97,6 +101,8 @@ class ChatViewer(WaferModule):
         self.menu.add_command(label="Copy text (Ctrl x)", command = self.copy_button3)
         self.linkMenu = tk.Menu(self, tearoff=0)
         self.linkMenu.add_command(label="Copy link", command = copyLink)
+        self.status.insert(tk.END,"Chat viewer loaded", 'regular_text')
+        self.status.config(state=tk.DISABLED)
         print "Chat Viewer loaded"
 
     def journal_entry(self, cmdr, system, station, entry, state):
@@ -110,7 +116,7 @@ class ChatViewer(WaferModule):
         localtimestamp = localeventtime.strftime('%H:%M')
         if debugoutput == True:
             self.status.config(state=tk.NORMAL)
-            self.status.insert(tk.END, "\n{}".format(entry))
+            self.status.insert(tk.END, "\n{}".format(entry), 'regular_text')
             self.status.see(tk.END)
             self.status.config(state=tk.DISABLED)
         event = entry["event"]
@@ -142,9 +148,9 @@ class ChatViewer(WaferModule):
             try:
                 systemlinks.append(entry["StarSystem"])
                 self.status.config(state=tk.NORMAL)
-                self.status.insert(tk.END, "\n[{}] * {} ".format(localtimestamp,formtext[event]))
+                self.status.insert(tk.END, "\n[{}] * {} ".format(localtimestamp,formtext[event]), 'regular_text')
                 self.status.insert(tk.END, "{}".format(entry["StarSystem"]), ('systemlink', systemcount))
-                self.status.insert(tk.END, " *")
+                self.status.insert(tk.END, " *", 'regular_text')
                 systemcount = systemcount + 1
                 if self.freeze.get() != 1:
                     self.status.see(tk.END)
@@ -156,8 +162,8 @@ class ChatViewer(WaferModule):
         if display == True:
             self.status.config(state=tk.NORMAL)
             if sender != lastsender:
-                self.status.insert(tk.END, "\nCMDR {}:".format(sender))
-            self.status.insert(tk.END, "\n[{}][{}] ".format(localtimestamp, channel.upper()))
+                self.status.insert(tk.END, "\nCMDR {}:".format(sender), 'regular_text')
+            self.status.insert(tk.END, "\n[{}][{}] ".format(localtimestamp, channel.upper()), 'regular_text')
             for word in entry["Message"].split(' '):
                 thing = urlparse(word.strip())
                 if thing.scheme:
@@ -165,7 +171,7 @@ class ChatViewer(WaferModule):
                     self.status.insert(tk.END, "{} ".format(word), ('link', linkcount))
                     linkcount = linkcount + 1
                 else:
-                    self.status.insert(tk.END, "{} ".format(word))
+                    self.status.insert(tk.END, "{} ".format(word), 'regular_text')
             if self.freeze.get() != 1:
                 self.status.see(tk.END)
             self.status.config(state=tk.DISABLED)
