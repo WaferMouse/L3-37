@@ -935,7 +935,6 @@ class NeutronNavigation(WaferModule):
         disassembled = urlparse(o)
         url, scrap = path.splitext(path.basename(disassembled.path))
         url = 'https://spansh.co.uk/api/results/' + url
-        print(url)
         response = urllib.urlopen(url)
         data = json.loads(response.read())
         
@@ -1114,7 +1113,7 @@ def plugin_app(parent):
     plugin_app.frame = FakeNotebook(parent, text = 'L3-37')
     plugin_app.theme = config.getint('theme')
     plugin_app.fg = config.get('dark_text') if plugin_app.theme else 'black'
-    plugin_app.hl = config.get('dark_highlight') if plugin_app.theme else 'black'
+    plugin_app.hl = config.get('dark_highlight') if plugin_app.theme else 'blue'
     plugin_app.bg = 'grey4' if plugin_app.theme else 'grey'
     for module in plugin_app.wafer_module_classes:
         plugin_app.wafer_modules[module[0]] = module[1](plugin_app.frame, highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg, highlightthickness = 1)#, relief = tk.SUNKEN, borderwidth = 1)
