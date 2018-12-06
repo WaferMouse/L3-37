@@ -47,11 +47,7 @@ def copyLink(event=''):
 
 def showSystem(event):
     idx = int(event.widget.tag_names(tk.CURRENT)[1])
-    if config.get('system_provider') == 'eddb':
-        webbrowser.open(EDDB_system_url(systemlinks[idx]))
-    else:
-        webbrowser.open('https://www.edsm.net/show-system?systemName=' + quote_plus(systemlinks[idx]))
-#    webbrowser.open("https://www.edsm.net/show-system?systemName=" + quote_plus(systemlinks[idx]))
+    webbrowser.open(get_system_url(systemlinks[idx]))
 
 def copySystem(event=''):
     setclipboard(systemlinks[idx])
