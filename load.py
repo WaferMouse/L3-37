@@ -1107,7 +1107,7 @@ def plugin_app(parent):
         ['Neutron navigation', NeutronNavigation],
         ['Fleet', FleetMonitor],
         ['Chat', ChatViewer],
-#        ['Long range scanner', FSDTarget],
+        ['Long range scanner', FSDTarget],
         ]
     plugin_app.wafer_modules = {}
     plugin_app.frame = FakeNotebook(parent, text = 'L3-37')
