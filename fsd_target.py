@@ -106,6 +106,7 @@ def edsm_handler(event):
 #    print("Probably got some EDSM data!")
     if this.edsm_data is None:
         # error
+        this.loading.forget()
         return()
     data = this.edsm_data
     system_name = data['name']
@@ -133,8 +134,8 @@ def edsm_handler(event):
     if data['query_type'] == 'stations':
         this.edsm_cache[system_name]['stations'] = data['stations']
 #        print("EDSM download complete!")
-        this.loading.forget()
         if this.system_string == system_name:
+            this.loading.forget()
             display_results(system_name)
 
 class StationFrame(tk.Frame):
@@ -154,7 +155,11 @@ class StationFrame(tk.Frame):
         
         facilities_abr = type_abr + ['','M'][station_data['haveMarket']] + ['','S'][station_data['haveShipyard']] + ['','O'][station_data['haveOutfitting']]
         facilities_abr = facilities_abr + '+{}'.format(len(station_data['otherServices']))
-        label_text = '{} ({}ls) {}'.format(station_data['name'], int(station_data['distanceToArrival']), facilities_abr)
+        try:
+            distance = int(station_data['distanceToArrival'])
+        except:
+            distance = '?'
+        label_text = '{} ({}ls) {}'.format(station_data['name'], distance, facilities_abr)
         self.name_lbl = HyperlinkLabel(self, compound=tk.RIGHT, url = get_station_url(system_name, station_data['name']), text = label_text, background = bg, foreground = hl)
         self.name_lbl.pack(side = 'left')
 
