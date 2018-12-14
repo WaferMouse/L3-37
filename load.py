@@ -19,8 +19,6 @@ import os
 
 import math
 
-#settings_open = False
-
 this = sys.modules[__name__]	# For holding module globals
 
 plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
@@ -116,10 +114,6 @@ class FakeNotebook(tk.Frame):
         self.label_frame.pack(fill=tk.BOTH)
         self.fake_combo.pack(fill=tk.BOTH, side = tk.LEFT, expand = 1)
         self.fake_combo2.pack(side=tk.LEFT)
-
-#        self.sub_frame = tk.Frame(self)
-#        self.sub_frame.pack()
-        #tk.Button(self, text = '', command = lambda x=i: select_layout(x))
         
     def popup(self, event=''):
         self.menu.post(self.fake_combo.winfo_rootx(), self.fake_combo.winfo_rooty()+self.fake_combo.winfo_height())
@@ -315,9 +309,6 @@ class ModelFSDShip:
                 if mod['Label'] == 'FSDMaxFuelPerJump ':
                     self.fsd_stats['maxfuel'] = mod['Value']
                     
-#        for k,v in self.fsd_stats.iteritems():
-#            pass
-            
     def calc_max_distance(self, cargo_mass = 0, fuel_mass = -1):#, fuel_mass = self.mass_capacities['fuel']):
         if fuel_mass == -1:
             fuel_mass = self.mass_capacities['fuel']
@@ -421,7 +412,6 @@ class JumpFuelWidget(tk.Frame):
             i += 1
             
     def update(self, line, fuel):
-#        for line in self.lines:
         if fuel:
             try:
                 self.canvas.itemconfigure(self.lines[line], state = 'normal')
@@ -476,33 +466,7 @@ class SystemFrame(tk.Frame):
         webbrowser.open(get_system_url(self.system_name))
     def rightclick(self, event):
         self.menu.post(event.x_root, event.y_root)
-'''
-class WaferModule(tk.Frame):
-    
-    def __init__(self, parent, *args, **options):
-        tk.Frame.__init__(self, parent, *args, **options)
         
-    def journal_entry(self, cmdr, system, station, entry, state):
-        """
-        Handle events that are delegated to this module.
-        """
-        pass
-        
-    def dashboard_entry(self, cmdr, is_beta, entry):
-        """
-        Handle events that are delegated to this module.
-        """
-        pass
-        
-    def cmdr_data(self, data, is_beta):
-        """
-        Handle events that are delegated to this module.
-        """
-        pass
-        
-    def update_theme(self):
-        pass
-'''
 class ShipFrame(tk.Frame):
     def __init__(self, parent, ship_data, edsm_username, *args, **options):
         tk.Frame.__init__(self, parent, *args, **options)
@@ -524,21 +488,6 @@ class ShipFrame(tk.Frame):
             self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
         self.sysname = ship_data['starsystem']['name']
         self.stationname = ship_data['station']['name']
-        '''
-        if config.get('system_provider') == 'eddb':
-            self.sys_url = EDDB_system_url(self.sysname)
-        elif config.get('system_provider') == 'Inara':
-            self.sys_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.sysname)
-        else:
-            self.sys_url = 'https://www.edsm.net/show-system?systemName=' + urllib.quote_plus(self.sysname)
-            
-        if config.get('station_provider') == 'eddb':
-            self.station_url = EDDB_station_url(self.sysname, self.stationname)
-        elif config.get('station_provider') == 'Inara':
-            self.station_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.stationname)
-        else:
-            self.station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.quote_plus(self.sysname), urllib.quote_plus(self.stationname))
-            '''
         self.sys_url = get_system_url(self.sysname)
         self.station_url = get_station_url(self.sysname, self.stationname)
         self.system_link.configure(url = self.sys_url, text = self.sysname)
@@ -564,7 +513,6 @@ class ShipFrame(tk.Frame):
         self.menu = tk.Menu(self, tearoff=0)
 
         self.menu.add_command(label="Copy system name", command = self.copySystem)
-#        self.menu.add_command(label="Copy EDSM link", command = self.copySystemLink)
         for i in [self.station_link, self.system_link]:
             i.bind("<Button-3>", self.rightclick)
     def copySystem(self):
@@ -618,7 +566,6 @@ class FleetMonitor(WaferModule):
                     self.ship_widgets[ship].config(background = plugin_app.bg)
             self.ship_widgets[ship].pack(fill = tk.BOTH, expand = 1)
         for key, widget in self.ship_widgets.iteritems():
-#            widget.update_theme()
             widget.config(highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg)
             
         if plugin_app.theme:
@@ -661,8 +608,6 @@ class FleetMonitor(WaferModule):
                 del self.ships[ship]["value"]
                 del self.ships[ship]["free"]
                 self.ships[ship].update({'localised_name': ship_map[self.ships[ship]['name'].lower()]})
-#                if 'shipName' not in self.ships[ship]:
-#                    self.ships[ship].update({'shipName': self.ships[ship]['localised_name']})
                 write_file = True
                 do_build_ui = True
           
@@ -699,9 +644,6 @@ class FleetMonitor(WaferModule):
                 'localised_name': ship_map[state['ShipType'].lower()]
                 }
             
-#            if state_ship['shipName'] == None:
-#                state_ship.update({'shipName': state_ship['localised_name']})
-            
             if str(current_ship_id) not in self.ships:
                 self.ships[str(current_ship_id)] = state_ship
                 write_file = True
@@ -725,7 +667,6 @@ class FleetMonitor(WaferModule):
                     "station": {"name": station},
 #                    "starpos": state['StarPos'],
                     })
-#                    update_gui()
                 write_file = True
                 do_build_ui = True
             
@@ -750,7 +691,6 @@ class FleetMonitor(WaferModule):
                     do_build_ui = True
                 except:
                     pass
-#                    update_gui()
           
         if write_file:
             self.bigjsonships.update({self.cmdr: self.ships})
@@ -973,13 +913,11 @@ class NeutronNavigation(WaferModule):
                 if plugin_app.theme:
                     self.jump_widgets[-1].config(bg = plugin_app.bg, fg = plugin_app.fg)
                 self.jump_widgets[-1].grid(row = (widget_row*4)+2, column = 1, sticky = 'nsew', rowspan = 2)
-                #self.dyn_widgets[-1].update()
                 self.fuel_widgets.append(JumpFuelWidget(self.details_scroll.interior, jumps = jumps, is_neutron = is_neutron))
                 self.fuel_widgets[-1].grid(row = (widget_row*4)+1, column = 0, sticky = 'nsew', rowspan = 4)
             except:
                 pass
             widget_row += 1
-#            self.dyn_widgets[-1].pack(fill = tk.BOTH, expand = 1)
             
             self.queued_systems.append(name.lower())
             
@@ -1049,15 +987,7 @@ class NeutronNavigation(WaferModule):
                     else:
                         self.fuel_widgets[i].update(0, False)
                         self.fuel_widgets[i].update(1, False)
-            if False:#entry['event'] == 'FSDJump':
-                real_fuel = entry['FuelUsed'] + entry['FuelLevel']
-                boostused = 1
-                if 'BoostUsed' in entry:
-                    boostused = entry['BoostUsed']
-                test_fuel = self.model_ship.calc_fuel_use(entry['JumpDist'], real_fuel, boostused = boostused)
-                print('Real fuel use: {} | Test fuel use: {}'.format(entry['FuelUsed'], test_fuel))
-                print('Difference: {}'.format(entry['FuelUsed'] - test_fuel))
-                    
+                        
     def check_starsystem(self, system):
         if system.lower() in self.queued_systems:
             systems_to_delete = self.queued_systems.index(system.lower())
