@@ -40,7 +40,9 @@ SHIP_FD_NAME_TO_CORIOLIS_NAME = {
     'TypeX_3': 'alliance_challenger',
     'Viper': 'viper',
     'Viper_MkIV': 'viper_mk_iv',
-    'Vulture': 'vulture'
+    'Vulture': 'vulture',
+    'krait_light': 'krait_phantom',
+    'mamba': 'mamba',
 }
 
 SHIP_CORIOLIS_NAME_TO_FD_NAME = {v: k for k, v in SHIP_FD_NAME_TO_CORIOLIS_NAME.iteritems()}
