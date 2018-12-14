@@ -4,7 +4,7 @@ from os import listdir
 
 flat_ships = {}
 
-SHIP_FD_NAME_TO_CORIOLIS_NAME = {
+SHIP_FD_NAME_TO_CORIOLIS_NAME = { #from coriolis/src/app/utils/CompanionApiUtils.js
     'Adder': 'adder',
     'Anaconda': 'anaconda',
     'Asp': 'asp',
