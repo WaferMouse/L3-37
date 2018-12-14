@@ -2733,14 +2733,5 @@
   }, 
   "int_shieldgenerator_size8_class5_strong": {
     "mass": 320
-  }, 
-  "int_stellarbodydiscoveryscanner_advanced": {
-    "mass": 2
-  }, 
-  "int_stellarbodydiscoveryscanner_intermediate": {
-    "mass": 2
-  }, 
-  "int_stellarbodydiscoveryscanner_standard": {
-    "mass": 2
   }
 }

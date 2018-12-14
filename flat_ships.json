@@ -87,9 +87,17 @@
     "edID": 128672269, 
     "hullMass": 180
   }, 
+  "krait_light": {
+    "edID": 128839281, 
+    "hullMass": 270
+  }, 
   "krait_mkii": {
     "edID": 128816567, 
     "hullMass": 320
+  }, 
+  "mamba": {
+    "edID": 128915979, 
+    "hullMass": 250
   }, 
   "orca": {
     "edID": 128049327, 
