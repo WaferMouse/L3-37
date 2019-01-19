@@ -1074,7 +1074,11 @@ def prefs_changed():
 
 def journal_entry(cmdr, system, station, entry, state):
     for key, module in plugin_app.wafer_modules.iteritems():
-        module.journal_entry(cmdr, system, station, entry, state)
+        try:
+            module.journal_entry(cmdr, system, station, entry, state)
+        except Exception as exc:
+            print(traceback.format_exc())
+            print(exc)
 
 def dashboard_entry(cmdr, is_beta, entry):
     for key, module in plugin_app.wafer_modules.iteritems():
