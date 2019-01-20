@@ -8,6 +8,7 @@ import json
 import urllib
 import tkMessageBox
 import myNotebook as nb
+import traceback
 
 from ttkHyperlinkLabel import HyperlinkLabel
 
@@ -483,7 +484,7 @@ class ShipFrame(tk.Frame):
     def update_ship(self, ship_data):
         self.ship_data = ship_data
         if 'shipName' in ship_data:
-            self.ship_lbl_txt = "{} ({})".format(ship_data['shipName'],ship_map[ship_data['name'].lower()])
+            self.ship_lbl_txt = u"{} ({})".format(ship_data['shipName'],ship_map[ship_data['name'].lower()])
         else:
             self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
         self.sysname = ship_data['starsystem']['name']

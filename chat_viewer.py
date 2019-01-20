@@ -158,16 +158,16 @@ class ChatViewer(WaferModule):
         if display == True:
             self.status.config(state=tk.NORMAL)
             if sender != lastsender:
-                self.status.insert(tk.END, "\nCMDR {}:".format(sender), 'regular_text')
+                self.status.insert(tk.END, u"\nCMDR {}:".format(sender), 'regular_text')
             self.status.insert(tk.END, "\n[{}][{}] ".format(localtimestamp, channel.upper()), 'regular_text')
             for word in entry["Message"].split(' '):
                 thing = urlparse(word.strip())
                 if thing.scheme:
                     links.append(word)
-                    self.status.insert(tk.END, "{} ".format(word), ('link', linkcount))
+                    self.status.insert(tk.END, u"{} ".format(word), ('link', linkcount))
                     linkcount = linkcount + 1
                 else:
-                    self.status.insert(tk.END, "{} ".format(word), 'regular_text')
+                    self.status.insert(tk.END, u"{} ".format(word), 'regular_text')
             if self.freeze.get() != 1:
                 self.status.see(tk.END)
             self.status.config(state=tk.DISABLED)
