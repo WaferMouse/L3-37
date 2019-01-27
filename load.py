@@ -32,6 +32,8 @@ from chat_viewer import ChatViewer
 
 from fsd_target import FSDTarget
 
+from mats_helper import MatsHelper
+
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
     * Use the 'interior' attribute to place widgets inside the scrollable frame
@@ -1039,6 +1041,7 @@ def plugin_app(parent):
         ['Fleet', FleetMonitor],
         ['Chat', ChatViewer],
         ['Long range scanner', FSDTarget],
+        ['Materials helper',MatsHelper],
         ]
     plugin_app.wafer_modules = {}
     plugin_app.frame = FakeNotebook(parent, text = 'L3-37')

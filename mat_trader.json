@@ -1,0 +1,162 @@
+{
+  "raw": {
+    "Raw 1": [
+      "Carbon", 
+      "Vanadium", 
+      "Niobium", 
+      "Yttrium"
+    ], 
+    "Raw 2": [
+      "Phosphorus", 
+      "Chromium", 
+      "Molybdenum", 
+      "Technetium"
+    ], 
+    "Raw 3": [
+      "Sulphur", 
+      "Manganese", 
+      "Cadmium", 
+      "Ruthenium"
+    ], 
+    "Raw 4": [
+      "Iron", 
+      "Zinc", 
+      "Tin", 
+      "Selenium"
+    ], 
+    "Raw 5": [
+      "Nickel", 
+      "Germanium", 
+      "Tungsten", 
+      "Tellurium"
+    ], 
+    "Raw 6": [
+      "Rhenium", 
+      "Arsenic", 
+      "Mercury", 
+      "Polonium"
+    ], 
+    "Raw 7": [
+      "Lead", 
+      "Zirconium", 
+      "Boron", 
+      "Antimony"
+    ]
+  }, 
+  "encoded": {
+    "Emission Data": [
+      "Exceptional Scrambled Emission Data", 
+      "Irregular Emission Data", 
+      "Unexpected Emission Data", 
+      "Decoded Emission Data", 
+      "Abnormal Compact Emissions Data"
+    ], 
+    "Wake Scans": [
+      "Atypical Disrupted Wake Echoes", 
+      "Anomalous FSD Telemetry", 
+      "Strange Wake Solutions", 
+      "Eccentric Hyperspace Trajectories", 
+      "Datamined Wake Exceptions"
+    ], 
+    "Shield Data": [
+      "Distorted Shield Cycle Recordings", 
+      "Inconsistent Shield Soak Analysis", 
+      "Untypical Shield Scans", 
+      "Aberrant Shield Pattern Analysis", 
+      "Peculiar Shield Frequency Data"
+    ], 
+    "Encryption Files": [
+      "Unusual Encrypted Files", 
+      "Tagged Encryption Codes", 
+      "Open Symmetric Keys", 
+      "Atypical Encryption Archives", 
+      "Adaptive Encryptors Capture"
+    ], 
+    "Data Archives": [
+      "Anomalous Bulk Scan Data", 
+      "Unidentified Scan Archives", 
+      "Classified Scan Databanks", 
+      "Divergent Scan Data", 
+      "Classified Scan Fragment"
+    ], 
+    "Encoded Firmware": [
+      "Specialised Legacy Firmware", 
+      "Modified Consumer Firmware", 
+      "Cracked Industrial Firmware", 
+      "Security Firmware Patch", 
+      "Modified Embedded Firmware"
+    ]
+  }, 
+  "manufactured": {
+    "Chemical": [
+      "Chemical Storage Units", 
+      "Chemical Processors", 
+      "Chemical Distillery", 
+      "Chemical Manipulators", 
+      "Pharmaceutical Isolators"
+    ], 
+    "Thermic": [
+      "Tempered Alloys", 
+      "Heat Resistant Ceramics", 
+      "Precipitated Alloys", 
+      "Thermic Alloys", 
+      "Military Grade Alloys"
+    ], 
+    "Heat": [
+      "Heat Conduction Wiring", 
+      "Heat Dispersion Plate", 
+      "Heat Exchangers", 
+      "Heat Vanes", 
+      "Proto Heat Radiators"
+    ], 
+    "Conductive": [
+      "Basic Conductors", 
+      "Conductive Components", 
+      "Conductive Ceramics", 
+      "Conductive Polymers", 
+      "Biotech Conductors"
+    ], 
+    "Mechanical Components": [
+      "Mechanical Scrap", 
+      "Mechanical Equipment", 
+      "Mechanical Components", 
+      "Configurable Components", 
+      "Improvised Components"
+    ], 
+    "Capacitors": [
+      "Grid Resistors", 
+      "Hybrid Capacitors", 
+      "Electrochemical Arrays", 
+      "Polymer Capacitors", 
+      "Military Supercapacitors"
+    ], 
+    "Shielding": [
+      "Worn Shield Emitters", 
+      "Shield Emitters", 
+      "Shielding Sensors", 
+      "Compound Shielding", 
+      "Imperial Shielding"
+    ], 
+    "Composite": [
+      "Compact Composites", 
+      "Filament Composites", 
+      "High Density Composites", 
+      "Proprietary Composites", 
+      "Core Dynamics Composites"
+    ], 
+    "Crystals": [
+      "Crystal Shards", 
+      "Flawed Focus Crystals", 
+      "Focus Crystals", 
+      "Refined Focus Crystals", 
+      "Exquisite Focus Crystals"
+    ], 
+    "Alloys": [
+      "Salvaged Alloys", 
+      "Galvanising Alloys", 
+      "Phase Alloys", 
+      "Proto Light Alloys", 
+      "Proto Radiolic Alloys"
+    ]
+  }
+}

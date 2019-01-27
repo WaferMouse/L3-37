@@ -1,0 +1,1368 @@
+{
+  "encoded": {
+    "Unidentified Scan Archives": {
+      "subcat": "Data Archives", 
+      "name_local": "Unidentified Scan Archives", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "scanarchives", 
+        "128681618", 
+        "unidentifiedscanarchives"
+      ]
+    }, 
+    "Ship Flight Data": {
+      "grade": 3, 
+      "aliases": [
+        "tg_shipflightdata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Ship Flight Data"
+    }, 
+    "Untypical Shield Scans": {
+      "subcat": "Shield Data", 
+      "name_local": "Untypical Shield Scans", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "shielddensityreports", 
+        "128681627"
+      ]
+    }, 
+    "Aberrant Shield Pattern Analysis": {
+      "subcat": "Shield Data", 
+      "name_local": "Aberrant Shield Pattern Analysis", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "aberrantshieldpatternanalysis", 
+        "shieldpatternanalysis", 
+        "128681633"
+      ]
+    }, 
+    "Divergent Scan Data": {
+      "subcat": "Data Archives", 
+      "name_local": "Divergent Scan Data", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "encodedscandata", 
+        "128681630"
+      ]
+    }, 
+    "Peculiar Shield Frequency Data": {
+      "subcat": "Shield Data", 
+      "name_local": "Peculiar Shield Frequency Data", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "peculiarshieldfrequencydata", 
+        "shieldfrequencydata"
+      ]
+    }, 
+    "Anomalous FSD Telemetry": {
+      "subcat": "Wake Scans", 
+      "name_local": "Anomalous FSD Telemetry", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "anomalousfsdtelemetry", 
+        "128681619", 
+        "fsdtelemetry"
+      ]
+    }, 
+    "Atypical Disrupted Wake Echoes": {
+      "subcat": "Wake Scans", 
+      "name_local": "Atypical Disrupted Wake Echoes", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "128681613", 
+        "disruptedwakeechoes", 
+        "atypicaldisruptedwakeechoes"
+      ]
+    }, 
+    "Thargoid Material Composition Data": {
+      "grade": 3, 
+      "aliases": [
+        "tg_compositiondata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Material Composition Data"
+    }, 
+    "Guardian Module Blueprint Segment": {
+      "grade": 4, 
+      "aliases": [
+        "guardian_moduleblueprint"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Module Blueprint Segment"
+    }, 
+    "Tagged Encryption Codes": {
+      "subcat": "Encryption Files", 
+      "name_local": "Tagged Encryption Codes", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128681617", 
+        "taggedencryptioncodes", 
+        "encryptioncodes"
+      ]
+    }, 
+    "Exceptional Scrambled Emission Data": {
+      "subcat": "Emission Data", 
+      "name_local": "Exceptional Scrambled Emission Data", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "128681614", 
+        "scrambledemissiondata", 
+        "exceptionalscrambledemissiondata"
+      ]
+    }, 
+    "Strange Wake Solutions": {
+      "subcat": "Wake Scans", 
+      "name_local": "Strange Wake Solutions", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "wakesolutions", 
+        "strangewakesolutions", 
+        "128681625"
+      ]
+    }, 
+    "Classified Scan Databanks": {
+      "subcat": "Data Archives", 
+      "name_local": "Classified Scan Databanks", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "scandatabanks", 
+        "128681624"
+      ]
+    }, 
+    "Pattern Beta Obelisk Data": {
+      "grade": 4, 
+      "aliases": [
+        "ancientculturaldata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Pattern Beta Obelisk Data"
+    }, 
+    "Guardian Weapon Blueprint Segment": {
+      "grade": 4, 
+      "aliases": [
+        "guardian_weaponblueprint"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Weapon Blueprint Segment"
+    }, 
+    "Thargoid Ship Signature": {
+      "grade": 3, 
+      "aliases": [
+        "unknownshipsignature"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Ship Signature"
+    }, 
+    "Unexpected Emission Data": {
+      "subcat": "Emission Data", 
+      "name_local": "Unexpected Emission Data", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128681626", 
+        "emissiondata"
+      ]
+    }, 
+    "Anomalous Bulk Scan Data": {
+      "subcat": "Data Archives", 
+      "name_local": "Anomalous Bulk Scan Data", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "128681612", 
+        "bulkscandata", 
+        "anomalousbulkscandata"
+      ]
+    }, 
+    "Pattern Delta Obelisk Data": {
+      "grade": 4, 
+      "aliases": [
+        "ancientlanguagedata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Pattern Delta Obelisk Data"
+    }, 
+    "Thargoid Residue Data": {
+      "grade": 4, 
+      "aliases": [
+        "tg_residuedata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Residue Data"
+    }, 
+    "Specialised Legacy Firmware": {
+      "subcat": "Encoded Firmware", 
+      "name_local": "Specialised Legacy Firmware", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "128681610", 
+        "specialisedlegacyfirmware", 
+        "legacyfirmware"
+      ]
+    }, 
+    "Modified Embedded Firmware": {
+      "subcat": "Encoded Firmware", 
+      "name_local": "Modified Embedded Firmware", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "128681634", 
+        "embeddedfirmware", 
+        "modifiedembeddedfirmware"
+      ]
+    }, 
+    "Sensor Fragment": {
+      "grade": 1, 
+      "aliases": [
+        "unknownenergysource"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Sensor Fragment"
+    }, 
+    "Atypical Encryption Archives": {
+      "subcat": "Encryption Files", 
+      "name_local": "Atypical Encryption Archives", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128681629", 
+        "atypicalencryptionarchives", 
+        "encryptionarchives"
+      ]
+    }, 
+    "Open Symmetric Keys": {
+      "subcat": "Encryption Files", 
+      "name_local": "Open Symmetric Keys", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "opensymmetrickeys", 
+        "symmetrickeys", 
+        "128681623"
+      ]
+    }, 
+    "Abnormal Compact Emissions Data": {
+      "subcat": "Emission Data", 
+      "name_local": "Abnormal Compact Emissions Data", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "compactemissionsdata", 
+        "128681638"
+      ]
+    }, 
+    "Guardian Vessel Blueprint Segment": {
+      "grade": 5, 
+      "aliases": [
+        "guardian_vesselblueprint"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Vessel Blueprint Segment"
+    }, 
+    "Datamined Wake Exceptions": {
+      "subcat": "Wake Scans", 
+      "name_local": "Datamined Wake Exceptions", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "dataminedwakeexceptions", 
+        "dataminedwake", 
+        "128681637"
+      ]
+    }, 
+    "Inconsistent Shield Soak Analysis": {
+      "subcat": "Shield Data", 
+      "name_local": "Inconsistent Shield Soak Analysis", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "inconsistentshieldsoakanalysis", 
+        "128681621", 
+        "shieldsoakanalysis"
+      ]
+    }, 
+    "Cracked Industrial Firmware": {
+      "subcat": "Encoded Firmware", 
+      "name_local": "Cracked Industrial Firmware", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "crackedindustrialfirmware", 
+        "128681622", 
+        "industrialfirmware"
+      ]
+    }, 
+    "Irregular Emission Data": {
+      "subcat": "Emission Data", 
+      "name_local": "Irregular Emission Data", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128681620", 
+        "archivedemissiondata"
+      ]
+    }, 
+    "Pattern Epsilon Obelisk Data": {
+      "grade": 4, 
+      "aliases": [
+        "ancienttechnologicaldata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Pattern Epsilon Obelisk Data"
+    }, 
+    "Classified Scan Fragment": {
+      "subcat": "Data Archives", 
+      "name_local": "Classified Scan Fragment", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "128681636", 
+        "classifiedscandata"
+      ]
+    }, 
+    "Distorted Shield Cycle Recordings": {
+      "subcat": "Shield Data", 
+      "name_local": "Distorted Shield Cycle Recordings", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "distortedshieldcyclerecordings", 
+        "128681615", 
+        "shieldcyclerecordings"
+      ]
+    }, 
+    "Pattern Alpha Obelisk Data": {
+      "grade": 4, 
+      "aliases": [
+        "ancientbiologicaldata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Pattern Alpha Obelisk Data"
+    }, 
+    "Unusual Encrypted Files": {
+      "subcat": "Encryption Files", 
+      "name_local": "Unusual Encrypted Files", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "unusualencryptedfiles", 
+        "128681611", 
+        "encryptedfiles"
+      ]
+    }, 
+    "Thargoid Structural Data": {
+      "grade": 2, 
+      "aliases": [
+        "tg_structuraldata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Structural Data"
+    }, 
+    "Security Firmware Patch": {
+      "subcat": "Encoded Firmware", 
+      "name_local": "Security Firmware Patch", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "securityfirmware", 
+        "securityfirmwarepatch", 
+        "128681628"
+      ]
+    }, 
+    "Eccentric Hyperspace Trajectories": {
+      "subcat": "Wake Scans", 
+      "name_local": "Eccentric Hyperspace Trajectories", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "eccentrichyperspacetrajectories", 
+        "hyperspacetrajectories", 
+        "128681631"
+      ]
+    }, 
+    "Modified Consumer Firmware": {
+      "subcat": "Encoded Firmware", 
+      "name_local": "Modified Consumer Firmware", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "consumerfirmware", 
+        "modifiedconsumerfirmware", 
+        "128681616"
+      ]
+    }, 
+    "Decoded Emission Data": {
+      "subcat": "Emission Data", 
+      "name_local": "Decoded Emission Data", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "decodedemissiondata", 
+        "128681632"
+      ]
+    }, 
+    "Pattern Gamma Obelisk Data": {
+      "grade": 4, 
+      "aliases": [
+        "ancienthistoricaldata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Pattern Gamma Obelisk Data"
+    }, 
+    "Adaptive Encryptors Capture": {
+      "subcat": "Encryption Files", 
+      "name_local": "Adaptive Encryptors Capture", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "adaptiveencryptors", 
+        "128681635", 
+        "adaptiveencryptorscapture"
+      ]
+    }, 
+    "Thargoid Wake Data": {
+      "grade": 4, 
+      "aliases": [
+        "unknownwakedata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Wake Data"
+    }, 
+    "Ship Systems Data": {
+      "grade": 4, 
+      "aliases": [
+        "tg_shipsystemsdata"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Ship Systems Data"
+    }
+  }, 
+  "manufactured": {
+    "Refined Focus Crystals": {
+      "subcat": "Crystals", 
+      "name_local": "Refined Focus Crystals", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128673908", 
+        "refinedfocuscrystals"
+      ]
+    }, 
+    "Precipitated Alloys": {
+      "subcat": "Thermic", 
+      "name_local": "Precipitated Alloys", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128673899", 
+        "precipitatedalloys"
+      ]
+    }, 
+    "Configurable Components": {
+      "subcat": "Mechanical Components", 
+      "name_local": "Configurable Components", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "configurablecomponents", 
+        "128673911"
+      ]
+    }, 
+    "Thargoid Organic Circuitry": {
+      "grade": 5, 
+      "aliases": [
+        "unknownorganiccircuitry"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Organic Circuitry"
+    }, 
+    "Chemical Storage Units": {
+      "subcat": "Chemical", 
+      "name_local": "Chemical Storage Units", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "chemicalstorageunits"
+      ]
+    }, 
+    "Guardian Power Conduit": {
+      "grade": 2, 
+      "aliases": [
+        "guardian_powerconduit"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Power Conduit"
+    }, 
+    "Thargoid Carapace": {
+      "grade": 2, 
+      "aliases": [
+        "unknowncarapace"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Carapace"
+    }, 
+    "Mechanical Equipment": {
+      "subcat": "Mechanical Components", 
+      "name_local": "Mechanical Equipment", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "mechanicalequipment", 
+        "128673891"
+      ]
+    }, 
+    "Exquisite Focus Crystals": {
+      "subcat": "Crystals", 
+      "name_local": "Exquisite Focus Crystals", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "128673918", 
+        "exquisitefocuscrystals"
+      ]
+    }, 
+    "Guardian Sentinel Weapon Parts": {
+      "grade": 3, 
+      "aliases": [
+        "guardian_sentinel_weaponparts"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Sentinel Weapon Parts"
+    }, 
+    "Military Supercapacitors": {
+      "subcat": "Capacitors", 
+      "name_local": "Military Supercapacitors", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "militarysupercapacitors", 
+        "128673917"
+      ]
+    }, 
+    "Proto Light Alloys": {
+      "subcat": "Alloys", 
+      "name_local": "Proto Light Alloys", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128673915", 
+        "protolightalloys"
+      ]
+    }, 
+    "Heat Dispersion Plate": {
+      "subcat": "Heat", 
+      "name_local": "Heat Dispersion Plate", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128673892", 
+        "heatdispersionplate"
+      ]
+    }, 
+    "High Density Composites": {
+      "subcat": "Composite", 
+      "name_local": "High Density Composites", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "highdensitycomposites", 
+        "128673904"
+      ]
+    }, 
+    "Electrochemical Arrays": {
+      "subcat": "Capacitors", 
+      "name_local": "Electrochemical Arrays", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128673897", 
+        "electrochemicalarrays"
+      ]
+    }, 
+    "Mechanical Components": {
+      "subcat": "Mechanical Components", 
+      "name_local": "Mechanical Components", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128673901", 
+        "mechanicalcomponents"
+      ]
+    }, 
+    "Core Dynamics Composites": {
+      "subcat": "Composite", 
+      "name_local": "Core Dynamics Composites", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "128673924", 
+        "fedcorecomposites"
+      ]
+    }, 
+    "Bio-Mechanical Conduits": {
+      "grade": 3, 
+      "aliases": [
+        "tg_biomechanicalconduits"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Bio-Mechanical Conduits"
+    }, 
+    "Worn Shield Emitters": {
+      "subcat": "Shielding", 
+      "name_local": "Worn Shield Emitters", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "wornshieldemitters", 
+        "128673883"
+      ]
+    }, 
+    "Pharmaceutical Isolators": {
+      "subcat": "Chemical", 
+      "name_local": "Pharmaceutical Isolators", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "pharmaceuticalisolators", 
+        "128673926"
+      ]
+    }, 
+    "Thermic Alloys": {
+      "subcat": "Thermic", 
+      "name_local": "Thermic Alloys", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128673909", 
+        "thermicalloys"
+      ]
+    }, 
+    "Chemical Processors": {
+      "subcat": "Chemical", 
+      "name_local": "Chemical Processors", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "chemicalprocessors", 
+        "128673896"
+      ]
+    }, 
+    "Weapon Parts": {
+      "grade": 4, 
+      "aliases": [
+        "tg_weaponparts"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Weapon Parts"
+    }, 
+    "Crystal Shards": {
+      "subcat": "Crystals", 
+      "name_local": "Crystal Shards", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "crystalshards"
+      ]
+    }, 
+    "Guardian Technology Component": {
+      "grade": 2, 
+      "aliases": [
+        "guardian_techcomponent"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Technology Component"
+    }, 
+    "Compound Shielding": {
+      "subcat": "Shielding", 
+      "name_local": "Compound Shielding", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "compoundshielding", 
+        "128673913"
+      ]
+    }, 
+    "Heat Vanes": {
+      "subcat": "Heat", 
+      "name_local": "Heat Vanes", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "heatvanes", 
+        "128673912"
+      ]
+    }, 
+    "Heat Conduction Wiring": {
+      "subcat": "Heat", 
+      "name_local": "Heat Conduction Wiring", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "128673882", 
+        "heatconductionwiring"
+      ]
+    }, 
+    "Guardian Power Cell": {
+      "grade": 1, 
+      "aliases": [
+        "guardian_powercell"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Power Cell"
+    }, 
+    "Compact Composites": {
+      "subcat": "Composite", 
+      "name_local": "Compact Composites", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "compactcomposites"
+      ]
+    }, 
+    "Galvanising Alloys": {
+      "subcat": "Alloys", 
+      "name_local": "Galvanising Alloys", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128673895", 
+        "galvanisingalloys"
+      ]
+    }, 
+    "Wreckage Components": {
+      "grade": 3, 
+      "aliases": [
+        "tg_wreckagecomponents"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Wreckage Components"
+    }, 
+    "Phase Alloys": {
+      "subcat": "Alloys", 
+      "name_local": "Phase Alloys", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128673905", 
+        "phasealloys"
+      ]
+    }, 
+    "Hybrid Capacitors": {
+      "subcat": "Capacitors", 
+      "name_local": "Hybrid Capacitors", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "hybridcapacitors", 
+        "128673887"
+      ]
+    }, 
+    "Polymer Capacitors": {
+      "subcat": "Capacitors", 
+      "name_local": "Polymer Capacitors", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128673907", 
+        "polymercapacitors"
+      ]
+    }, 
+    "Sensor Fragment": {
+      "grade": 5, 
+      "aliases": [
+        "unknownenergysource"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Sensor Fragment"
+    }, 
+    "Guardian Sentinel Wreckage Components": {
+      "grade": 1, 
+      "aliases": [
+        "guardian_sentinel_wreckagecomponents"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Guardian Sentinel Wreckage Components"
+    }, 
+    "Chemical Manipulators": {
+      "subcat": "Chemical", 
+      "name_local": "Chemical Manipulators", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "chemicalmanipulators", 
+        "128673916"
+      ]
+    }, 
+    "Biotech Conductors": {
+      "subcat": "Conductive", 
+      "name_local": "Biotech Conductors", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "biotechconductors", 
+        "128673920"
+      ]
+    }, 
+    "Conductive Components": {
+      "subcat": "Conductive", 
+      "name_local": "Conductive Components", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "conductivecomponents", 
+        "128673890"
+      ]
+    }, 
+    "Filament Composites": {
+      "subcat": "Composite", 
+      "name_local": "Filament Composites", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "filamentcomposites"
+      ]
+    }, 
+    "Propulsion Elements": {
+      "grade": 5, 
+      "aliases": [
+        "tg_propulsionelement"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Propulsion Elements"
+    }, 
+    "Basic Conductors": {
+      "subcat": "Conductive", 
+      "name_local": "Basic Conductors", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "basicconductors"
+      ]
+    }, 
+    "Grid Resistors": {
+      "subcat": "Capacitors", 
+      "name_local": "Grid Resistors", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "gridresistors", 
+        "128673877"
+      ]
+    }, 
+    "Heat Exchangers": {
+      "subcat": "Heat", 
+      "name_local": "Heat Exchangers", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "heatexchangers", 
+        "128673902"
+      ]
+    }, 
+    "Imperial Shielding": {
+      "subcat": "Shielding", 
+      "name_local": "Imperial Shielding", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "imperialshielding", 
+        "128673923"
+      ]
+    }, 
+    "Thargoid Technological Components": {
+      "grade": 4, 
+      "aliases": [
+        "unknowntechnologycomponents"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Technological Components"
+    }, 
+    "Proto Radiolic Alloys": {
+      "subcat": "Alloys", 
+      "name_local": "Proto Radiolic Alloys", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "protoradiolicalloys", 
+        "128673925"
+      ]
+    }, 
+    "Conductive Ceramics": {
+      "subcat": "Conductive", 
+      "name_local": "Conductive Ceramics", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128673900", 
+        "conductiveceramics"
+      ]
+    }, 
+    "Thargoid Energy Cell": {
+      "grade": 3, 
+      "aliases": [
+        "unknownenergycell"
+      ], 
+      "tradeable": false, 
+      "subcat": null, 
+      "name_local": "Thargoid Energy Cell"
+    }, 
+    "Focus Crystals": {
+      "subcat": "Crystals", 
+      "name_local": "Focus Crystals", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "focuscrystals", 
+        "128673898"
+      ]
+    }, 
+    "Shielding Sensors": {
+      "subcat": "Shielding", 
+      "name_local": "Shielding Sensors", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128673903", 
+        "shieldingsensors"
+      ]
+    }, 
+    "Chemical Distillery": {
+      "subcat": "Chemical", 
+      "name_local": "Chemical Distillery", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128673906", 
+        "chemicaldistillery"
+      ]
+    }, 
+    "Shield Emitters": {
+      "subcat": "Shielding", 
+      "name_local": "Shield Emitters", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128673893", 
+        "shieldemitters"
+      ]
+    }, 
+    "Salvaged Alloys": {
+      "subcat": "Alloys", 
+      "name_local": "Salvaged Alloys", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "salvagedalloys", 
+        "128673885"
+      ]
+    }, 
+    "Heat Resistant Ceramics": {
+      "subcat": "Thermic", 
+      "name_local": "Heat Resistant Ceramics", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "heatresistantceramics"
+      ]
+    }, 
+    "Tempered Alloys": {
+      "subcat": "Thermic", 
+      "name_local": "Tempered Alloys", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "temperedalloys"
+      ]
+    }, 
+    "Proprietary Composites": {
+      "subcat": "Composite", 
+      "name_local": "Proprietary Composites", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "fedproprietarycomposites", 
+        "128673914"
+      ]
+    }, 
+    "Proto Heat Radiators": {
+      "subcat": "Heat", 
+      "name_local": "Proto Heat Radiators", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "protoheatradiators", 
+        "128673922"
+      ]
+    }, 
+    "Conductive Polymers": {
+      "subcat": "Conductive", 
+      "name_local": "Conductive Polymers", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "conductivepolymers", 
+        "128673910"
+      ]
+    }, 
+    "Mechanical Scrap": {
+      "subcat": "Mechanical Components", 
+      "name_local": "Mechanical Scrap", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "mechanicalscrap", 
+        "128673881"
+      ]
+    }, 
+    "Military Grade Alloys": {
+      "subcat": "Thermic", 
+      "name_local": "Military Grade Alloys", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "militarygradealloys", 
+        "128673919"
+      ]
+    }, 
+    "Flawed Focus Crystals": {
+      "subcat": "Crystals", 
+      "name_local": "Flawed Focus Crystals", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "uncutfocuscrystals", 
+        "128673888"
+      ]
+    }, 
+    "Improvised Components": {
+      "subcat": "Mechanical Components", 
+      "name_local": "Improvised Components", 
+      "grade": 5, 
+      "tradeable": true, 
+      "aliases": [
+        "improvisedcomponents", 
+        "128673921"
+      ]
+    }
+  }, 
+  "raw": {
+    "Mercury": {
+      "subcat": "Raw 6", 
+      "name_local": "Mercury", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128672336", 
+        "mercury"
+      ]
+    }, 
+    "Antimony": {
+      "subcat": "Raw 7", 
+      "name_local": "Antimony", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "antimony", 
+        "128672342"
+      ]
+    }, 
+    "Tellurium": {
+      "subcat": "Raw 5", 
+      "name_local": "Tellurium", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128672338", 
+        "tellurium"
+      ]
+    }, 
+    "Lead": {
+      "subcat": "Raw 7", 
+      "name_local": "Lead", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "lead"
+      ]
+    }, 
+    "Selenium": {
+      "subcat": "Raw 4", 
+      "name_local": "Selenium", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128672326", 
+        "selenium"
+      ]
+    }, 
+    "Technetium": {
+      "subcat": "Raw 2", 
+      "name_local": "Technetium", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "technetium", 
+        "128672340"
+      ]
+    }, 
+    "Tin": {
+      "subcat": "Raw 4", 
+      "name_local": "Tin", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "tin", 
+        "128672320"
+      ]
+    }, 
+    "Yttrium": {
+      "subcat": "Raw 1", 
+      "name_local": "Yttrium", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "128672337", 
+        "yttrium"
+      ]
+    }, 
+    "Nickel": {
+      "subcat": "Raw 5", 
+      "name_local": "Nickel", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "128672319", 
+        "nickel"
+      ]
+    }, 
+    "Polonium": {
+      "subcat": "Raw 6", 
+      "name_local": "Polonium", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "polonium"
+      ]
+    }, 
+    "Ruthenium": {
+      "subcat": "Raw 3", 
+      "name_local": "Ruthenium", 
+      "grade": 4, 
+      "tradeable": true, 
+      "aliases": [
+        "ruthenium", 
+        "128672341"
+      ]
+    }, 
+    "Cadmium": {
+      "subcat": "Raw 3", 
+      "name_local": "Cadmium", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128672330", 
+        "cadmium"
+      ]
+    }, 
+    "Boron": {
+      "subcat": "Raw 7", 
+      "name_local": "Boron", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "boron"
+      ]
+    }, 
+    "Tungsten": {
+      "subcat": "Raw 5", 
+      "name_local": "Tungsten", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128672331", 
+        "tungsten"
+      ]
+    }, 
+    "Carbon": {
+      "subcat": "Raw 1", 
+      "name_local": "Carbon", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "carbon", 
+        "128672322"
+      ]
+    }, 
+    "Sulphur": {
+      "subcat": "Raw 3", 
+      "name_local": "Sulphur", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "128672323", 
+        "sulphur"
+      ]
+    }, 
+    "Phosphorus": {
+      "subcat": "Raw 2", 
+      "name_local": "Phosphorus", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "phosphorus", 
+        "128672324"
+      ]
+    }, 
+    "Molybdenum": {
+      "subcat": "Raw 2", 
+      "name_local": "Molybdenum", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "molybdenum", 
+        "128672333"
+      ]
+    }, 
+    "Vanadium": {
+      "subcat": "Raw 1", 
+      "name_local": "Vanadium", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128672328", 
+        "vanadium"
+      ]
+    }, 
+    "Zirconium": {
+      "subcat": "Raw 7", 
+      "name_local": "Zirconium", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128672335", 
+        "zirconium"
+      ]
+    }, 
+    "Manganese": {
+      "subcat": "Raw 3", 
+      "name_local": "Manganese", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128672325", 
+        "manganese"
+      ]
+    }, 
+    "Niobium": {
+      "subcat": "Raw 1", 
+      "name_local": "Niobium", 
+      "grade": 3, 
+      "tradeable": true, 
+      "aliases": [
+        "128672334", 
+        "niobium"
+      ]
+    }, 
+    "Iron": {
+      "subcat": "Raw 4", 
+      "name_local": "Iron", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "iron", 
+        "128672318"
+      ]
+    }, 
+    "Rhenium": {
+      "subcat": "Raw 6", 
+      "name_local": "Rhenium", 
+      "grade": 1, 
+      "tradeable": true, 
+      "aliases": [
+        "rhenium"
+      ]
+    }, 
+    "Germanium": {
+      "subcat": "Raw 5", 
+      "name_local": "Germanium", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "germanium", 
+        "128672329"
+      ]
+    }, 
+    "Zinc": {
+      "subcat": "Raw 4", 
+      "name_local": "Zinc", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "zinc", 
+        "128672321"
+      ]
+    }, 
+    "Arsenic": {
+      "subcat": "Raw 6", 
+      "name_local": "Arsenic", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "128672332", 
+        "arsenic"
+      ]
+    }, 
+    "Chromium": {
+      "subcat": "Raw 2", 
+      "name_local": "Chromium", 
+      "grade": 2, 
+      "tradeable": true, 
+      "aliases": [
+        "chromium", 
+        "128672327"
+      ]
+    }
+  }
+}
