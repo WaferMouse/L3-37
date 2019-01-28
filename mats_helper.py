@@ -40,6 +40,38 @@ with open(path.join(plugin_path,'coriolis_module_cats.json')) as json_data:
 
 trades = {}
 
+class ToggledFrame(tk.Frame):
+
+    def __init__(self, parent, text="", *args, **options):
+        tk.Frame.__init__(self, parent, *args, **options)
+
+        self.show = tk.IntVar()
+        self.show.set(1)
+        self.text = text
+
+        self.title_frame = tk.Frame(self)
+        self.title_frame.pack(fill="x", expand=1)
+
+        self.toggle_button = tk.Label(self.title_frame,text= unichr(9654) + ' ' + text)
+        self.toggle_button.pack(side="left")
+
+        self.sub_frame = tk.Frame(self)
+
+        def toggle(self):
+            if bool(self.show.get()):
+                self.sub_frame.pack(fill="x", expand=1)
+                self.toggle_button.configure(text=unichr(9660) + ' ' + self.text)
+                self.show.set(0)
+            else:
+                self.sub_frame.forget()
+                self.toggle_button.configure(text= unichr(9654) + ' ' + self.text)
+                self.show.set(1)
+
+        def click(event):
+          toggle(self)
+
+        self.toggle_button.bind("<Button-1>",click)
+
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
     * Use the 'interior' attribute to place widgets inside the scrollable frame
@@ -336,30 +368,34 @@ class MatsHelper(WaferModule):
         self.trader_frm_btns = {}
         self.tab_button_frm = tk.Frame(self)
         self.tab_button_frm.pack(fill = 'both', expand = 1)
-#        self.main_frame = tk.Frame(self)
-#        self.main_frame.pack()
-#        self.mat_frames = {}
         self.bp_frm = VerticalScrolledFrame(self)
         self.bps = []
         self.bp_frm.pack(fill='both', expand = 1)
         self.reset_btn = tk.Button(self, text = 'Reset', command = self.do_reset_btn)
         self.reset_btn.pack(fill='x', expand = 1)
+        self.bpcats = []
         for cat in ['Encoded', 'Raw', 'Manufactured']:
             y = 0
             self.trader_frm_btns[cat] = tk.Button(self.tab_button_frm, text = cat, command = lambda x=cat: self.show_dialog(x))
             self.trader_frm_btns[cat].pack(side='left', fill = 'both', expand = 1)
-        for slot in ['standard', 'hardpoints', 'internal']:
+        for slot in ['standard', 'internal', 'hardpoints']:
             for k, v in coriolis_dist['Modules'][slot].iteritems():
-                cat_name = str(coriolis_module_cats[slot][k])
+                cat_name = str(coriolis_module_cats[slot][k]).title()
                 if k in coriolis_dist['Modifications']['modules']:
-                    for i in coriolis_dist['Modifications']['modules'][k]['blueprints']:
-                        name = cat_name.title() + ' ' + coriolis_dist['Modifications']['blueprints'][i]['name']
-                        for grade in blueprints[i]['grades']:
-                            int_name = i
-                            friendly_name = name + ' G' + grade
-                            components = coriolis_dist['Modifications']['blueprints'][i]['grades'][grade]['components']
-                            self.bps.append(BlueprintFrame(self.bp_frm.interior, self, friendly_name, int_name, components, foreground = self.fg, background = self.bg))
-                            self.bps[-1].pack(fill = 'both', expand = 1)
+                    if len(coriolis_dist['Modifications']['modules'][k]['blueprints']) > 0:
+                        self.bpcats.append(ToggledFrame(self.bp_frm.interior, text = cat_name, background = self.bg))
+                        self.bpcats[-1].pack(fill = 'both', expand = 1)
+                        self.bpcats[-1].title_frame.config(background = self.bg)
+                        self.bpcats[-1].toggle_button.config(foreground = self.fg, background = self.bg)
+                        self.bpcats[-1].sub_frame.config(background = self.bg)
+                        for i in coriolis_dist['Modifications']['modules'][k]['blueprints']:
+                            name = coriolis_dist['Modifications']['blueprints'][i]['name']
+                            for grade in blueprints[i]['grades']:
+                                int_name = i
+                                friendly_name = name + ' G' + grade
+                                components = coriolis_dist['Modifications']['blueprints'][i]['grades'][grade]['components']
+                                self.bps.append(BlueprintFrame(self.bpcats[-1].sub_frame, self, friendly_name, int_name, components, foreground = self.fg, background = self.bg))
+                                self.bps[-1].pack(fill = 'both', expand = 1)
                 else:
                     print('{} is missing!'.format(cat_name))
         if self.theme:
