@@ -7,6 +7,7 @@ Multi tool plugin for Elite: Dangerous Market Connector (EDMC)
 - Fleet view which lets you find your ships easily.  You can right-click to copy the location to clipboard, click on the ship name to view the ship in EDSM, and click anywhere else to view the location system on the web.
 - Chat view that outputs message, timestamp, sender and the channel used.  Supports copying to the clipboard (use Ctrl-X - NOT Ctrl-C).  Outputs the system name when you start a hyperspace jump, with a link to view the system on the web and a right-click menu to copy to the clipboard.  "Freeze" button to stop the chat from dropping to the bottom when a new message arrives, useful for if you're scrolling back whilst people are still talking.
 - Long Range Scanner view that allows you to query the stations in your currently targeted system.  Great when looking for a place to refuel in the Bubble.
+- Materials Helper view that allows you to select engineering blueprints and simulate the costs.  Clicking on the material categories at the top lets you simulate the relevant material trades. Caveat: no support for experimental effects yet.
 - More SoonTM
 
 # Install
