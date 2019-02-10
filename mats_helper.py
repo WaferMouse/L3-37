@@ -316,6 +316,7 @@ class MatsHelper(WaferModule):
             for i in materials[cat]:
                 materials[cat][i]['simulated'] = materials[cat][i]['have']
                 materials[cat][i]['need'] = 0
+            self.trader_frm_btns[cat.title()].config(foreground = self.fg)
                 
         for bp in self.bps:
             bp.count = 0
