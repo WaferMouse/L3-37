@@ -180,7 +180,7 @@ class MatFrame(tk.Frame):
         elif self.subcat == self.granny.selected[0] and self.grade == self.granny.selected[1]:
             pass
         else:
-            if sim > power:
+            if sim >= power:
                 self.plus_btn.config(state = tk.NORMAL)
             else:
                 self.plus_btn.config(state = tk.DISABLED)
