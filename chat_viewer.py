@@ -14,6 +14,8 @@ linkcount = 0
 lastsender = ""
 systemlinks = []
 systemcount = 0
+cmdrcount = 0
+cmdrnames = []
 
 idx = ''
 # https://inara.cz/cmdr-friends/
@@ -48,12 +50,13 @@ def copyLink(event=''):
 def showSystem(event):
     idx = int(event.widget.tag_names(tk.CURRENT)[1])
     webbrowser.open(get_system_url(systemlinks[idx]))
+    
+def showCmdr(event):
+    idx = int(event.widget.tag_names(tk.CURRENT)[1])
+    webbrowser.open('https://inara.cz/search/?searchglobal=' + quote_plus(cmdrnames[idx]))
 
 def copySystem(event=''):
     setclipboard(systemlinks[idx])
-
-def copySystemLink(event=''):
-    setclipboard("https://www.edsm.net/show-system?systemName=" + quote_plus(systemlinks[idx]))
 
 class ChatViewer(WaferModule):
     
@@ -84,6 +87,8 @@ class ChatViewer(WaferModule):
         self.status.tag_config('systemlink', underline=1, foreground = self.hl)
         self.status.tag_bind('systemlink', '<Button-1>', showSystem)
         self.status.tag_bind('systemlink', '<Button-3>', lambda e, w='systemlink': on_tag_click(e, w))
+        self.status.tag_config('cmdrlink', underline=1, foreground = self.hl)
+        self.status.tag_bind('cmdrlink', '<Button-1>', showCmdr)
         self.freeze = tk.IntVar(self)
         self.freezebutton = tk.Checkbutton(self, text="Freeze", variable = self.freeze)
         self.freezebutton.grid(row=2, column = 0, columnspan = 4)
@@ -104,6 +109,8 @@ class ChatViewer(WaferModule):
     def journal_entry(self, cmdr, system, station, entry, state):
         global links
         global linkcount
+        global cmdrcount
+        global cmdrnames
         global systemlinks
         global systemcount
         global lastsender
@@ -158,7 +165,9 @@ class ChatViewer(WaferModule):
         if display == True:
             self.status.config(state=tk.NORMAL)
             if sender != lastsender:
-                self.status.insert(tk.END, u"\nCMDR {}:".format(sender), 'regular_text')
+                cmdrnames.append(sender)
+                self.status.insert(tk.END, u"\nCMDR {}:".format(sender), ('cmdrlink', cmdrcount))
+                cmdrcount = cmdrcount + 1
             self.status.insert(tk.END, "\n[{}][{}] ".format(localtimestamp, channel.upper()), 'regular_text')
             for word in entry["Message"].split(' '):
                 thing = urlparse(word.strip())
