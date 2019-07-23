@@ -31,8 +31,8 @@ class FakeNotebook(tk.Frame):
         self.lbl = tk.Label(self.label_frame, text = text)
         self.lbl.pack(side=tk.LEFT)
         
-        self.fake_combo = tk.Button(self.combo_frame, text = '', command = self.popup, padx = 0, pady = 0, relief = tk.FLAT)
-        self.fake_combo2 = tk.Button(self.combo_frame, text = unichr(9660), command = self.popup, padx = 0, pady = 0) #unichr(9660)
+        self.fake_combo = tk.Button(self.combo_frame, text = '', command = self.popup, padx = 0, pady = 0, relief = tk.FLAT, borderwidth=0)
+        self.fake_combo2 = tk.Button(self.combo_frame, text = unichr(11206), command = self.popup, padx = 0, pady = 0) #unichr(9660)
         self.combo_frame.pack(fill=tk.BOTH)
         self.label_frame.pack(fill=tk.BOTH)
         self.fake_combo.pack(fill=tk.BOTH, side = tk.LEFT, expand = 1)
@@ -67,6 +67,14 @@ def plugin_start():
     """
     Load this plugin into EDMC
     """
+    try:
+        config.get('L3_shipyard_provider')
+    except:
+        config.set('L3_shipyard_provider','EDSM')
+    try:
+        config.get('EDSM_id')
+    except:
+        config.set('EDSM_id', '')
     print "L3-37 started"
     return "L3-37"
 
@@ -87,7 +95,7 @@ def plugin_app(parent):
     plugin_app.theme = config.getint('theme')
     plugin_app.fg = config.get('dark_text') if plugin_app.theme else 'black'
     plugin_app.hl = config.get('dark_highlight') if plugin_app.theme else 'blue'
-    plugin_app.bg = 'grey4' if plugin_app.theme else 'grey'
+    plugin_app.bg = 'grey4' if plugin_app.theme else None
     for module in plugin_app.wafer_module_classes:
         plugin_app.wafer_modules[module[0]] = module[1](plugin_app.frame, highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg, highlightthickness = 1)#, relief = tk.SUNKEN, borderwidth = 1)
         plugin_app.frame.add(plugin_app.wafer_modules[module[0]], module[0])
@@ -96,10 +104,23 @@ def plugin_app(parent):
     
 def plugin_prefs(parent):
     frame = nb.Frame(parent)
+    shipyard_provider_label = nb.Label(frame, text="Fleet information provider: ", justify = tk.LEFT)
+    shipyard_provider_label.grid(column = 0, row = 0)
+    this.shipyard_provider_select = tk.StringVar()
+    try:
+        this.shipyard_provider_select.set(config.get('L3_shipyard_provider'))
+    except:
+        this.shipyard_provider_select.set("EDSM")
+    modes = ['EDSM','Inara']
+    row = 0
+    for mode in modes:
+        b = nb.Radiobutton(frame, text=mode, variable=this.shipyard_provider_select, value=mode)
+        b.grid(column = 1, row = row)
+        row = row + 1
     EDSM_id_label = nb.Label(frame, text="To view your ships in EDSM,\nenter the numbers that follow id/\nin the URL for your EDSM profile page: ", justify = tk.LEFT)
-    EDSM_id_label.grid(column = 0, row = 0)
+    EDSM_id_label.grid(column = 0, row = 2)
     this.EDSM_id_entry = nb.Entry(frame)
-    this.EDSM_id_entry.grid(column = 1, row = 0)
+    this.EDSM_id_entry.grid(column = 1, row = 2)
     try:
         this.EDSM_id_entry.delete(0, tk.END)
         this.EDSM_id_entry.insert(0, config.get('EDSM_id'))
@@ -112,8 +133,11 @@ def prefs_changed():
     Save settings.
     """
     config.set('EDSM_id', this.EDSM_id_entry.get())
+    config.set('L3_shipyard_provider',this.shipyard_provider_select.get())
 
 def journal_entry(cmdr, system, station, entry, state):
+    this.system = system
+    this.station = station
     for key, module in plugin_app.wafer_modules.iteritems():
         try:
             module.journal_entry(cmdr, system, station, entry, state)
@@ -134,6 +158,22 @@ def cmdr_data(data, is_beta):
     for key, module in plugin_app.wafer_modules.iteritems():
         try:
             module.cmdr_data(data, is_beta)
+        except Exception as exc:
+            print(traceback.format_exc())
+            print(exc)
+            
+def inara_notify_ship(eventData):
+    for key, module in plugin_app.wafer_modules.iteritems():
+        try:
+            module.inara_notify_ship(eventData)
+        except Exception as exc:
+            print(traceback.format_exc())
+            print(exc)
+            
+def inara_notify_location(eventData):
+    for key, module in plugin_app.wafer_modules.iteritems():
+        try:
+            module.inara_notify_location(None, None, eventData)
         except Exception as exc:
             print(traceback.format_exc())
             print(exc)

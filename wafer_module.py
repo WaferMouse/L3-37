@@ -25,3 +25,9 @@ class WaferModule(tk.Frame):
         
     def update_theme(self):
         pass
+        
+    def inara_notify_location(self, eventData):
+        pass
+        
+    def inara_notify_ship(self, eventData):
+        pass
