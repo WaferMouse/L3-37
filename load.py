@@ -3,6 +3,8 @@ from config import config
 import myNotebook as nb
 import traceback
 
+import api_store
+
 import sys
 
 this = sys.modules[__name__]	# For holding module globals
@@ -99,6 +101,8 @@ def plugin_app(parent):
     for module in plugin_app.wafer_module_classes:
         plugin_app.wafer_modules[module[0]] = module[1](plugin_app.frame, highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg, highlightthickness = 1)#, relief = tk.SUNKEN, borderwidth = 1)
         plugin_app.frame.add(plugin_app.wafer_modules[module[0]], module[0])
+    plugin_app.frame.bind('<<SystemData>>', api_store.edsm_handler)
+    api_store.set(plugin_app.frame)
     print "L3-37 loaded"
     return (plugin_app.frame)
     
@@ -171,9 +175,13 @@ def inara_notify_ship(eventData):
             print(exc)
             
 def inara_notify_location(eventData):
+    api_store.inara_notify_location(this.system, this.station, eventData)
     for key, module in plugin_app.wafer_modules.iteritems():
         try:
-            module.inara_notify_location(None, None, eventData)
+            module.inara_notify_location(this.system, this.station, eventData)
         except Exception as exc:
             print(traceback.format_exc())
             print(exc)
+            
+def plugin_stop():
+    api_store.plugin_stop()
