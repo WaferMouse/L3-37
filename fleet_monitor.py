@@ -218,6 +218,8 @@ class FleetMonitor(WaferModule):
             current_ship_id = state['ShipID']
             self.current_ship_id = current_ship_id
             
+            state_ship_type = state['ShipType'] or 'none'
+            
             state_ship = {
                 "id": current_ship_id,
                 "name": state['ShipType'],
@@ -226,7 +228,7 @@ class FleetMonitor(WaferModule):
                 "starsystem": {"name": system},
                 "station": {"name": [station, 'In flight'][station == None]},
 #                "starpos": state['StarPos'],
-                'localised_name': ship_map[state['ShipType'].lower()]
+                'localised_name': ship_map[state_ship_type.lower()]
                 }
                 
             state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
