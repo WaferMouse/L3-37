@@ -6,7 +6,7 @@ class VerticalScrolledFrame(tk.Frame):
     * Construct and pack/place/grid normally
     * This frame only allows vertical scrolling
     """
-    def __init__(self, parent, height = 200, bg = 'grey', *args, **kw):
+    def __init__(self, parent, height = 200, bg = None, *args, **kw):
         tk.Frame.__init__(self, parent, *args, **kw)
         
         self.bg = bg
@@ -74,7 +74,7 @@ class ToggledFrame(tk.Frame):
         self.title_frame = tk.Frame(self)
         self.title_frame.pack(fill="x", expand=1)
 
-        self.toggle_button = tk.Label(self.title_frame,text= unichr(9654) + ' ' + text)
+        self.toggle_button = tk.Label(self.title_frame,text= unichr(11208) + ' ' + text)
         self.toggle_button.pack(side="left")
 
         self.sub_frame = tk.Frame(self)
@@ -82,11 +82,11 @@ class ToggledFrame(tk.Frame):
         def toggle(self):
             if bool(self.show.get()):
                 self.sub_frame.pack(fill="x", expand=1)
-                self.toggle_button.configure(text=unichr(9660) + ' ' + self.text)
+                self.toggle_button.configure(text=unichr(11206) + ' ' + self.text)
                 self.show.set(0)
             else:
                 self.sub_frame.forget()
-                self.toggle_button.configure(text= unichr(9654) + ' ' + self.text)
+                self.toggle_button.configure(text= unichr(11208) + ' ' + self.text)
                 self.show.set(1)
 
         def click(event):

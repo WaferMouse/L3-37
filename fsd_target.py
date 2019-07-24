@@ -22,7 +22,7 @@ import sys
 theme = config.getint('theme')
 fg = config.get('dark_text') if theme else 'black'
 hl = config.get('dark_highlight') if theme else 'blue'
-bg = 'grey4' if theme else 'grey'
+bg = 'grey4' if theme else None
 
 # https://www.edsm.net/api-v1/system?systemName=Shinrarta%20Dezhra&showCoordinates=1&showInformation=1&showPermit=1&showPrimaryStar=1
 # https://www.edsm.net/api-system-v1/stations?systemName=Robigo
@@ -39,15 +39,6 @@ this.edsm_cache = {}
 
 this.edsm_session = None
 this.edsm_data = None
-
-class TwoPartLabel(tk.Frame):
-    
-    def __init__(self, parent, label_name, *args, **options):
-        tk.Frame.__init__(self, parent, *args, **options)
-        self.label = tk.Label(self, text = label_name)
-        self.label.pack(side = 'left')
-        self.inner = tk.Frame()
-        self.inner.pack(side = 'left')
 
 with open(join(config.respath, 'systems.p'),  'rb') as h:
     this.system_ids  = cPickle.load(h)

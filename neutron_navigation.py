@@ -30,7 +30,7 @@ with open(path.join(plugin_path,'flat_ships.json')) as json_data:
 theme = config.getint('theme')
 theme_fg = config.get('dark_text') if theme else 'black'
 theme_hl = config.get('dark_highlight') if theme else 'blue'
-theme_bg = 'grey4' if theme else 'grey'
+theme_bg = 'grey4' if theme else None
 
 def getclipboard():
     r = tk.Tk()

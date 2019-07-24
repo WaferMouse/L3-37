@@ -68,7 +68,7 @@ class ChatViewer(WaferModule):
         self.theme = config.getint('theme')
         self.fg = config.get('dark_text') if self.theme else 'black'
         self.hl = config.get('dark_highlight') if self.theme else 'blue'
-        self.bg = 'grey4' if self.theme else 'grey'
+        self.bg = 'grey4' if self.theme else None
         self.status = tk.Text(self)
         self.chatcopy = tk.Button(self, text = "Copy", command = self.copy_button3)
         self.chatcopy.grid(row = 1, column = 0, columnspan = 4)

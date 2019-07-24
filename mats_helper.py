@@ -269,7 +269,7 @@ class MatsHelper(WaferModule):
         self.theme = config.getint('theme')
         self.fg = config.get('dark_text') if self.theme else 'black'
         self.hl = config.get('dark_highlight') if self.theme else 'blue'
-        self.bg = 'grey4' if self.theme else 'grey'
+        self.bg = 'grey4' if self.theme else None
         for cat in materials:
             for i in materials[cat]:
                 materials[cat][i]['have'] = 0
