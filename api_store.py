@@ -1,3 +1,4 @@
+import copy
 import sys
 from urllib import quote_plus
 import threading
@@ -5,13 +6,19 @@ import requests
 import json
 from Queue import Queue
 
+from collections import OrderedDict
+
 from os import path
 
 from config import config
 
 this = sys.modules[__name__]	# For holding module globals
 
-starcache = {}
+this.edsm_session = None
+
+starcache = OrderedDict()
+
+starstore = []
 
 this.edsm_queue = Queue()
 
@@ -19,7 +26,7 @@ plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
 
 try:
     with open(path.join(plugin_path, 'starcache.json')) as json_data:
-        starcache = json.load(json_data)
+        starcache = json.load(json_data, object_pairs_hook = OrderedDict)
 except:
     pass
     
@@ -53,8 +60,8 @@ def update_user_ids():
     
     return()
     
-def edsm_query(system):
-    thread = threading.Thread(target = edsm_worker, name = 'EDSM worker', args = (system_name, 'system',))
+def edsm_query(system, query_type):
+    thread = threading.Thread(target = edsm_worker, name = 'EDSM worker', args = (system, query_type))
     thread.daemon = True
     thread.start()
     
@@ -85,50 +92,74 @@ def edsm_worker(systemName, query_type):
 def edsm_handler(event):
 #    print("Probably got some EDSM data!")
     while not this.edsm_queue.empty():
-        data = this.edsm_queue.get()
-        system_name = data['name'].lower()
+        edsm_data = this.edsm_queue.get()
+        #print(edsm_data)
         
-        if data['query_type'] == 'stations':
-            edsm_data = data
+        if edsm_data['query_type'] == 'stations':
+            new_dict = {}
+            #edsm_data['stations'] = {}
+            for station in edsm_data['stations']:
+                new_dict[station['name']] = station
             del edsm_data['stations']
-            edsm_data['stations'] = {}
-            for station in data['stations']:
-                edsm_data['stations'][station['name']] = station
+            edsm_data['stations'] = new_dict
         else:
-            edsm_data = data
+            edsm_data = edsm_data
         del edsm_data['query_type']
-            
-        if system_name not in starcache:
-            starcache[system_name] = edsm_data
-        else:
-            starcache[system_name].update(edsm_data)
-                
-        if data['query_type'] == 'system':
-            request_stations = False
-            try:
-                if edsm_data['information'] != [] and 'stations' not in starcache[system_name]: #best guess
-                    request_stations = True
-            except:
-    #            print("WHOOPS!")
-                pass
-                
-            if request_stations:
-                thread = threading.Thread(target = edsm_worker, name = 'EDSM worker', args = (system_name, 'stations',))
-                thread.daemon = True
-                thread.start()
+        update_cache(edsm_data)
+
+def update_cache(data):
+    system_name = data['name'].lower()
+    try:
+        system_entry = starcache.pop(system_name)
+    except:
+        system_entry = {'name': data['name']}
         
+    try:
+        system_entry['starsystemInaraID'] = data['starsystemInaraID']
+    except:
+        pass
+        
+    if 'stations' in data:
+        if 'stations' not in system_entry:
+            system_entry['stations'] = {}
+        for station, value in data['stations'].iteritems():
+            if station in system_entry['stations']:
+                system_entry['stations'][station].update(value)
+            else:
+                system_entry['stations'][station] = value
+    else:
+        system_entry.update(data)
+        
+    starcache[system_name] = system_entry
+    '''
+    if edsm_data['query_type'] == 'system':
+        request_stations = False
+        try:
+            if edsm_data['information'] != [] and 'stations' not in starcache[system_name]: #best guess
+                request_stations = True
+        except:
+#            print("WHOOPS!")
+            pass
+            
+            
+        if request_stations:
+            thread = threading.Thread(target = edsm_worker, name = 'EDSM worker', args = (system_name, 'stations',))
+            thread.daemon = True
+            thread.start()
+            '''
+
 def inara_notify_location(system, station, eventData):
-    if system.lower() not in starcache:
-        starcache[system.lower()] = {}
-    if station != None and eventData.get('stationInaraURL'):
-        if 'stations' not in starcache[system.lower()]:
-            starcache[system.lower()]['stations'] = {}
-        if station not in starcache[system.lower()]['stations']:
-            starcache[system.lower()]['stations'][station] = {}
-        starcache[system.lower()]['stations'][station]['stationInaraURL'] = eventData.get('stationInaraURL')
-    if eventData.get('starsystemInaraURL'):
-        starcache[system.lower()]['starsystemInaraURL'] = eventData.get('starsystemInaraURL')
+    data = {'name': system}
+    if station and eventData.get('stationInaraID'):
+        data['stations'] = {station: {'stationInaraID': eventData.get('stationInaraID'), 'name': station}}
+    if eventData.get('starsystemInaraID'):
+        data['starsystemInaraID'] = eventData.get('starsystemInaraID')
+    update_cache(data)
         
 def plugin_stop():
+    for i in starstore:
+        update_cache({'name': i})
+    while len(starcache) > 1000:
+        starcache.popitem(last = False)
     with open(path.join(plugin_path, 'starcache.json'), 'w') as fp:
-        json.dump(starcache, fp, indent = 2, sort_keys=True)
+        json.dump(starcache, fp, indent = 2)

@@ -15,6 +15,8 @@ from mats_helper import MatsHelper
 from fleet_monitor import FleetMonitor
 from surface_navigation import SurfaceNavigation
 from neutron_navigation import NeutronNavigation
+
+import special_frames
         
 class FakeNotebook(tk.Frame):
     
@@ -103,6 +105,7 @@ def plugin_app(parent):
         plugin_app.frame.add(plugin_app.wafer_modules[module[0]], module[0])
     plugin_app.frame.bind('<<SystemData>>', api_store.edsm_handler)
     api_store.set(plugin_app.frame)
+#    api_store.edsm_query('Witch Head Sector LC-V c2-10', 'stations')
     print "L3-37 loaded"
     return (plugin_app.frame)
     
@@ -148,6 +151,7 @@ def journal_entry(cmdr, system, station, entry, state):
         except Exception as exc:
             print(traceback.format_exc())
             print(exc)
+    special_frames.update_special_widgets()
 
 def dashboard_entry(cmdr, is_beta, entry):
     for key, module in plugin_app.wafer_modules.iteritems():
@@ -165,6 +169,7 @@ def cmdr_data(data, is_beta):
         except Exception as exc:
             print(traceback.format_exc())
             print(exc)
+    #plugin_app.frame.event_generate('<<TestEvent>>', when='tail')
             
 def inara_notify_ship(eventData):
     for key, module in plugin_app.wafer_modules.iteritems():
@@ -182,6 +187,13 @@ def inara_notify_location(eventData):
         except Exception as exc:
             print(traceback.format_exc())
             print(exc)
+    special_frames.update_special_widgets()
             
 def plugin_stop():
+    for key, module in plugin_app.wafer_modules.iteritems():
+        try:
+            module.plugin_stop()
+        except Exception as exc:
+            print(traceback.format_exc())
+            print(exc)
     api_store.plugin_stop()

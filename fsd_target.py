@@ -8,6 +8,8 @@ import requests
 
 from os import path
 
+from special_frames import SystemLinkLabel, StationLinkLabel
+
 import json
 import urllib
 

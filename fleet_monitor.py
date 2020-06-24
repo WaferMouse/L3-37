@@ -17,6 +17,8 @@ from ttkHyperlinkLabel import HyperlinkLabel
 
 from config import config
 
+import api_store
+
 plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
 
 with open(path.join(plugin_path,'coriolis-dist.json')) as json_data:
@@ -54,15 +56,9 @@ class ShipFrame(tk.Frame):
             self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
         self.sysname = ship_data['starsystem']['name']
         self.stationname = ship_data['station']['name']
-        if config.get('system_provider') == 'Inara':
-            self.sys_url = ship_data['starsystem']['InaraURL']
-        else:
-            self.sys_url = get_system_url(self.sysname)
-        if config.get('station_provider') == 'Inara':
-            self.station_url = ship_data['station']['InaraURL']
-        else:
-            self.station_url = get_station_url(self.sysname, self.stationname)
-        self.system_link.configure(url = self.sys_url, text = self.sysname)
+        self.sys_url = get_system_url(self.sysname)
+        self.station_url = get_station_url(self.sysname, self.stationname)
+        self.system_link.set_system(self.sysname)
         edID = FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
         if config.get('L3_shipyard_provider') == 'Inara':
             self.ship_url = ship_data["shipInaraURL"]
@@ -70,13 +66,13 @@ class ShipFrame(tk.Frame):
             self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), urllib.quote_plus(self.cmdr), self.ship_data['id'], edID)
         # https://inara.cz/cmdr-fleet/
         self.ship_link.configure(url = self.ship_url, text = self.ship_lbl_txt)
-        self.station_link.configure(url = self.station_url, text = self.stationname)
+        self.station_link.set_station(self.sysname, self.stationname)
         
     def build_ui(self):
         self.sub_frame = tk.Frame(self)
         self.ship_link = HyperlinkLabel(self, text = '', justify=tk.LEFT, anchor='w', url = None)
-        self.system_link = HyperlinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
-        self.station_link = HyperlinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
+        self.system_link = SystemLinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
+        self.station_link = StationLinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
         self.ship_link.grid(column = 0, row = 0, sticky = 'we')
         self.sub_frame.grid(sticky = 'we')
         self.sys_label = tk.Label(self.sub_frame, text = 'System: ', justify=tk.LEFT, anchor=tk.W, pady=0)
@@ -88,8 +84,8 @@ class ShipFrame(tk.Frame):
         self.menu = tk.Menu(self, tearoff=0)
 
         self.menu.add_command(label="Copy system name", command = self.copySystem)
-        for i in [self.station_link, self.system_link]:
-            i.bind("<Button-3>", self.rightclick)
+#        for i in [self.station_link, self.system_link]:
+#            i.bind("<Button-3>", self.rightclick)
     def copySystem(self):
         setclipboard(self.sysname)
     def rightclick(self, event):
@@ -125,9 +121,6 @@ class FleetMonitor(WaferModule):
             for key, ship in self.bigjsonships[self.cmdr].iteritems():
                 if 'shipInaraURL' not in ship:
                     self.bigjsonships[self.cmdr][key]['shipInaraURL'] = 'https://inara.cz/cmdr-fleet/'
-                for location in ['starsystem','station']:
-                    if 'InaraURL' not in ship[location]:
-                        self.bigjsonships[self.cmdr][key][location]['InaraURL'] = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.bigjsonships[self.cmdr][key][location]['name'])
                 
             self.ships.update(self.bigjsonships[self.cmdr])
         else:
@@ -189,8 +182,6 @@ class FleetMonitor(WaferModule):
                 del self.ships[ship]["value"]
                 del self.ships[ship]["free"]
                 self.ships[ship]["shipInaraURL"] = 'https://inara.cz/cmdr-fleet/'
-                for location in ['starsystem','station']:
-                    self.ships[ship][location]["InaraURL"] ='https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.ships[ship][location]['name'])
                 self.ships[ship].update({'localised_name': ship_map[self.ships[ship]['name'].lower()]})
                 write_file = True
                 do_build_ui = True
@@ -213,12 +204,10 @@ class FleetMonitor(WaferModule):
             self.self_set(cmdr)
             do_build_ui = True
             
-        if (state['Captain'] == None) and (system != None):
+        if (state['Captain'] == None) and (system != None) and state['ShipType']:
             
             current_ship_id = state['ShipID']
             self.current_ship_id = current_ship_id
-            
-            state_ship_type = state['ShipType'] or 'none'
             
             state_ship = {
                 "id": current_ship_id,
@@ -228,15 +217,13 @@ class FleetMonitor(WaferModule):
                 "starsystem": {"name": system},
                 "station": {"name": [station, 'In flight'][station == None]},
 #                "starpos": state['StarPos'],
-                'localised_name': ship_map[state_ship_type.lower()]
+                'localised_name': ship_map[state['ShipType'].lower()]
                 }
                 
-            state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
-            for location in ['starsystem','station']:
-                try:
-                    state_ship[location]["InaraURL"] = self.ships[str(current_ship_id)][location]["InaraURL"]
-                except:
-                    state_ship[location]["InaraURL"] = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(self.ships[ship][location]['name'])
+            try:
+                state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
+            except:
+                state_ship["shipInaraURL"] = 'https://inara.cz/cmdr-fleet/'
             
             if str(current_ship_id) not in self.ships:
                 self.ships[str(current_ship_id)] = state_ship
@@ -302,16 +289,12 @@ class FleetMonitor(WaferModule):
                 self.bigjsonships.update({self.cmdr: self.ships})
                 with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
                     json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
+    
+    def plugin_stop(self):
+        for cmdr, ships in self.bigjsonships.iteritems():
+            for ship, data in ships.iteritems():
+                system_data = {'name': data['starsystem']['name']}
+                api_store.update_cache(system_data)
             
-    def inara_notify_location(self, system, station, eventData):
-        write_file = False
-        for location in ['starsystem','station']:
-            if eventData.get(location + 'InaraURL'):
-                if self.ships[str(self.current_ship_id)][location]['InaraURL'] != eventData[location + 'InaraURL']:
-                    self.ships[str(self.current_ship_id)][location]['InaraURL'] = eventData[location + 'InaraURL']
-                    write_file = True
-        if write_file:
-            self.build_ui()
-            self.bigjsonships.update({self.cmdr: self.ships})
-            with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
-                json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
+#    def inara_notify_location(self, system, station, eventData):
+#        self.build_ui()

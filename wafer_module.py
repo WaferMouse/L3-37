@@ -31,3 +31,6 @@ class WaferModule(tk.Frame):
         
     def inara_notify_ship(self, eventData):
         pass
+        
+    def plugin_stop(self):
+        pass
