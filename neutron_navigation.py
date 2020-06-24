@@ -321,7 +321,7 @@ class NeutronNavigation(WaferModule):
         disassembled = urlparse(o)
         url, scrap = path.splitext(path.basename(disassembled.path))
         url = 'https://spansh.co.uk/api/results/' + url
-        response = urllib.urlopen(url)
+        response = urllib.request.urlopen(url)
         data = json.loads(response.read())
         
         self.route = data
