@@ -1,7 +1,12 @@
 #EngineerCraft
 #ApplyExperimentalEffect
 
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 from wafer_module import WaferModule
 
 from special_frames import *
@@ -75,7 +80,7 @@ class BlueprintFrame(tk.Frame):
         self.count_lbl.config(text = self.count)
         if diff == 1:
             self.minus_btn.config(state = tk.NORMAL)
-        for k, v in self.components.iteritems():
+        for k, v in self.components.items():
             for cat in materials:
                 if k in materials[cat]:
                     materials[cat][k]['need'] = materials[cat][k]['need'] + (v * diff)
@@ -208,7 +213,7 @@ class MatDialog(Dialog):
         self.trade_frame.pack(fill='both', expand = 1)
         self.mat_frames = {}
         y = 0
-        for subcat, v in trader_map[cat].iteritems():
+        for subcat, v in trader_map[cat].items():
             x = 0
             for i in v:
                 self.mat_frames[i] = MatFrame(self.trade_frame.interior, materials[cat][i]['name_local'], i, cat, subcat, x + 1, self, highlightbackground='black', highlightcolor='black', highlightthickness = 1)
@@ -222,11 +227,11 @@ class MatDialog(Dialog):
         
     def prepare_trade(self):
         if self.selected != None:
-            for k, v in self.mat_frames.iteritems():
+            for k, v in self.mat_frames.items():
                 v.prepare_trade()
         
     def end_trade(self):
-        for k, v in self.mat_frames.iteritems():
+        for k, v in self.mat_frames.items():
             v.end_trade()
 
     def buttonbox(self):
@@ -289,7 +294,7 @@ class MatsHelper(WaferModule):
             self.trader_frm_btns[cat] = tk.Button(self.tab_button_frm, text = cat, command = lambda x=cat: self.show_dialog(x))
             self.trader_frm_btns[cat].pack(side='left', fill = 'both', expand = 1)
         for slot in ['standard', 'internal', 'hardpoints']:
-            for k, v in coriolis_dist['Modules'][slot].iteritems():
+            for k, v in coriolis_dist['Modules'][slot].items():
                 cat_name = str(coriolis_module_cats[slot][k]).title()
                 if k in coriolis_dist['Modifications']['modules']:
                     if len(coriolis_dist['Modifications']['modules'][k]['blueprints']) > 0:
@@ -346,7 +351,7 @@ class MatsHelper(WaferModule):
     def journal_entry(self, cmdr, system, station, entry, state):
         for cat in ['Encoded', 'Raw', 'Manufactured']:
             cat_lower = cat.lower()
-            for k, v in state[cat].iteritems():
+            for k, v in state[cat].items():
                 mat = mat_alias[cat_lower][k]
                 diff = v - materials[cat_lower][mat]['have']
                 materials[cat_lower][mat]['have'] = v

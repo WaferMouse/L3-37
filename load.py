@@ -1,4 +1,9 @@
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 from config import config
 import myNotebook as nb
 import traceback
@@ -32,7 +37,7 @@ class FakeNotebook(tk.Frame):
         self.lbl.pack(side=tk.LEFT)
         
         self.fake_combo = tk.Button(self.combo_frame, text = '', command = self.popup, padx = 0, pady = 0, relief = tk.FLAT, borderwidth=0)
-        self.fake_combo2 = tk.Button(self.combo_frame, text = unichr(11206), command = self.popup, padx = 0, pady = 0) #unichr(9660)
+        self.fake_combo2 = tk.Button(self.combo_frame, text = chr(11206), command = self.popup, padx = 0, pady = 0) #chr(9660)
         self.combo_frame.pack(fill=tk.BOTH)
         self.label_frame.pack(fill=tk.BOTH)
         self.fake_combo.pack(fill=tk.BOTH, side = tk.LEFT, expand = 1)
@@ -63,7 +68,7 @@ class FakeNotebook(tk.Frame):
             
         self.tabs[self.current][0].pack(side=tk.LEFT, fill = tk.BOTH, expand = 1)
 
-def plugin_start():
+def plugin_start3(plugin_dir):
     """
     Load this plugin into EDMC
     """
@@ -75,7 +80,7 @@ def plugin_start():
         config.get('EDSM_id')
     except:
         config.set('EDSM_id', '')
-    print "L3-37 started"
+    print("L3-37 started")
     return "L3-37"
 
 def plugin_app(parent):
@@ -99,10 +104,10 @@ def plugin_app(parent):
     for module in plugin_app.wafer_module_classes:
         plugin_app.wafer_modules[module[0]] = module[1](plugin_app.frame, highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg, highlightthickness = 1)#, relief = tk.SUNKEN, borderwidth = 1)
         plugin_app.frame.add(plugin_app.wafer_modules[module[0]], module[0])
-    print "L3-37 loaded"
+    print("L3-37 loaded")
     return (plugin_app.frame)
     
-def plugin_prefs(parent):
+def plugin_prefs(parent, cmdr, is_beta):
     frame = nb.Frame(parent)
     shipyard_provider_label = nb.Label(frame, text="Fleet information provider: ", justify = tk.LEFT)
     shipyard_provider_label.grid(column = 0, row = 0)
@@ -128,17 +133,17 @@ def plugin_prefs(parent):
         pass
     return frame
     
-def prefs_changed():
+def prefs_changed(cmdr, is_beta):
     """
     Save settings.
     """
     config.set('EDSM_id', this.EDSM_id_entry.get())
     config.set('L3_shipyard_provider',this.shipyard_provider_select.get())
 
-def journal_entry(cmdr, system, station, entry, state):
+def journal_entry(cmdr, is_beta, system, station, entry, state):
     this.system = system
     this.station = station
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.journal_entry(cmdr, system, station, entry, state)
         except Exception as exc:
@@ -146,7 +151,7 @@ def journal_entry(cmdr, system, station, entry, state):
             print(exc)
 
 def dashboard_entry(cmdr, is_beta, entry):
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.dashboard_entry(cmdr, is_beta, entry)
         except Exception as exc:
@@ -155,7 +160,7 @@ def dashboard_entry(cmdr, is_beta, entry):
 
 
 def cmdr_data(data, is_beta):
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.cmdr_data(data, is_beta)
         except Exception as exc:
@@ -163,7 +168,7 @@ def cmdr_data(data, is_beta):
             print(exc)
             
 def inara_notify_ship(eventData):
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.inara_notify_ship(eventData)
         except Exception as exc:
@@ -171,7 +176,7 @@ def inara_notify_ship(eventData):
             print(exc)
             
 def inara_notify_location(eventData):
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.inara_notify_location(None, None, eventData)
         except Exception as exc:

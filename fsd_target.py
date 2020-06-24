@@ -1,7 +1,6 @@
-import Tkinter as tk
-from urlparse import urlparse
 import webbrowser
-from urllib import quote_plus
+from urllib.parse import quote_plus
+import tkinter as tk
 from wafer_module import WaferModule
 import threading
 import requests
@@ -16,7 +15,7 @@ from web_handlers import *
 from ttkHyperlinkLabel import HyperlinkLabel
 from config import config
 from os.path import join
-import cPickle
+import pickle
 import sys
 
 theme = config.getint('theme')
@@ -41,7 +40,7 @@ this.edsm_session = None
 this.edsm_data = None
 
 with open(join(config.respath, 'systems.p'),  'rb') as h:
-    this.system_ids  = cPickle.load(h)
+    this.system_ids  = pickle.load(h)
 
 def test_stuff():
     o = 'Shinrarta Dezhra'

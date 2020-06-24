@@ -1,4 +1,9 @@
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
@@ -74,7 +79,7 @@ class ToggledFrame(tk.Frame):
         self.title_frame = tk.Frame(self)
         self.title_frame.pack(fill="x", expand=1)
 
-        self.toggle_button = tk.Label(self.title_frame,text= unichr(11208) + ' ' + text)
+        self.toggle_button = tk.Label(self.title_frame,text= chr(11208) + ' ' + text)
         self.toggle_button.pack(side="left")
 
         self.sub_frame = tk.Frame(self)
@@ -82,11 +87,11 @@ class ToggledFrame(tk.Frame):
         def toggle(self):
             if bool(self.show.get()):
                 self.sub_frame.pack(fill="x", expand=1)
-                self.toggle_button.configure(text=unichr(11206) + ' ' + self.text)
+                self.toggle_button.configure(text=chr(11206) + ' ' + self.text)
                 self.show.set(0)
             else:
                 self.sub_frame.forget()
-                self.toggle_button.configure(text= unichr(11208) + ' ' + self.text)
+                self.toggle_button.configure(text= chr(11208) + ' ' + self.text)
                 self.show.set(1)
 
         def click(event):

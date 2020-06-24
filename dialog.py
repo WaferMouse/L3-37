@@ -1,4 +1,9 @@
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 
 class Dialog(tk.Toplevel):
 

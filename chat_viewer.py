@@ -1,7 +1,6 @@
-import Tkinter as tk
-from urlparse import urlparse
 import webbrowser
-from urllib import quote_plus
+from urllib.parse import quote_plus
+import tkinter as tk
 from wafer_module import WaferModule
 
 from config import config
@@ -104,7 +103,7 @@ class ChatViewer(WaferModule):
         self.linkMenu.add_command(label="Copy link", command = copyLink)
         self.status.insert(tk.END,"Chat viewer loaded", 'regular_text')
         self.status.config(state=tk.DISABLED)
-        print "Chat Viewer loaded"
+        print("Chat Viewer loaded")
 
     def journal_entry(self, cmdr, system, station, entry, state):
         global links
