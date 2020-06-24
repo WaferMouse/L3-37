@@ -1,2 +1,6 @@
 
 mats_helper_old.py
+*.pyc
+*.pyo
+ships.json
+starcache.json
