@@ -68,7 +68,7 @@ class ChatViewer(WaferModule):
         self.fg = config.get('dark_text') if self.theme else 'black'
         self.hl = config.get('dark_highlight') if self.theme else 'blue'
         self.bg = 'grey4' if self.theme else None
-        self.status = tk.Text(self)
+        self.status = tk.Text(self, bg = self.bg)
         self.chatcopy = tk.Button(self, text = "Copy", command = self.copy_button3)
         self.chatcopy.grid(row = 1, column = 0, columnspan = 4)
         self.status['width'] = 1
@@ -89,7 +89,7 @@ class ChatViewer(WaferModule):
         self.status.tag_config('cmdrlink', underline=1, foreground = self.hl)
         self.status.tag_bind('cmdrlink', '<Button-1>', showCmdr)
         self.freeze = tk.IntVar(self)
-        self.freezebutton = tk.Checkbutton(self, text="Freeze", variable = self.freeze)
+        self.freezebutton = tk.Checkbutton(self, text="Freeze", variable = self.freeze, fg = self.fg)
         self.freezebutton.grid(row=2, column = 0, columnspan = 4)
         self.scroll = tk.Scrollbar(self, command=self.status.yview)
         self.scroll.grid(row=0, column=4, sticky='nsew')
