@@ -126,7 +126,7 @@ class ChatViewer(WaferModule):
         if event == "SendText":
             sender = cmdr
             display = True
-            if entry['To'] in ["wing","voicechat","local"]:
+            if entry['To'] in ["wing","voicechat","local","starsystem"]:
                 channel = entry['To'][0].upper()
             else:
                 channel = entry['To']
@@ -143,7 +143,7 @@ class ChatViewer(WaferModule):
                 channel = "L"
                 display = True
             
-        elif event == "FSDJump" or event == "StartJump":
+        elif event == "FSDJump":# or event == "StartJump":
             formtext = {"FSDJump": "Arrived at",
                         "StartJump": "Jumping to",
                         }

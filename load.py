@@ -178,7 +178,8 @@ def inara_notify_ship(eventData):
 def inara_notify_location(eventData):
     for key, module in plugin_app.wafer_modules.items():
         try:
-            module.inara_notify_location(None, None, eventData)
+            module.inara_notify_location(eventData)
         except Exception as exc:
+            print('Error when updating module ' + module)
             print(traceback.format_exc())
             print(exc)

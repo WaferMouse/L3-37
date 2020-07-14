@@ -306,7 +306,7 @@ class FleetMonitor(WaferModule):
                 with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
                     json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
             
-    def inara_notify_location(self, system, station, eventData):
+    def inara_notify_location(self, eventData):
         write_file = False
         for location in ['starsystem','station']:
             if eventData.get(location + 'InaraURL'):
