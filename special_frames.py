@@ -4,6 +4,87 @@ try:
 except ModuleNotFoundError:
     # Python 3
     import tkinter as tk
+    
+from ttkHyperlinkLabel import HyperlinkLabel
+from web_handlers import *
+from config import config
+import webbrowser
+    
+def setclipboard(text):
+    r = tk.Tk()
+    r.clipboard_clear()
+    r.clipboard_append(text)
+    r.destroy()
+    
+class SystemLinkLabel(HyperlinkLabel):
+    def __init__(self, *args, **kwargs):
+        HyperlinkLabel.__init__(self, *args, **kwargs)
+        self.system_name = ''
+        self.menu = tk.Menu(self, tearoff=0)
+        self.menu.add_command(label="Copy system name", command = self.copy_text)
+        self.menu.add_command(label="View system in EDSM", command = self.edsm_browser)
+        self.menu.add_command(label="View system in Inara", command = self.inara_browser)
+        self.menu.add_command(label="View system in EDDB", command = self.eddb_browser)
+        self.bind("<Button-3>", self.rightclick)
+        #special_widgets.add(weakref.ref(self))
+        
+    def copy_text(self):
+        setclipboard(self.system_name)
+        
+    def set_system(self, system_name):
+        self.system_name = system_name
+        self.update_data()
+        
+    def update_data(self):
+        self.configure(url = get_system_url(self.system_name), text = self.system_name)
+        
+    def rightclick(self, event):
+        self.menu.post(event.x_root, event.y_root)
+        
+    def edsm_browser(self):
+        webbrowser.open(get_system_url(self.system_name,'EDSM'))
+        
+    def inara_browser(self):
+        webbrowser.open(get_system_url(self.system_name,'Inara'))
+        
+    def eddb_browser(self):
+        webbrowser.open(get_system_url(self.system_name,'eddb'))
+        
+class StationLinkLabel(HyperlinkLabel):
+    def __init__(self, *args, **kwargs):
+        HyperlinkLabel.__init__(self, *args, **kwargs)
+        self.system_name = ''
+        self.station_name = ''
+        self.menu = tk.Menu(self, tearoff=0)
+        self.menu.add_command(label="Copy station name", command = self.copy_text)
+        self.menu.add_command(label="View station in EDSM", command = self.edsm_browser)
+        self.menu.add_command(label="View station in Inara", command = self.inara_browser)
+        self.menu.add_command(label="View station in EDDB", command = self.eddb_browser)
+        self.bind("<Button-3>", self.rightclick)
+        #special_widgets.add(weakref.ref(self))
+        
+    def copy_text(self):
+        setclipboard(self.station_name)
+        
+    def set_station(self, system_name, station_name):
+        self.station_name = station_name
+        self.system_name = system_name
+        self.update_data()
+        
+    def update_data(self):
+        self.configure(url = get_station_url(self.system_name, self.station_name), text = self.station_name)
+        
+    def rightclick(self, event):
+        self.menu.post(event.x_root, event.y_root)
+        
+    def edsm_browser(self):
+        webbrowser.open(get_station_url(self.system_name, self.station_name,'EDSM'))
+        
+    def inara_browser(self):
+        webbrowser.open(get_station_url(self.system_name, self.station_name,'Inara'))
+        
+    def eddb_browser(self):
+        webbrowser.open(get_station_url(self.system_name, self.station_name,'eddb'))
 
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!

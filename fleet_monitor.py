@@ -59,15 +59,10 @@ class ShipFrame(tk.Frame):
             self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
         self.sysname = ship_data['starsystem']['name']
         self.stationname = ship_data['station']['name']
-        if config.get('system_provider') == 'Inara':
-            self.sys_url = ship_data['starsystem']['InaraURL']
-        else:
-            self.sys_url = get_system_url(self.sysname)
-        if config.get('station_provider') == 'Inara':
-            self.station_url = ship_data['station']['InaraURL']
-        else:
-            self.station_url = get_station_url(self.sysname, self.stationname)
-        self.system_link.configure(url = self.sys_url, text = self.sysname)
+        self.sys_url = get_system_url(self.sysname)
+        self.station_url = get_station_url(self.sysname, self.stationname)
+        self.system_link.set_system(self.sysname)
+        self.station_link.set_station(self.sysname, self.stationname)
         edID = FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
         if config.get('L3_shipyard_provider') == 'Inara':
             self.ship_url = ship_data["shipInaraURL"]
@@ -75,13 +70,13 @@ class ShipFrame(tk.Frame):
             self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), urllib.parse.quote_plus(self.cmdr), self.ship_data['id'], edID)
         # https://inara.cz/cmdr-fleet/
         self.ship_link.configure(url = self.ship_url, text = self.ship_lbl_txt)
-        self.station_link.configure(url = self.station_url, text = self.stationname)
+        #self.station_link.configure(url = self.station_url, text = self.stationname)
         
     def build_ui(self):
         self.sub_frame = tk.Frame(self)
         self.ship_link = HyperlinkLabel(self, text = '', justify=tk.LEFT, anchor='w', url = None)
-        self.system_link = HyperlinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
-        self.station_link = HyperlinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
+        self.system_link = SystemLinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
+        self.station_link = StationLinkLabel(self.sub_frame, text = '', justify=tk.LEFT, anchor='w', url = None)
         self.ship_link.grid(column = 0, row = 0, sticky = 'we')
         self.sub_frame.grid(sticky = 'we')
         self.sys_label = tk.Label(self.sub_frame, text = 'System: ', justify=tk.LEFT, anchor=tk.W, pady=0)
@@ -93,8 +88,8 @@ class ShipFrame(tk.Frame):
         self.menu = tk.Menu(self, tearoff=0)
 
         self.menu.add_command(label="Copy system name", command = self.copySystem)
-        for i in [self.station_link, self.system_link]:
-            i.bind("<Button-3>", self.rightclick)
+#        for i in [self.station_link, self.system_link]:
+#            i.bind("<Button-3>", self.rightclick)
     def copySystem(self):
         setclipboard(self.sysname)
     def rightclick(self, event):
@@ -218,7 +213,7 @@ class FleetMonitor(WaferModule):
             self.self_set(cmdr)
             do_build_ui = True
             
-        if (state['Captain'] == None) and (system != None):
+        if (state['Captain'] == None) and (system != None) and state['ShipType']:
             
             current_ship_id = state['ShipID']
             self.current_ship_id = current_ship_id
