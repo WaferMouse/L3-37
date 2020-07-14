@@ -1,4 +1,9 @@
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 
 import urllib
 
@@ -12,9 +17,9 @@ from config import config
 
 import webbrowser
 
-import tkMessageBox
+import tkinter.messagebox as tkMessageBox
 
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 from special_frames import *
 
@@ -56,7 +61,7 @@ class ModelFSDShip:
             'cargo': 0,
             'fuel': 0,
             }
-        for k,v in modules.iteritems():
+        for k,v in modules.items():
             item_name = v['Item']
             if item_name in self.FLAT_MODULES:
                 for i in ['mass', 'cargo', 'fuel']:
@@ -206,7 +211,7 @@ class SystemFrame(tk.Frame):
     def copySystem(self):
         setclipboard(self.system_name)
     def copySystemLink(self):
-        setclipboard("https://www.edsm.net/show-system?systemName=" + urllib.quote_plus(self.system_name))
+        setclipboard("https://www.edsm.net/show-system?systemName=" + urllib.parse.quote_plus(self.system_name))
     def click(self, event):
         webbrowser.open(get_system_url(self.system_name))
     def rightclick(self, event):
@@ -316,7 +321,7 @@ class NeutronNavigation(WaferModule):
         disassembled = urlparse(o)
         url, scrap = path.splitext(path.basename(disassembled.path))
         url = 'https://spansh.co.uk/api/results/' + url
-        response = urllib.urlopen(url)
+        response = urllib.request.urlopen(url)
         data = json.loads(response.read())
         
         self.route = data

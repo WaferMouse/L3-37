@@ -1,7 +1,12 @@
-import Tkinter as tk
-
 import json
 import urllib
+
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 
 from os import path
 
@@ -16,8 +21,6 @@ from wafer_module import WaferModule
 from ttkHyperlinkLabel import HyperlinkLabel
 
 from config import config
-
-import api_store
 
 plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
 
@@ -59,14 +62,15 @@ class ShipFrame(tk.Frame):
         self.sys_url = get_system_url(self.sysname)
         self.station_url = get_station_url(self.sysname, self.stationname)
         self.system_link.set_system(self.sysname)
+        self.station_link.set_station(self.sysname, self.stationname)
         edID = FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
         if config.get('L3_shipyard_provider') == 'Inara':
             self.ship_url = ship_data["shipInaraURL"]
         else:
-            self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), urllib.quote_plus(self.cmdr), self.ship_data['id'], edID)
+            self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), urllib.parse.quote_plus(self.cmdr), self.ship_data['id'], edID)
         # https://inara.cz/cmdr-fleet/
         self.ship_link.configure(url = self.ship_url, text = self.ship_lbl_txt)
-        self.station_link.set_station(self.sysname, self.stationname)
+        #self.station_link.configure(url = self.station_url, text = self.stationname)
         
     def build_ui(self):
         self.sub_frame = tk.Frame(self)
@@ -118,9 +122,12 @@ class FleetMonitor(WaferModule):
             widget.destroy()
         self.ship_widgets.clear()
         if self.cmdr in self.bigjsonships:
-            for key, ship in self.bigjsonships[self.cmdr].iteritems():
+            for key, ship in self.bigjsonships[self.cmdr].items():
                 if 'shipInaraURL' not in ship:
                     self.bigjsonships[self.cmdr][key]['shipInaraURL'] = 'https://inara.cz/cmdr-fleet/'
+                for location in ['starsystem','station']:
+                    if 'InaraURL' not in ship[location]:
+                        self.bigjsonships[self.cmdr][key][location]['InaraURL'] = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(self.bigjsonships[self.cmdr][key][location]['name'])
                 
             self.ships.update(self.bigjsonships[self.cmdr])
         else:
@@ -128,7 +135,7 @@ class FleetMonitor(WaferModule):
             self.ships.update({})
             
     def build_ui(self):
-        for key, widget in self.ship_widgets.iteritems():
+        for key, widget in self.ship_widgets.items():
             if key not in self.ships:
                 widget.forget()
             else:
@@ -139,7 +146,7 @@ class FleetMonitor(WaferModule):
                 if self.theme:
                     self.ship_widgets[ship].config(background = self.bg)
             self.ship_widgets[ship].pack(fill = tk.BOTH, expand = 1)
-        for key, widget in self.ship_widgets.iteritems():
+        for key, widget in self.ship_widgets.items():
             widget.config(highlightbackground=self.fg, highlightcolor=self.fg)
             
         if self.theme:
@@ -182,6 +189,8 @@ class FleetMonitor(WaferModule):
                 del self.ships[ship]["value"]
                 del self.ships[ship]["free"]
                 self.ships[ship]["shipInaraURL"] = 'https://inara.cz/cmdr-fleet/'
+                for location in ['starsystem','station']:
+                    self.ships[ship][location]["InaraURL"] ='https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(self.ships[ship][location]['name'])
                 self.ships[ship].update({'localised_name': ship_map[self.ships[ship]['name'].lower()]})
                 write_file = True
                 do_build_ui = True
@@ -220,10 +229,12 @@ class FleetMonitor(WaferModule):
                 'localised_name': ship_map[state['ShipType'].lower()]
                 }
                 
-            try:
-                state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
-            except:
-                state_ship["shipInaraURL"] = 'https://inara.cz/cmdr-fleet/'
+            state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
+            for location in ['starsystem','station']:
+                try:
+                    state_ship[location]["InaraURL"] = self.ships[str(current_ship_id)][location]["InaraURL"]
+                except:
+                    state_ship[location]["InaraURL"] = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(self.ships[ship][location]['name'])
             
             if str(current_ship_id) not in self.ships:
                 self.ships[str(current_ship_id)] = state_ship
@@ -289,12 +300,16 @@ class FleetMonitor(WaferModule):
                 self.bigjsonships.update({self.cmdr: self.ships})
                 with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
                     json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
-    
-    def plugin_stop(self):
-        for cmdr, ships in self.bigjsonships.iteritems():
-            for ship, data in ships.iteritems():
-                system_data = {'name': data['starsystem']['name']}
-                api_store.update_cache(system_data)
             
-#    def inara_notify_location(self, system, station, eventData):
-#        self.build_ui()
+    def inara_notify_location(self, eventData):
+        write_file = False
+        for location in ['starsystem','station']:
+            if eventData.get(location + 'InaraURL'):
+                if self.ships[str(self.current_ship_id)][location]['InaraURL'] != eventData[location + 'InaraURL']:
+                    self.ships[str(self.current_ship_id)][location]['InaraURL'] = eventData[location + 'InaraURL']
+                    write_file = True
+        if write_file:
+            self.build_ui()
+            self.bigjsonships.update({self.cmdr: self.ships})
+            with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
+                json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)

@@ -1,18 +1,16 @@
 from os import path
 import sys
 from config import config
-import cPickle
+import pickle
 import urllib
-
-from api_store import starcache
 
 this = sys.modules[__name__]	# For holding module globals
 
 with open(path.join(config.respath, 'systems.p'),  'rb') as h:
-    this.system_ids  = cPickle.load(h)
+    this.system_ids  = pickle.load(h)
     
 with open(path.join(config.respath, 'stations.p'), 'rb') as h:
-    this.station_ids = cPickle.load(h)
+    this.station_ids = pickle.load(h)
 
 def EDDB_system_url(system_name):
     if EDDB_system_id(system_name):
@@ -38,12 +36,9 @@ def get_system_url(system_name, provider = None):
     if provider == 'eddb':
         system_url = EDDB_system_url(system_name)
     elif provider == 'Inara':
-        try:
-            system_url = 'https://inara.cz/galaxy-starsystem/' + str(starcache[system_name.lower()]['starsystemInaraID']) + '/'
-        except:
-            system_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(system_name)
+        system_url = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(system_name)
     else:
-        system_url = 'https://www.edsm.net/show-system?systemName=' + urllib.quote_plus(system_name)
+        system_url = 'https://www.edsm.net/show-system?systemName=' + urllib.parse.quote_plus(system_name)
     return(system_url)
     
 def get_station_url(system_name, station_name, provider = None):
@@ -52,13 +47,7 @@ def get_station_url(system_name, station_name, provider = None):
     if provider == 'eddb':
         station_url = EDDB_station_url(system_name, station_name)
     elif provider == 'Inara':
-        try:
-            station_url = 'https://inara.cz/galaxy-station/' + str(starcache[system_name.lower()]['stations'][station_name]['stationInaraID']) + '/'
-        except:
-            try:
-                station_url = 'https://inara.cz/galaxy-starsystem/' + str(starcache[system_name.lower()]['starsystemInaraID']) + '/'
-            except:
-                station_url = 'https://inara.cz/search/?searchglobal=' + urllib.quote_plus(station_name)
+        station_url = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(station_name)
     else:
-        station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.quote_plus(system_name), urllib.quote_plus(station_name))
+        station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.parse.quote_plus(system_name), urllib.parse.quote_plus(station_name))
     return(station_url)

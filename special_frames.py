@@ -1,45 +1,20 @@
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
+    
 from ttkHyperlinkLabel import HyperlinkLabel
 from web_handlers import *
 from config import config
-import weakref
 import webbrowser
-
-special_widgets = set()
-
+    
 def setclipboard(text):
     r = tk.Tk()
     r.clipboard_clear()
     r.clipboard_append(text)
     r.destroy()
-    
-def update_special_widgets():
-    '''
-    I didn't want this, but here we are. There's probably a way of dealing with this using Tkinter's
-    event system but that way lies MADNESS so I will only tolerate it as much as I have to.
-    '''
-    global special_widgets
-    dead = set()
-    for ref in special_widgets:
-        obj = ref()
-        if obj is not None:
-            obj.update_data()
-        else:
-            dead.add(ref)
-    special_widgets -= dead
-
-class SystemFrame(tk.Frame):
-    def __init__(self, *args, **kwargs):
-        tk.Frame.__init__(self, *args, **kwargs)
-        self.system_name = ''
-        self.system_data = {}
-        
-    def set_system(self, system_name):
-        self.system_name = system_name
-        self.update_data()
-        
-    def update_data(self):
-        pass
     
 class SystemLinkLabel(HyperlinkLabel):
     def __init__(self, *args, **kwargs):
@@ -51,7 +26,7 @@ class SystemLinkLabel(HyperlinkLabel):
         self.menu.add_command(label="View system in Inara", command = self.inara_browser)
         self.menu.add_command(label="View system in EDDB", command = self.eddb_browser)
         self.bind("<Button-3>", self.rightclick)
-        special_widgets.add(weakref.ref(self))
+        #special_widgets.add(weakref.ref(self))
         
     def copy_text(self):
         setclipboard(self.system_name)
@@ -86,7 +61,7 @@ class StationLinkLabel(HyperlinkLabel):
         self.menu.add_command(label="View station in Inara", command = self.inara_browser)
         self.menu.add_command(label="View station in EDDB", command = self.eddb_browser)
         self.bind("<Button-3>", self.rightclick)
-        special_widgets.add(weakref.ref(self))
+        #special_widgets.add(weakref.ref(self))
         
     def copy_text(self):
         setclipboard(self.station_name)
@@ -185,7 +160,7 @@ class ToggledFrame(tk.Frame):
         self.title_frame = tk.Frame(self)
         self.title_frame.pack(fill="x", expand=1)
 
-        self.toggle_button = tk.Label(self.title_frame,text= unichr(11208) + ' ' + text)
+        self.toggle_button = tk.Label(self.title_frame,text= chr(11208) + ' ' + text)
         self.toggle_button.pack(side="left")
 
         self.sub_frame = tk.Frame(self)
@@ -193,11 +168,11 @@ class ToggledFrame(tk.Frame):
         def toggle(self):
             if bool(self.show.get()):
                 self.sub_frame.pack(fill="x", expand=1)
-                self.toggle_button.configure(text=unichr(11206) + ' ' + self.text)
+                self.toggle_button.configure(text=chr(11206) + ' ' + self.text)
                 self.show.set(0)
             else:
                 self.sub_frame.forget()
-                self.toggle_button.configure(text= unichr(11208) + ' ' + self.text)
+                self.toggle_button.configure(text= chr(11208) + ' ' + self.text)
                 self.show.set(1)
 
         def click(event):

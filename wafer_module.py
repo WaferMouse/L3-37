@@ -1,4 +1,9 @@
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 
 class WaferModule(tk.Frame):
     
@@ -26,11 +31,8 @@ class WaferModule(tk.Frame):
     def update_theme(self):
         pass
         
-    def inara_notify_location(self, system, station, eventData):
+    def inara_notify_location(self, eventData):
         pass
         
     def inara_notify_ship(self, eventData):
-        pass
-        
-    def plugin_stop(self):
         pass

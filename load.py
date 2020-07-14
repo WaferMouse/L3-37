@@ -1,9 +1,12 @@
-import Tkinter as tk
+try:
+    # Python 2
+    import Tkinter as tk
+except ModuleNotFoundError:
+    # Python 3
+    import tkinter as tk
 from config import config
 import myNotebook as nb
 import traceback
-
-import api_store
 
 import sys
 
@@ -15,8 +18,6 @@ from mats_helper import MatsHelper
 from fleet_monitor import FleetMonitor
 from surface_navigation import SurfaceNavigation
 from neutron_navigation import NeutronNavigation
-
-import special_frames
         
 class FakeNotebook(tk.Frame):
     
@@ -36,7 +37,7 @@ class FakeNotebook(tk.Frame):
         self.lbl.pack(side=tk.LEFT)
         
         self.fake_combo = tk.Button(self.combo_frame, text = '', command = self.popup, padx = 0, pady = 0, relief = tk.FLAT, borderwidth=0)
-        self.fake_combo2 = tk.Button(self.combo_frame, text = unichr(11206), command = self.popup, padx = 0, pady = 0) #unichr(9660)
+        self.fake_combo2 = tk.Button(self.combo_frame, text = chr(11206), command = self.popup, padx = 0, pady = 0) #chr(9660)
         self.combo_frame.pack(fill=tk.BOTH)
         self.label_frame.pack(fill=tk.BOTH)
         self.fake_combo.pack(fill=tk.BOTH, side = tk.LEFT, expand = 1)
@@ -67,7 +68,7 @@ class FakeNotebook(tk.Frame):
             
         self.tabs[self.current][0].pack(side=tk.LEFT, fill = tk.BOTH, expand = 1)
 
-def plugin_start():
+def plugin_start3(plugin_dir):
     """
     Load this plugin into EDMC
     """
@@ -79,7 +80,7 @@ def plugin_start():
         config.get('EDSM_id')
     except:
         config.set('EDSM_id', '')
-    print "L3-37 started"
+    print("L3-37 started")
     return "L3-37"
 
 def plugin_app(parent):
@@ -103,13 +104,10 @@ def plugin_app(parent):
     for module in plugin_app.wafer_module_classes:
         plugin_app.wafer_modules[module[0]] = module[1](plugin_app.frame, highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg, highlightthickness = 1)#, relief = tk.SUNKEN, borderwidth = 1)
         plugin_app.frame.add(plugin_app.wafer_modules[module[0]], module[0])
-    plugin_app.frame.bind('<<SystemData>>', api_store.edsm_handler)
-    api_store.set(plugin_app.frame)
-#    api_store.edsm_query('Witch Head Sector LC-V c2-10', 'stations')
-    print "L3-37 loaded"
+    print("L3-37 loaded")
     return (plugin_app.frame)
     
-def plugin_prefs(parent):
+def plugin_prefs(parent, cmdr, is_beta):
     frame = nb.Frame(parent)
     shipyard_provider_label = nb.Label(frame, text="Fleet information provider: ", justify = tk.LEFT)
     shipyard_provider_label.grid(column = 0, row = 0)
@@ -135,26 +133,25 @@ def plugin_prefs(parent):
         pass
     return frame
     
-def prefs_changed():
+def prefs_changed(cmdr, is_beta):
     """
     Save settings.
     """
     config.set('EDSM_id', this.EDSM_id_entry.get())
     config.set('L3_shipyard_provider',this.shipyard_provider_select.get())
 
-def journal_entry(cmdr, system, station, entry, state):
+def journal_entry(cmdr, is_beta, system, station, entry, state):
     this.system = system
     this.station = station
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.journal_entry(cmdr, system, station, entry, state)
         except Exception as exc:
             print(traceback.format_exc())
             print(exc)
-    special_frames.update_special_widgets()
 
 def dashboard_entry(cmdr, is_beta, entry):
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.dashboard_entry(cmdr, is_beta, entry)
         except Exception as exc:
@@ -163,16 +160,15 @@ def dashboard_entry(cmdr, is_beta, entry):
 
 
 def cmdr_data(data, is_beta):
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.cmdr_data(data, is_beta)
         except Exception as exc:
             print(traceback.format_exc())
             print(exc)
-    #plugin_app.frame.event_generate('<<TestEvent>>', when='tail')
             
 def inara_notify_ship(eventData):
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
             module.inara_notify_ship(eventData)
         except Exception as exc:
@@ -180,20 +176,10 @@ def inara_notify_ship(eventData):
             print(exc)
             
 def inara_notify_location(eventData):
-    api_store.inara_notify_location(this.system, this.station, eventData)
-    for key, module in plugin_app.wafer_modules.iteritems():
+    for key, module in plugin_app.wafer_modules.items():
         try:
-            module.inara_notify_location(this.system, this.station, eventData)
+            module.inara_notify_location(eventData)
         except Exception as exc:
+            print('Error when updating module ' + module)
             print(traceback.format_exc())
             print(exc)
-    special_frames.update_special_widgets()
-            
-def plugin_stop():
-    for key, module in plugin_app.wafer_modules.iteritems():
-        try:
-            module.plugin_stop()
-        except Exception as exc:
-            print(traceback.format_exc())
-            print(exc)
-    api_store.plugin_stop()
