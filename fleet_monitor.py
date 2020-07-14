@@ -114,6 +114,7 @@ class FleetMonitor(WaferModule):
             pass
         self.ships_scroll = VerticalScrolledFrame(self, bg = self.bg)
         self.ships_scroll.pack(side = tk.LEFT, fill = tk.BOTH, expand = 1)
+        self.last_market_id = None
         
     def self_set(self, cmdr):
         self.cmdr = cmdr
@@ -185,7 +186,7 @@ class FleetMonitor(WaferModule):
                 self.ships[ship] = data["ships"][ship]
                 del self.ships[ship]["starsystem"]["id"]
                 del self.ships[ship]["starsystem"]["systemaddress"]
-                del self.ships[ship]["station"]["id"]
+                #del self.ships[ship]["station"]["id"]
                 del self.ships[ship]["value"]
                 del self.ships[ship]["free"]
                 self.ships[ship]["shipInaraURL"] = 'https://inara.cz/cmdr-fleet/'
@@ -213,6 +214,10 @@ class FleetMonitor(WaferModule):
             self.self_set(cmdr)
             do_build_ui = True
             
+        if entry['event'] == 'Docked':
+            self.last_market_id = entry['MarketID']
+        elif entry['event'] == 'Undocked':
+            self.last_market_id = None
         if (state['Captain'] == None) and (system != None) and state['ShipType']:
             
             current_ship_id = state['ShipID']
@@ -224,7 +229,9 @@ class FleetMonitor(WaferModule):
                 "shipID": state['ShipIdent'],
                 "shipName": state['ShipName'],
                 "starsystem": {"name": system},
-                "station": {"name": [station, 'In flight'][station == None]},
+                "station": {"name": [station, 'In flight'][station == None],
+                    'id': self.last_market_id
+                    },
 #                "starpos": state['StarPos'],
                 'localised_name': ship_map[state['ShipType'].lower()]
                 }
@@ -256,7 +263,9 @@ class FleetMonitor(WaferModule):
                         }
                 self.ships[this_ship_id].update({
                     "starsystem": {"name": system},
-                    "station": {"name": station},
+                    "station": {"name": station,
+                        'id': self.last_market_id,
+                        },
 #                    "starpos": state['StarPos'],
                     })
                 write_file = True
