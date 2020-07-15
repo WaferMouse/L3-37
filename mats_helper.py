@@ -153,8 +153,11 @@ class MatFrame(tk.Frame):
         if self.subcat == self.granny.selected[0]:
             small = 1
             out_subcat = self.subcat
-        elif self.subcat != self.granny.selected[0]:
+        elif self.subcat != self.granny.selected[0] and diff > 0:
             small = 2
+            out_subcat = self.granny.selected[0]
+        else:
+            small = 1
             out_subcat = self.granny.selected[0]
         if diff > 0:
             in_val = small
