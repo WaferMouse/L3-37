@@ -1,6 +1,9 @@
 # L3-37 for EDMC
 Multi tool plugin for Elite: Dangerous Market Connector (EDMC)
 
+# RE: A BUG IN THE CHAT VIEWER:
+There's a bug in the latest release preventing the chat viewer from showing any messages. The next release will feature an overhaul on the chat viewer (it's the oldest component and desperately in need of a refactor), in the meantime please see the following page for a temporary fix: https://github.com/WaferMouse/L3-37/issues/2#issuecomment-660511766
+
 # Features
 - Surface navigation view to get a bearing for a given latitude and longitude in real time.
 - Neutron navigation view for following routes generated from [spansh.co.uk/plotter](https://www.spansh.co.uk/plotter).  When you reach a waypoint, it copies the name of the next waypoint to the clipboard.  You can also right-click system names to copy them to the clipboard.  It also estimates fuel use.
