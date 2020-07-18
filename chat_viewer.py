@@ -3,6 +3,8 @@ from urllib.parse import quote_plus
 import tkinter as tk
 from wafer_module import WaferModule
 
+from urllib.parse import urlparse
+
 from config import config
 
 from web_handlers import *
