@@ -36,9 +36,13 @@ def get_system_url(system_name, provider = None):
     if provider == 'eddb':
         system_url = EDDB_system_url(system_name)
     elif provider == 'Inara':
-        system_url = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(system_name)
+        system_url = 'https://inara.cz/galaxy-starsystem/?search=' + urllib.parse.quote_plus(system_name)
     else:
         system_url = 'https://www.edsm.net/show-system?systemName=' + urllib.parse.quote_plus(system_name)
+    return(system_url)
+    
+def get_nearest_url(system_name):
+    system_url = 'https://inara.cz/galaxy-nearest-stations/?ps1=' + urllib.parse.quote_plus(system_name)
     return(system_url)
     
 def get_station_url(system_name, station_name, provider = None):
@@ -47,7 +51,7 @@ def get_station_url(system_name, station_name, provider = None):
     if provider == 'eddb':
         station_url = EDDB_station_url(system_name, station_name)
     elif provider == 'Inara':
-        station_url = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(station_name)
+        station_url = 'https://inara.cz/galaxy-station/?search={}%20[{}]'.format(urllib.parse.quote_plus(system_name), urllib.parse.quote_plus(station_name))
     else:
         station_url = 'https://www.edsm.net/show-system?systemName={}&stationName={}'.format(urllib.parse.quote_plus(system_name), urllib.parse.quote_plus(station_name))
     return(station_url)

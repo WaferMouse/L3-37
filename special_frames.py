@@ -23,8 +23,9 @@ class SystemLinkLabel(HyperlinkLabel):
         self.menu = tk.Menu(self, tearoff=0)
         self.menu.add_command(label="Copy system name", command = self.copy_text)
         self.menu.add_command(label="View system in EDSM", command = self.edsm_browser)
-        self.menu.add_command(label="View system in Inara", command = self.inara_browser)
         self.menu.add_command(label="View system in EDDB", command = self.eddb_browser)
+        self.menu.add_command(label="View system in Inara", command = self.inara_browser)
+        self.menu.add_command(label="View nearest in Inara", command = self.inara_nearest)
         self.bind("<Button-3>", self.rightclick)
         #special_widgets.add(weakref.ref(self))
         
@@ -49,6 +50,9 @@ class SystemLinkLabel(HyperlinkLabel):
         
     def eddb_browser(self):
         webbrowser.open(get_system_url(self.system_name,'eddb'))
+        
+    def inara_nearest(self):
+        webbrowser.open(get_nearest_url(self.system_name))
         
 class StationLinkLabel(HyperlinkLabel):
     def __init__(self, *args, **kwargs):
