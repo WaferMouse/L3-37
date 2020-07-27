@@ -126,9 +126,6 @@ class FleetMonitor(WaferModule):
             for key, ship in self.bigjsonships[self.cmdr].items():
                 if 'shipInaraURL' not in ship:
                     self.bigjsonships[self.cmdr][key]['shipInaraURL'] = 'https://inara.cz/cmdr-fleet/'
-                for location in ['starsystem','station']:
-                    if 'InaraURL' not in ship[location]:
-                        self.bigjsonships[self.cmdr][key][location]['InaraURL'] = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(self.bigjsonships[self.cmdr][key][location]['name'])
                 
             self.ships.update(self.bigjsonships[self.cmdr])
         else:
@@ -165,10 +162,15 @@ class FleetMonitor(WaferModule):
             self.self_set(cmdr)
             do_build_ui = True
         scrub_list = []
-        for ship in self.ships:
+        for ship, v in self.ships.items():
             if ship not in data["ships"]:
                 scrub_list.append(ship)
             else:
+                if self.ships[ship]["station"]["id"] == data["ships"][ship]["station"]["id"]:
+                    v["starsystem"].update({'name': data["ships"][ship]["starsystem"]["name"]})
+                    v["station"].update({'name': data["ships"][ship]["station"]["name"]})
+                    write_file = True
+                    do_build_ui = True
                 for i in ["shipID", "shipName"]:
                     try:
                         if self.ships[ship][i] != data["ships"][ship][i]:
@@ -190,8 +192,6 @@ class FleetMonitor(WaferModule):
                 del self.ships[ship]["value"]
                 del self.ships[ship]["free"]
                 self.ships[ship]["shipInaraURL"] = 'https://inara.cz/cmdr-fleet/'
-                for location in ['starsystem','station']:
-                    self.ships[ship][location]["InaraURL"] ='https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(self.ships[ship][location]['name'])
                 self.ships[ship].update({'localised_name': ship_map[self.ships[ship]['name'].lower()]})
                 write_file = True
                 do_build_ui = True
@@ -216,6 +216,10 @@ class FleetMonitor(WaferModule):
             
         if entry['event'] == 'Docked':
             self.last_market_id = entry['MarketID']
+            for ship, v in self.ships.items():
+                if self.ships[ship]["station"]["id"] == self.last_market_id:
+                    v["starsystem"].update({'name': system})
+                    v["station"].update({'name': station})
         elif entry['event'] == 'Undocked':
             self.last_market_id = None
         if (state['Captain'] == None) and (system != None) and state['ShipType']:
@@ -237,11 +241,6 @@ class FleetMonitor(WaferModule):
                 }
                 
             state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
-            for location in ['starsystem','station']:
-                try:
-                    state_ship[location]["InaraURL"] = self.ships[str(current_ship_id)][location]["InaraURL"]
-                except:
-                    state_ship[location]["InaraURL"] = 'https://inara.cz/search/?searchglobal=' + urllib.parse.quote_plus(self.ships[ship][location]['name'])
             
             if str(current_ship_id) not in self.ships:
                 self.ships[str(current_ship_id)] = state_ship
@@ -309,16 +308,3 @@ class FleetMonitor(WaferModule):
                 self.bigjsonships.update({self.cmdr: self.ships})
                 with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
                     json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
-            
-    def inara_notify_location(self, eventData):
-        write_file = False
-        for location in ['starsystem','station']:
-            if eventData.get(location + 'InaraURL'):
-                if self.ships[str(self.current_ship_id)][location]['InaraURL'] != eventData[location + 'InaraURL']:
-                    self.ships[str(self.current_ship_id)][location]['InaraURL'] = eventData[location + 'InaraURL']
-                    write_file = True
-        if write_file:
-            self.build_ui()
-            self.bigjsonships.update({self.cmdr: self.ships})
-            with open(path.join(plugin_path, 'ships.json'), 'w') as fp:
-                json.dump(self.bigjsonships, fp, indent = 2, sort_keys=True)
