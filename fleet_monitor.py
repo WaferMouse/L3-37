@@ -239,8 +239,10 @@ class FleetMonitor(WaferModule):
 #                "starpos": state['StarPos'],
                 'localised_name': ship_map[state['ShipType'].lower()]
                 }
-                
-            state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
+            try:
+                state_ship["shipInaraURL"] = self.ships[str(current_ship_id)]["shipInaraURL"]
+            except:
+                state_ship["shipInaraURL"] = 'https://inara.cz/cmdr-fleet/'
             
             if str(current_ship_id) not in self.ships:
                 self.ships[str(current_ship_id)] = state_ship
