@@ -150,7 +150,7 @@ class StationFrame(tk.Frame):
         except:
             distance = '?'
         label_text = '{} ({}ls) {}'.format(station_data['name'], distance, facilities_abr)
-        self.name_lbl = HyperlinkLabel(self, compound=tk.RIGHT, url = get_station_url(system_name, station_data['name']), text = label_text, background = bg, foreground = hl)
+        self.name_lbl = HyperlinkLabel(self, compound=tk.RIGHT, url = get_station_url(system_name, station_data['name'], None, station_data['marketId']), text = label_text, background = bg, foreground = hl)
         self.name_lbl.pack(side = 'left')
 
 def display_results(system_string):

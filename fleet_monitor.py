@@ -59,10 +59,14 @@ class ShipFrame(tk.Frame):
             self.ship_lbl_txt = ship_map[ship_data['name'].lower()]
         self.sysname = ship_data['starsystem']['name']
         self.stationname = ship_data['station']['name']
+        try:
+            self.market_id = ship_data['station']['id']
+        except:
+            self.market_id = None
         self.sys_url = get_system_url(self.sysname)
-        self.station_url = get_station_url(self.sysname, self.stationname)
+        self.station_url = get_station_url(self.sysname, self.stationname, None, self.market_id)
         self.system_link.set_system(self.sysname)
-        self.station_link.set_station(self.sysname, self.stationname)
+        self.station_link.set_station(self.sysname, self.stationname, self.market_id)
         edID = FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
         if config.get('L3_shipyard_provider') == 'Inara':
             self.ship_url = ship_data["shipInaraURL"]

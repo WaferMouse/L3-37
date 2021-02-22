@@ -59,6 +59,7 @@ class StationLinkLabel(HyperlinkLabel):
         HyperlinkLabel.__init__(self, *args, **kwargs)
         self.system_name = ''
         self.station_name = ''
+        self.market_id = None
         self.menu = tk.Menu(self, tearoff=0)
         self.menu.add_command(label="Copy station name", command = self.copy_text)
         self.menu.add_command(label="View station in EDSM", command = self.edsm_browser)
@@ -70,13 +71,14 @@ class StationLinkLabel(HyperlinkLabel):
     def copy_text(self):
         setclipboard(self.station_name)
         
-    def set_station(self, system_name, station_name):
+    def set_station(self, system_name, station_name, market_id = None):
         self.station_name = station_name
         self.system_name = system_name
+        self.market_id = market_id
         self.update_data()
         
     def update_data(self):
-        self.configure(url = get_station_url(self.system_name, self.station_name), text = self.station_name)
+        self.configure(url = get_station_url(self.system_name, self.station_name, None, self.market_id), text = self.station_name)
         
     def rightclick(self, event):
         self.menu.post(event.x_root, event.y_root)
@@ -88,7 +90,7 @@ class StationLinkLabel(HyperlinkLabel):
         webbrowser.open(get_station_url(self.system_name, self.station_name,'Inara'))
         
     def eddb_browser(self):
-        webbrowser.open(get_station_url(self.system_name, self.station_name,'eddb'))
+        webbrowser.open(get_station_url(self.system_name, self.station_name,'eddb', self.market_id))
 
 class VerticalScrolledFrame(tk.Frame):
     """A pure Tkinter scrollable frame that actually works!
