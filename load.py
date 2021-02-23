@@ -18,7 +18,7 @@ from mats_helper import MatsHelper
 from fleet_monitor import FleetMonitor
 from surface_navigation import SurfaceNavigation
 from neutron_navigation import NeutronNavigation
-        
+
 class FakeNotebook(tk.Frame):
     
     def __init__(self, parent, text = '', *args, **options):
@@ -77,6 +77,14 @@ def plugin_start3(plugin_dir):
     except:
         config.set('L3_shipyard_provider','EDSM')
     try:
+        config.get('L3_system_provider')
+    except:
+        config.set('L3_system_provider','none')
+    try:
+        config.get('L3_station_provider')
+    except:
+        config.set('L3_station_provider','none')
+    try:
         config.get('EDSM_id')
     except:
         config.set('EDSM_id', '')
@@ -108,9 +116,49 @@ def plugin_app(parent):
     return (plugin_app.frame)
     
 def plugin_prefs(parent, cmdr, is_beta):
+    service_providers = [
+                        ['none', 'None'],
+                        ['eddb', 'EDDB'],
+                        ['edsm', 'EDSM'],
+                        ['Inara', 'Inara'],
+                        ]
     frame = nb.Frame(parent)
-    shipyard_provider_label = nb.Label(frame, text="Fleet information provider: ", justify = tk.LEFT)
-    shipyard_provider_label.grid(column = 0, row = 0)
+    row = 0
+    system_frame = nb.Frame(frame, relief = tk.GROOVE)
+    system_provider_label = nb.Label(system_frame, text="System information provider override: ", justify = tk.LEFT)
+    system_provider_label.grid(column = 0, row = row, pady = 2, padx = 2)
+    row = row + 1
+    this.system_provider_select = tk.StringVar()
+    for mode in service_providers:
+        b = nb.Radiobutton(system_frame, text=mode[1], variable=this.system_provider_select, value=mode[0])
+        b.grid(column = 0, row = row, sticky="W", padx = 1)
+        row = row + 1
+    b.grid_configure(pady = 2)
+    try:
+        this.system_provider_select.set(config.get('L3_system_provider'))
+    except:
+        this.system_provider_select.set("none")
+    system_frame.grid(sticky = "nsew")
+    row = 0
+    station_frame = nb.Frame(frame, relief = tk.GROOVE)
+    station_provider_label = nb.Label(station_frame, text="Station information provider override: ", justify = tk.LEFT)
+    station_provider_label.grid(column = 0, row = row, pady = 2, padx = 2)
+    row = row + 1
+    this.station_provider_select = tk.StringVar()
+    try:
+        this.station_provider_select.set(config.get('L3_station_provider'))
+    except:
+        this.station_provider_select.set("none")
+    for mode in service_providers:
+        b = nb.Radiobutton(station_frame, text=mode[1], variable=this.station_provider_select, value=mode[0])
+        b.grid(column = 0, row = row, sticky="W", padx = 1)
+        row = row + 1
+        b.grid_configure(pady = 2)
+        station_frame.grid(sticky = "nsew")
+        
+    shipyard_frame = nb.Frame(frame, relief = tk.GROOVE)
+    shipyard_provider_label = nb.Label(shipyard_frame, text="Fleet information provider: ", justify = tk.LEFT)
+    shipyard_provider_label.grid(column = 2, row = 0, pady = 2)
     this.shipyard_provider_select = tk.StringVar()
     try:
         this.shipyard_provider_select.set(config.get('L3_shipyard_provider'))
@@ -119,18 +167,20 @@ def plugin_prefs(parent, cmdr, is_beta):
     modes = ['EDSM','Inara']
     row = 0
     for mode in modes:
-        b = nb.Radiobutton(frame, text=mode, variable=this.shipyard_provider_select, value=mode)
-        b.grid(column = 1, row = row)
+        b = nb.Radiobutton(shipyard_frame, text=mode, variable=this.shipyard_provider_select, value=mode)
+        b.grid(column = 3, row = row, sticky="W", padx = 1)
         row = row + 1
-    EDSM_id_label = nb.Label(frame, text="To view your ships in EDSM,\nenter the numbers that follow id/\nin the URL for your EDSM profile page: ", justify = tk.LEFT)
-    EDSM_id_label.grid(column = 0, row = 2)
-    this.EDSM_id_entry = nb.Entry(frame)
-    this.EDSM_id_entry.grid(column = 1, row = 2)
+    b.grid_configure(pady = 2)
+    EDSM_id_label = nb.Label(shipyard_frame, text="To view your ships in EDSM,\nenter the numbers that follow id/\nin the URL for your EDSM profile page: ", justify = tk.LEFT)
+    EDSM_id_label.grid(column = 2, row = 2, pady = 2)
+    this.EDSM_id_entry = nb.Entry(shipyard_frame)
+    this.EDSM_id_entry.grid(column = 3, row = 2)
     try:
         this.EDSM_id_entry.delete(0, tk.END)
         this.EDSM_id_entry.insert(0, config.get('EDSM_id'))
     except:
         pass
+    shipyard_frame.grid(column = 1, row = 1, sticky = "nsew")
     return frame
     
 def prefs_changed(cmdr, is_beta):
@@ -139,6 +189,11 @@ def prefs_changed(cmdr, is_beta):
     """
     config.set('EDSM_id', this.EDSM_id_entry.get())
     config.set('L3_shipyard_provider',this.shipyard_provider_select.get())
+    try:
+        config.set('L3_system_provider',this.system_provider_select.get())
+        config.set('L3_station_provider',this.station_provider_select.get())
+    except:
+        pass
 
 def journal_entry(cmdr, is_beta, system, station, entry, state):
     this.system = system
