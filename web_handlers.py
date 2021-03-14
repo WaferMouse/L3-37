@@ -23,7 +23,7 @@ def get_station_url(system_name, station_name, provider = None, market_id = None
             provider = config.get('station_provider')
     if provider == 'eddb':
         if market_id:
-            return 'https://eddb.io/station/market-id/' + urllib.parse.quote_plus(str(market_id))
+            return('https://eddb.io/station/market-id/' + urllib.parse.quote_plus(str(market_id)))
         else:
             return(get_system_url(system_name, provider = 'eddb'))
     elif provider == 'Inara':
