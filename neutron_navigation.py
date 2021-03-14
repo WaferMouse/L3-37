@@ -237,8 +237,10 @@ class NeutronNavigation(WaferModule):
         self.jump_range_btn.pack(side = tk.LEFT)
         
         self.paste_frame = tk.Frame(self.control_frame)
-        self.spansh_button = tk.Button(self.paste_frame, text='1. Visit spansh.co.uk/plotter.', justify = tk.LEFT, command = self.open_spansh)
+        self.spansh_button = tk.Button(self.paste_frame, text='1. Visit spansh.co.uk/plotter', justify = tk.LEFT, command = self.open_spansh)
         self.spansh_button.pack(anchor = 'w')
+        self.exact_button = tk.Button(self.paste_frame, text='or  spansh.co.uk/exact_plotter.', justify = tk.LEFT, command = self.open_exact)
+        self.exact_button.pack(anchor = 'w')
         self.paste_label = tk.Label(self.paste_frame, text='2. Calculate a route.\n3. Copy the URL.', anchor = tk.NE, justify = tk.LEFT)
         self.paste_label.pack(anchor = 'w')
         
@@ -339,18 +341,31 @@ class NeutronNavigation(WaferModule):
         except:
             tkMessageBox.showerror("Error", "Could not load route. You may need to request an updated route from spansh.")
             
+            
     def open_spansh(self, event=''):
         webbrowser.open("http://www.spansh.co.uk/plotter")
+        
+    def open_exact(self, event=''):
+        webbrowser.open("http://www.spansh.co.uk/exact-plotter")
                 
     def process_route(self):
         widget_row = 0
-        for i in self.route['result']['system_jumps']:
-            name = i['system']
-            is_neutron = i['neutron_star']
+        is_exact = 'ship_build' in self.route['result']
+        system_jumps = ['system_jumps', 'jumps'][is_exact]
+        for i in self.route['result'][system_jumps]:
+            if is_exact:
+                name = i['name']
+                is_neutron = i['has_neutron']
+            else:
+                name = i['system']
+                is_neutron = i['neutron_star']
             self.dyn_widgets.append(SystemFrame(self.details_scroll.interior, name, is_neutron = is_neutron))
             self.dyn_widgets[-1].grid(row = widget_row*4, column = 1, sticky = 'nsew', rowspan = 2)
             try:
-                jumps = self.route['result']['system_jumps'][widget_row + 1]['jumps']
+                if is_exact:
+                    jumps = 1
+                else:
+                    jumps = self.route['result'][system_jumps][widget_row + 1]['jumps']
                 if is_neutron:
                     jump_text = '1 neutron jump{}.'.format(['', ' and {} other{}'.format(str(jumps - 1),['', 's'][jumps != 2])][jumps > 1])
                 else:
@@ -391,24 +406,31 @@ class NeutronNavigation(WaferModule):
                     self.fuellevel = entry['Total']
                     
                 test_fuel = self.fuellevel
-                route_offset = len(self.route['result']['system_jumps']) - len(self.queued_systems)
+                is_exact = 'ship_build' in self.route['result']
+                is_neutron = ['neutron_star', 'has_neutron'][is_exact]
+                system_jumps = ['system_jumps', 'jumps'][is_exact]
+                route_offset = len(self.route['result'][system_jumps]) - len(self.queued_systems)
                 for i in range(len(self.queued_systems) - 1):
                     if test_fuel > 0:
                         if i == 0 and self.current_starsystem.lower() != self.queued_systems[0]:
                             self.fuel_widgets[i].update(0, False)
                             self.fuel_widgets[i].update(1, False)
                         else:
-                            this_jump = self.route['result']['system_jumps'][i + route_offset]
-                            next_jump = self.route['result']['system_jumps'][i + 1 + route_offset]
-                            remaining_jumps = next_jump['jumps']
-                            remaining_distance = next_jump['distance_jumped']
-                            if this_jump['neutron_star']:
+                            this_jump = self.route['result'][system_jumps][i + route_offset]
+                            next_jump = self.route['result'][system_jumps][i + 1 + route_offset]
+                            if is_exact:
+                                remaining_jumps = 1
+                                remaining_distance = next_jump['distance']
+                            else:
+                                remaining_jumps = next_jump['jumps']
+                                remaining_distance = next_jump['distance_jumped']
+                            if this_jump[is_neutron]:
                                 if remaining_jumps > 1:
                                     jump_distance = self.model_ship.calc_max_distance(fuel_mass = test_fuel) * 4
                                     test_fuel = test_fuel - self.model_ship.calc_fuel_use(jump_distance, test_fuel, boostused = 4)
                                     remaining_distance = remaining_distance - jump_distance
                                 else:
-                                    test_fuel = test_fuel - self.model_ship.calc_fuel_use(next_jump['distance_jumped'], test_fuel, boostused = 4)
+                                    test_fuel = test_fuel - self.model_ship.calc_fuel_use(remaining_distance, test_fuel, boostused = 4)
                                     remaining_distance = 0
                                 remaining_jumps = remaining_jumps - 1
                                         
