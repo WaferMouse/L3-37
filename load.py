@@ -73,19 +73,19 @@ def plugin_start3(plugin_dir):
     Load this plugin into EDMC
     """
     try:
-        config.get('L3_shipyard_provider')
+        config.get_str('L3_shipyard_provider')
     except:
         config.set('L3_shipyard_provider','EDSM')
     try:
-        config.get('L3_system_provider')
+        config.get_str('L3_system_provider')
     except:
         config.set('L3_system_provider','none')
     try:
-        config.get('L3_station_provider')
+        config.get_str('L3_station_provider')
     except:
         config.set('L3_station_provider','none')
     try:
-        config.get('EDSM_id')
+        config.get_str('EDSM_id')
     except:
         config.set('EDSM_id', '')
     print("L3-37 started")
@@ -105,9 +105,9 @@ def plugin_app(parent):
         ]
     plugin_app.wafer_modules = {}
     plugin_app.frame = FakeNotebook(parent, text = 'L3-37')
-    plugin_app.theme = config.getint('theme')
-    plugin_app.fg = config.get('dark_text') if plugin_app.theme else 'black'
-    plugin_app.hl = config.get('dark_highlight') if plugin_app.theme else 'blue'
+    plugin_app.theme = config.get_int('theme')
+    plugin_app.fg = config.get_str('dark_text') if plugin_app.theme else 'black'
+    plugin_app.hl = config.get_str('dark_highlight') if plugin_app.theme else 'blue'
     plugin_app.bg = 'grey4' if plugin_app.theme else None
     for module in plugin_app.wafer_module_classes:
         plugin_app.wafer_modules[module[0]] = module[1](plugin_app.frame, highlightbackground=plugin_app.fg, highlightcolor=plugin_app.fg, highlightthickness = 1)#, relief = tk.SUNKEN, borderwidth = 1)
@@ -135,7 +135,7 @@ def plugin_prefs(parent, cmdr, is_beta):
         row = row + 1
     b.grid_configure(pady = 2)
     try:
-        this.system_provider_select.set(config.get('L3_system_provider'))
+        this.system_provider_select.set(config.get_str('L3_system_provider'))
     except:
         this.system_provider_select.set("none")
     system_frame.grid(sticky = "nsew")
@@ -146,7 +146,7 @@ def plugin_prefs(parent, cmdr, is_beta):
     row = row + 1
     this.station_provider_select = tk.StringVar()
     try:
-        this.station_provider_select.set(config.get('L3_station_provider'))
+        this.station_provider_select.set(config.get_str('L3_station_provider'))
     except:
         this.station_provider_select.set("none")
     for mode in service_providers:
@@ -161,7 +161,7 @@ def plugin_prefs(parent, cmdr, is_beta):
     shipyard_provider_label.grid(column = 2, row = 0, pady = 2)
     this.shipyard_provider_select = tk.StringVar()
     try:
-        this.shipyard_provider_select.set(config.get('L3_shipyard_provider'))
+        this.shipyard_provider_select.set(config.get_str('L3_shipyard_provider'))
     except:
         this.shipyard_provider_select.set("EDSM")
     modes = ['EDSM','Inara']
@@ -177,7 +177,7 @@ def plugin_prefs(parent, cmdr, is_beta):
     this.EDSM_id_entry.grid(column = 3, row = 2)
     try:
         this.EDSM_id_entry.delete(0, tk.END)
-        this.EDSM_id_entry.insert(0, config.get('EDSM_id'))
+        this.EDSM_id_entry.insert(0, config.get_str('EDSM_id'))
     except:
         pass
     shipyard_frame.grid(column = 1, row = 1, sticky = "nsew")

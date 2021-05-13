@@ -3,9 +3,9 @@ import urllib
     
 def get_system_url(system_name, provider = None):
     if not provider:
-        provider = config.get('L3_system_provider')
+        provider = config.get_str('L3_system_provider')
         if provider == 'none':
-            provider = config.get('system_provider')
+            provider = config.get_str('system_provider')
     if provider == 'eddb':
         return('https://eddb.io/system/name/' + urllib.parse.quote_plus(system_name))
     elif provider == 'Inara':
@@ -18,9 +18,9 @@ def get_nearest_url(system_name):
     
 def get_station_url(system_name, station_name, provider = None, market_id = None):
     if not provider:
-        provider = config.get('L3_station_provider')
+        provider = config.get_str('L3_station_provider')
         if provider == 'none':
-            provider = config.get('station_provider')
+            provider = config.get_str('station_provider')
     if provider == 'eddb':
         if market_id:
             return('https://eddb.io/station/market-id/' + urllib.parse.quote_plus(str(market_id)))

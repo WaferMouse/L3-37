@@ -10,7 +10,11 @@ except ModuleNotFoundError:
 
 from os import path
 
-from companion import ship_map
+from edmc_data import ship_name_map
+
+ship_map = ship_name_map.copy()
+
+#from companion import ship_map
 
 from special_frames import *
 
@@ -68,10 +72,10 @@ class ShipFrame(tk.Frame):
         self.system_link.set_system(self.sysname)
         self.station_link.set_station(self.sysname, self.stationname, self.market_id)
         edID = FLAT_SHIPS[self.ship_data['name'].lower()]['edID']
-        if config.get('L3_shipyard_provider') == 'Inara':
+        if config.get_str('L3_shipyard_provider') == 'Inara':
             self.ship_url = ship_data["shipInaraURL"]
         else:
-            self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get('EDSM_id'), urllib.parse.quote_plus(self.cmdr), self.ship_data['id'], edID)
+            self.ship_url = "https://www.edsm.net/en/user/fleet/id/{}/cmdr/{}/ship/sId/{}/sType/{}".format(config.get_str('EDSM_id'), urllib.parse.quote_plus(self.cmdr), self.ship_data['id'], edID)
         # https://inara.cz/cmdr-fleet/
         self.ship_link.configure(url = self.ship_url, text = self.ship_lbl_txt)
         #self.station_link.configure(url = self.station_url, text = self.stationname)
@@ -103,9 +107,9 @@ class FleetMonitor(WaferModule):
     
     def __init__(self, parent, *args, **options):
         WaferModule.__init__(self, parent, *args, **options)
-        self.theme = config.getint('theme')
-        self.fg = config.get('dark_text') if self.theme else 'black'
-        self.hl = config.get('dark_highlight') if self.theme else 'blue'
+        self.theme = config.get_int('theme')
+        self.fg = config.get_str('dark_text') if self.theme else 'black'
+        self.hl = config.get_str('dark_highlight') if self.theme else 'blue'
         self.bg = 'grey4' if self.theme else None
         self.ships = {}
         self.bigjsonships = {}

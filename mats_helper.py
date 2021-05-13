@@ -274,9 +274,9 @@ class MatsHelper(WaferModule):
     def __init__(self, parent, *args, **options):
         WaferModule.__init__(self, parent, *args, **options)
         self.parent = parent
-        self.theme = config.getint('theme')
-        self.fg = config.get('dark_text') if self.theme else 'black'
-        self.hl = config.get('dark_highlight') if self.theme else 'blue'
+        self.theme = config.get_int('theme')
+        self.fg = config.get_str('dark_text') if self.theme else 'black'
+        self.hl = config.get_str('dark_highlight') if self.theme else 'blue'
         self.bg = 'grey4' if self.theme else None
         for cat in materials:
             for i in materials[cat]:

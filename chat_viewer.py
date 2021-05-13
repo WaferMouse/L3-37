@@ -66,9 +66,9 @@ class ChatViewer(WaferModule):
         """
         Create a TK widget for the EDMC main window
         """
-        self.theme = config.getint('theme')
-        self.fg = config.get('dark_text') if self.theme else 'black'
-        self.hl = config.get('dark_highlight') if self.theme else 'blue'
+        self.theme = config.get_int('theme')
+        self.fg = config.get_str('dark_text') if self.theme else 'black'
+        self.hl = config.get_str('dark_highlight') if self.theme else 'blue'
         self.bg = 'grey4' if self.theme else None
         self.status = tk.Text(self, bg = self.bg)
         self.chatcopy = tk.Button(self, text = "Copy", command = self.copy_button3)

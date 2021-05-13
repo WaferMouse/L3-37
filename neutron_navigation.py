@@ -32,9 +32,9 @@ plugin_path = path.join(config.plugin_dir, "edmc-L3-37")
 with open(path.join(plugin_path,'flat_ships.json')) as json_data:
     FLAT_SHIPS = json.load(json_data)
 
-theme = config.getint('theme')
-theme_fg = config.get('dark_text') if theme else 'black'
-theme_hl = config.get('dark_highlight') if theme else 'blue'
+theme = config.get_int('theme')
+theme_fg = config.get_str('dark_text') if theme else 'black'
+theme_hl = config.get_str('dark_highlight') if theme else 'blue'
 theme_bg = 'grey4' if theme else None
 
 def getclipboard():
@@ -362,6 +362,10 @@ class NeutronNavigation(WaferModule):
             self.dyn_widgets.append(SystemFrame(self.details_scroll.interior, name, is_neutron = is_neutron))
             self.dyn_widgets[-1].grid(row = widget_row*4, column = 1, sticky = 'nsew', rowspan = 2)
             try:
+                must_refuel = i['must_refuel']
+            except:
+                must_refuel = False
+            try:
                 if is_exact:
                     jumps = 1
                 else:
@@ -370,6 +374,7 @@ class NeutronNavigation(WaferModule):
                     jump_text = '1 neutron jump{}.'.format(['', ' and {} other{}'.format(str(jumps - 1),['', 's'][jumps != 2])][jumps > 1])
                 else:
                     jump_text = '{} jump{}.'.format(jumps, ['', 's'][jumps != 1])
+                jump_text = '{}{}'.format(['', 'REFUEL -> '][must_refuel], jump_text)
                 self.jump_widgets.append(tk.Label(self.details_scroll.interior, text = jump_text, anchor = tk.E))
                 if theme:
                     self.jump_widgets[-1].config(bg = theme_bg, fg = theme_fg)

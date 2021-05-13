@@ -18,9 +18,9 @@ from os.path import join
 import pickle
 import sys
 
-theme = config.getint('theme')
-fg = config.get('dark_text') if theme else 'black'
-hl = config.get('dark_highlight') if theme else 'blue'
+theme = config.get_int('theme')
+fg = config.get_str('dark_text') if theme else 'black'
+hl = config.get_str('dark_highlight') if theme else 'blue'
 bg = 'grey4' if theme else None
 
 # https://www.edsm.net/api-v1/system?systemName=Shinrarta%20Dezhra&showCoordinates=1&showInformation=1&showPermit=1&showPrimaryStar=1
@@ -38,9 +38,6 @@ this.edsm_cache = {}
 
 this.edsm_session = None
 this.edsm_data = None
-
-with open(join(config.respath, 'systems.p'),  'rb') as h:
-    this.system_ids  = pickle.load(h)
 
 def test_stuff():
     o = 'Shinrarta Dezhra'
